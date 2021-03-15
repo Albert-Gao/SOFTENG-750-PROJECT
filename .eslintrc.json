@@ -1,10 +1,10 @@
 {
-  "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
-  "rules": { "prettier/prettier": "error" },
-  "overrides": [
-    {
-      "files": ["**/*.ts?(x)"],
-      "rules": {}
-    }
-  ]
+    "extends": ["react-app", "react-app/jest", "plugin:prettier/recommended"],
+    "rules": { "prettier/prettier": "error" },
+    "overrides": [
+        {
+            "files": ["**/*.ts?(x)"],
+            "rules": {}
+        }
+    ]
 }
