@@ -2,9 +2,9 @@
     "name": "softeng-750-project",
     "version": "0.1.0",
     "scripts": {
-        "start": "react-scripts start",
-        "build": "react-scripts build",
-        "test": "react-scripts test",
+        "start": "craco start",
+        "build": "craco build",
+        "test": "craco test",
         "eject": "react-scripts eject",
         "prettier": "pretty-quick"
     },
@@ -21,6 +21,7 @@
         ]
     },
     "dependencies": {
+        "@craco/craco": "^6.1.1",
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",
         "@testing-library/user-event": "^12.1.10",
@@ -35,9 +36,13 @@
         "web-vitals": "^1.0.1"
     },
     "devDependencies": {
+        "@tailwindcss/postcss7-compat": "^2.0.3",
+        "autoprefixer": "^9.8.6",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-prettier": "^3.3.1",
+        "postcss": "^7.0.35",
         "prettier": "2.2.1",
-        "pretty-quick": "^3.1.0"
+        "pretty-quick": "^3.1.0",
+        "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.3"
     }
 }
