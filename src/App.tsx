@@ -1,10 +1,15 @@
 import React from 'react'
+import { BrowserRouter } from 'react-router-dom'
+import { AppShell } from './components/AppShell/AppShell'
+import { Routes } from './routes/routes'
 
 const App: React.FC = () => {
     return (
-        <p>
-            Edit <code>src/App.js</code> and save to reload.
-        </p>
+        <BrowserRouter>
+            <AppShell>
+                <Routes />
+            </AppShell>
+        </BrowserRouter>
     )
 }
 
