@@ -6,7 +6,9 @@
         "build": "craco build",
         "test": "craco test",
         "eject": "react-scripts eject",
-        "prettier": "pretty-quick"
+        "prettier": "pretty-quick",
+        "storybook": "start-storybook -p 6006 -s public",
+        "build-storybook": "build-storybook -s public"
     },
     "browserslist": {
         "production": [
@@ -41,6 +43,12 @@
         "web-vitals": "^1.0.1"
     },
     "devDependencies": {
+        "@storybook/addon-actions": "^6.1.21",
+        "@storybook/addon-essentials": "^6.1.21",
+        "@storybook/addon-links": "^6.1.21",
+        "@storybook/node-logger": "^6.1.21",
+        "@storybook/preset-create-react-app": "^3.1.7",
+        "@storybook/react": "^6.1.21",
         "@tailwindcss/postcss7-compat": "^2.0.3",
         "autoprefixer": "^9.8.6",
         "eslint-config-prettier": "^8.1.0",
