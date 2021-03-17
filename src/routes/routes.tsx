@@ -36,6 +36,36 @@ export const Routes: React.FC = () => {
                             ),
                     )}
                 />
+                <Route
+                    exact
+                    path={PATHS.PROFILE}
+                    component={React.lazy(
+                        () =>
+                            import(
+                                /* webpackChunkName: "profilePage" */ '../pages/Profile/Profile'
+                            ),
+                    )}
+                />
+                <Route
+                    exact
+                    path={PATHS.PROFILE_FAV_LIST}
+                    component={React.lazy(
+                        () =>
+                            import(
+                                /* webpackChunkName: "profileFavListPage" */ '../pages/ProfileFavList/ProfileFavList'
+                            ),
+                    )}
+                />
+                <Route
+                    exact
+                    path={PATHS.PROFILE_NEWS_SUBMISSION_LIST}
+                    component={React.lazy(
+                        () =>
+                            import(
+                                /* webpackChunkName: "profileNewsSubmissionListPage" */ '../pages/ProfileNewsSubmissionList/ProfileNewsSubmissionList'
+                            ),
+                    )}
+                />
             </Switch>
         </React.Suspense>
     )
