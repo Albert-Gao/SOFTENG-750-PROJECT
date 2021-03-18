@@ -4,6 +4,12 @@
 
 A project that aims to add a social flavor over Wikipedia.
 
+### URL
+
+- Project CD for `dev` update: https://softeng-750-project.vercel.app/
+- Storybook CD for `dev` update: https://wiki-chat-storybook.vercel.app/
+
+
 ## Available Scripts
 
 In the project directory, you can run:
