@@ -29,7 +29,7 @@
         "dev": "ts-node-dev --no-notify src/",
         "start": "npm run compile && node lib/",
         "jest": "jest  --forceExit",
-        "compile": "shx rm -rf lib/ && tsc",
+        "compile": "tsc",
         "prettier": "pretty-quick"
     },
     "standard": {
