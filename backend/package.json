@@ -27,7 +27,7 @@
         "test": "npm run lint && npm run compile && npm run jest",
         "lint": "eslint src/. test/. --config .eslintrc.json --ext .ts --fix",
         "dev": "ts-node-dev --no-notify src/",
-        "start": "nodemon lib/",
+        "start": "npm run nodemon -- lib/",
         "jest": "jest  --forceExit",
         "remove:build": "shx rm -rf lib/",
         "compile": "tsc",
