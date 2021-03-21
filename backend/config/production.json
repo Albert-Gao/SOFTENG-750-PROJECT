@@ -1,0 +1,5 @@
+{
+    "host": "backend-app.feathersjs.com",
+    "port": "PORT",
+    "mongodb": "mongodb+srv://wiki-chat-admin:BZvvXaGpRlR7cDD8@cluster0.zzfok.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
+}
