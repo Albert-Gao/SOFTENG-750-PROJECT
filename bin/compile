@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-# bin/compile <build-dir> <cache-dir> <env-dir>
-
-# used for inline heroku buildpack
-
-cp ./backend/*.* .
-npm ci
-npm start
-exit 0
