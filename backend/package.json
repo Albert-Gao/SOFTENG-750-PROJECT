@@ -60,6 +60,7 @@
         "mongodb": "^3.6.5",
         "mongodb-core": "^3.2.7",
         "mongoose": "^5.12.1",
+        "pm2": "^4.5.5",
         "serve-favicon": "^2.5.0",
         "winston": "^3.3.3"
     },
