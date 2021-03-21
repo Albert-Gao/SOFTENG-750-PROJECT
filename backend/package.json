@@ -27,11 +27,10 @@
         "test": "npm run lint && npm run compile && npm run jest",
         "lint": "eslint src/. test/. --config .eslintrc.json --ext .ts --fix",
         "dev": "ts-node-dev --no-notify src/",
-        "start": "npm run nodemon -- lib/",
+        "start": "pm2-runtime start ecosystem.config.js --env production",
         "jest": "jest  --forceExit",
         "remove:build": "shx rm -rf lib/",
         "compile": "tsc",
-        "nodemon": "nodemon",
         "prettier": "pretty-quick",
         "tsc": "tsc",
         "postinstall": "npm run remove:build && npm run compile"
