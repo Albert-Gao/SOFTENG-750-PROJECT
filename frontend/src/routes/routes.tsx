@@ -8,6 +8,16 @@ export const Routes: React.FC = () => {
             <Switch>
                 <Route
                     exact
+                    path={PATHS.LOGIN}
+                    component={React.lazy(
+                        () =>
+                            import(
+                                /* webpackChunkName: "loginPage" */ '../pages/Login/Login'
+                            ),
+                    )}
+                />
+                <Route
+                    exact
                     path={PATHS.HOME}
                     component={React.lazy(
                         () =>

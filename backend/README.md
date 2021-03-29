@@ -21,6 +21,10 @@ Getting up and running is as easy as 1, 2, 3.
 3. Start your app
 
     ```
+    # use this command for dev
+    npm dev
+
+    # use this command for start in production
     npm start
     ```
 
