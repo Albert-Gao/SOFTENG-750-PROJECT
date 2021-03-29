@@ -1,6 +1,8 @@
 import React from 'react'
 import { HeroSectionBody } from './components/HeroSectionBody'
 import { HeroSectionMenuBody } from './components/HeroSectionMenuBody'
+import { Link } from 'react-router-dom'
+import { PATHS } from '../../../../routes/routes.constants'
 
 const MobileMenuOpenButton: React.FC<{
     setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
@@ -46,14 +48,14 @@ const HeroSectionNavMenuDesktop: React.FC<{
             >
                 <div className="flex items-center flex-1 md:absolute md:inset-y-0 md:left-0">
                     <div className="flex items-center justify-between w-full md:w-auto">
-                        <a href="#">
+                        <Link to={PATHS.HOME}>
                             <span className="sr-only">Workflow</span>
                             <img
                                 className="w-auto h-8 sm:h-10"
                                 src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
                                 alt=""
                             />
-                        </a>
+                        </Link>
                         <MobileMenuOpenButton setIsMenuOpen={setIsMenuOpen} />
                     </div>
                 </div>
@@ -83,13 +85,15 @@ const HeroSectionNavMenuMobile: React.FC<{
         <div className="absolute inset-x-0 top-0 p-2 transition origin-top-right transform md:hidden">
             <div className="overflow-hidden bg-white rounded-lg shadow-md ring-1 ring-black ring-opacity-5">
                 <div className="flex items-center justify-between px-5 pt-4">
-                    <div>
-                        <img
-                            className="w-auto h-8"
-                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                            alt=""
-                        />
-                    </div>
+                    <Link to={PATHS.HOME}>
+                        <div>
+                            <img
+                                className="w-auto h-8"
+                                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                                alt=""
+                            />
+                        </div>
+                    </Link>
                     <div className="-mr-2">
                         <button
                             type="button"
