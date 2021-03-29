@@ -1,6 +1,7 @@
 {
     "name": "softeng-750-project",
     "version": "0.1.0",
+    "private": "true",
     "scripts": {
         "start": "craco start",
         "build": "craco build",

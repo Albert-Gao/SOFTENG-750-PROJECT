@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { PATHS } from '../../../../../routes/routes.constants'
 
 export const HeroSectionBody: React.FC = () => {
     return (
@@ -17,12 +19,12 @@ export const HeroSectionBody: React.FC = () => {
                 </p>
                 <div className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
                     <div className="rounded-md shadow">
-                        <a
-                            href="#"
+                        <Link
+                            to={PATHS.REGISTER}
                             className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                         >
                             Get started
-                        </a>
+                        </Link>
                     </div>
                 </div>
             </div>

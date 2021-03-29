@@ -1,26 +1,30 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
+import { PATHS } from '../../routes/routes.constants'
 
 const Login: React.FC = () => {
     return (
         <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
                 <div>
-                    <img
-                        className="w-auto h-12 mx-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                        alt="Workflow"
-                    />
+                    <Link to={PATHS.HOME}>
+                        <img
+                            className="w-auto h-12 mx-auto"
+                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                            alt="Workflow"
+                        />
+                    </Link>
                     <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
                         Sign in to your account
                     </h2>
                     <p className="mt-2 text-sm text-center text-gray-600">
-                        Or
-                        <a
-                            href="#"
-                            className="font-medium text-indigo-600 hover:text-indigo-500"
+                        or
+                        <Link
+                            to={PATHS.REGISTER}
+                            className="ml-2 font-medium text-indigo-600 hover:text-indigo-500"
                         >
-                            start your 14-day free trial
-                        </a>
+                            join WikiChat for free
+                        </Link>
                     </p>
                 </div>
                 <form className="mt-8 space-y-6" action="#" method="POST">
@@ -73,12 +77,12 @@ const Login: React.FC = () => {
                         </div>
 
                         <div className="text-sm">
-                            <a
-                                href="#"
+                            <Link
+                                to={PATHS.HOME}
                                 className="font-medium text-indigo-600 hover:text-indigo-500"
                             >
                                 Forgot your password?
-                            </a>
+                            </Link>
                         </div>
                     </div>
 

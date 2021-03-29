@@ -12,4 +12,13 @@ export const routesWithoutAppShell: RouteConfig[] = [
                 ),
         ),
     },
+    {
+        path: PATHS.REGISTER,
+        component: React.lazy(
+            () =>
+                import(
+                    /* webpackChunkName: "registerPage" */ '../pages/Register/Register'
+                ),
+        ),
+    },
 ]
