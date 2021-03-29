@@ -5,11 +5,21 @@ import { AppShell } from './AppShell/AppShell'
 import { Route, Switch } from 'react-router-dom'
 
 const withoutAppShell = routesWithoutAppShell.map((route) => (
-    <Route exact path={route.path} component={route.component} />
+    <Route
+        exact
+        key={route.path}
+        path={route.path}
+        component={route.component}
+    />
 ))
 
 const withAppShell = routesWithAppShell.map((route) => (
-    <Route exact path={route.path} component={route.component} />
+    <Route
+        exact
+        key={route.path}
+        path={route.path}
+        component={route.component}
+    />
 ))
 
 export const AuthChecker: React.FC = () => {

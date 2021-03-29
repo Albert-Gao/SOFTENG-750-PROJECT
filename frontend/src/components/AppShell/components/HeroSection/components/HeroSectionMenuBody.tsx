@@ -38,6 +38,7 @@ export const HeroSectionMenuBody: React.FC<{ isMobile: boolean }> = ({
             >
                 {heroSectionMenuData.map((item) => (
                     <Link
+                        key={item.path}
                         to={item.path}
                         className={
                             isMobile
