@@ -8,6 +8,7 @@ export enum PATHS {
     PROFILE_NEWS_SUBMISSION_LIST = '/profile/news-submission',
 
     LOGIN = '/login',
+    REGISTER = '/register',
 }
 
 export const PAGE_TITLE_MAP = [
