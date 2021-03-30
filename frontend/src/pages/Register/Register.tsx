@@ -1,6 +1,12 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { AxiosError } from 'axios'
+import { useMutation } from 'react-query'
 import { PATHS } from '../../routes/routes.constants'
+import { FormErrorText } from '../../components/FormErrorText'
+import { registerAPI } from '../../api/register.api'
+import { Auth } from '../../utils/Auth'
 
 const Header: React.FC = () => (
     <div>
@@ -26,7 +32,17 @@ const Header: React.FC = () => (
     </div>
 )
 
+// eslint-disable-next-line no-useless-escape
+const emailRegEx = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
+
 const Register: React.FC = () => {
+    const { register, handleSubmit, errors, formState } = useForm<{
+        email: string
+        password: string
+    }>()
+    const mutation = useMutation(registerAPI.query)
+    const history = useHistory()
+
     return (
         <div className="flex min-h-screen bg-white">
             <div className="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
@@ -39,6 +55,30 @@ const Register: React.FC = () => {
                                 action="#"
                                 method="POST"
                                 className="space-y-6"
+                                onSubmit={handleSubmit(async (data) => {
+                                    try {
+                                        const response = await mutation.mutateAsync(
+                                            data,
+                                        )
+
+                                        if (response.data?.accessToken) {
+                                            Auth.saveAuth(
+                                                response.data?.accessToken,
+                                            )
+                                            history.replace(PATHS.HOME)
+                                        } else {
+                                            alert(
+                                                'Something wrong with server, please try again later',
+                                            )
+                                        }
+                                    } catch (e) {
+                                        console.table('e', e)
+                                        alert(
+                                            (e as AxiosError).response?.data
+                                                ?.message,
+                                        )
+                                    }
+                                })}
                             >
                                 <div>
                                     <label
@@ -53,9 +93,15 @@ const Register: React.FC = () => {
                                             name="email"
                                             type="email"
                                             autoComplete="email"
-                                            required
+                                            ref={register({
+                                                required: true,
+                                                pattern: emailRegEx,
+                                            })}
                                             className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                         />
+                                        <FormErrorText isError={!!errors.email}>
+                                            Please enter valid email
+                                        </FormErrorText>
                                     </div>
                                 </div>
 
@@ -71,15 +117,21 @@ const Register: React.FC = () => {
                                             id="password"
                                             name="password"
                                             type="password"
+                                            ref={register({ required: true })}
                                             autoComplete="current-password"
-                                            required
                                             className="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 rounded-md shadow-sm appearance-none focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
                                         />
+                                        <FormErrorText
+                                            isError={!!errors.password}
+                                        >
+                                            Please enter your password
+                                        </FormErrorText>
                                     </div>
                                 </div>
 
                                 <div>
                                     <button
+                                        disabled={formState.isSubmitting}
                                         type="submit"
                                         className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     >
