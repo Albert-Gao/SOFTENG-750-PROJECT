@@ -50,8 +50,6 @@ const Register: React.FC = () => {
                     <div className="mt-8">
                         <div className="mt-6">
                             <form
-                                action="#"
-                                method="POST"
                                 className="space-y-6"
                                 onSubmit={handleSubmit(async (data) => {
                                     try {

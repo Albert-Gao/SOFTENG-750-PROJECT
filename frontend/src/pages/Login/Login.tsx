@@ -47,8 +47,6 @@ const Login: React.FC = () => {
                 <LoginHeader />
                 <form
                     className="mt-8 space-y-6"
-                    action="#"
-                    method="POST"
                     onSubmit={handleSubmit(async (data) => {
                         try {
                             const response = await mutation.mutateAsync(data)
@@ -136,6 +134,7 @@ const Login: React.FC = () => {
 
                     <div>
                         <button
+                            disabled={formState.isSubmitting}
                             type="submit"
                             className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
