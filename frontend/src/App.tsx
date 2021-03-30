@@ -1,12 +1,15 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthChecker } from './components/AuthChecker'
+import { ReactQueryProvider } from './components/ReactQueryProvider'
 
 const App: React.FC = () => {
     return (
-        <BrowserRouter>
-            <AuthChecker />
-        </BrowserRouter>
+        <ReactQueryProvider>
+            <BrowserRouter>
+                <AuthChecker />
+            </BrowserRouter>
+        </ReactQueryProvider>
     )
 }
 

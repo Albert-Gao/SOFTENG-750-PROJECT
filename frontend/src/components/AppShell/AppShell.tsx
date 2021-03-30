@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { PATHS } from '../../routes/routes.constants'
-import { useAuth } from '../../utils/useAuth'
+import { Auth } from '../../utils/Auth'
 import { HeroSection } from './components/HeroSection/HeroSection'
 import { Main } from './components/Main'
 import { MobileNavBarToggleButton } from './components/MobileNavButtonToggleButton'
@@ -16,7 +16,7 @@ const shouldAddAppShell = (path: string) =>
     ![PATHS.LOGIN].includes((path as unknown) as PATHS)
 
 export const AppShell: React.FC = ({ children }) => {
-    const isAuth = useAuth()
+    const isAuth = Auth.isAuth()
     const { pathname } = useLocation()
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)

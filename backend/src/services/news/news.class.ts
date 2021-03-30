@@ -1,4 +1,3 @@
-import { Params, Id } from '@feathersjs/feathers'
 import { Service, MongooseServiceOptions } from 'feathers-mongoose'
 import { Application } from '../../declarations'
 import { NewsDocument } from '../../models/news.model'
