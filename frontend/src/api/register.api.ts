@@ -1,5 +1,5 @@
 import { QueryFunction } from './types'
-import axios, { AxiosResponse } from 'axios'
+import axios from 'axios'
 import { getUrl } from './api.utils'
 
 interface Params {
@@ -41,7 +41,7 @@ export const loginAPI: QueryFunction<Params, Response> = {
 
 export const registerAPI: QueryFunction<Params, Response> = {
     query: async ({ email, password }) => {
-        const createUserResponse = await axios.post(
+        await axios.post(
             getUrl('/users'),
             {
                 email,
