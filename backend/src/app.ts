@@ -18,7 +18,7 @@ import channels from './channels'
 import { HookContext as FeathersHookContext } from '@feathersjs/feathers'
 import authentication from './authentication'
 import mongodb from './mongodb'
-import mongoose from './mongoose';
+import mongoose from './mongoose'
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const app: Application = express(feathers())
@@ -46,7 +46,7 @@ app.configure(socketio())
 
 app.configure(mongodb)
 
-app.configure(mongoose);
+app.configure(mongoose)
 
 // Configure other middleware (see `middleware/index.ts`)
 app.configure(middleware)

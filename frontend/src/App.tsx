@@ -1,15 +1,15 @@
 import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
-import { AppShell } from './components/AppShell/AppShell'
-import { Routes } from './routes/routes'
+import { AuthChecker } from './components/AuthChecker'
+import { ReactQueryProvider } from './components/ReactQueryProvider'
 
 const App: React.FC = () => {
     return (
-        <BrowserRouter>
-            <AppShell>
-                <Routes />
-            </AppShell>
-        </BrowserRouter>
+        <ReactQueryProvider>
+            <BrowserRouter>
+                <AuthChecker />
+            </BrowserRouter>
+        </ReactQueryProvider>
     )
 }
 
