@@ -5,8 +5,9 @@ import { AxiosError } from 'axios'
 import { useMutation } from 'react-query'
 import { PATHS } from '../../routes/routes.constants'
 import { FormErrorText } from '../../components/FormErrorText'
-import { registerAPI } from '../../api/register.api'
+import { registerAPI } from '../../api/auth.api'
 import { Auth } from '../../utils/Auth'
+import { emailRegEx } from '../../utils/emailRegEx'
 
 const Header: React.FC = () => (
     <div>
@@ -32,9 +33,6 @@ const Header: React.FC = () => (
     </div>
 )
 
-// eslint-disable-next-line no-useless-escape
-const emailRegEx = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i
-
 const Register: React.FC = () => {
     const { register, handleSubmit, errors, formState } = useForm<{
         email: string
@@ -52,8 +50,6 @@ const Register: React.FC = () => {
                     <div className="mt-8">
                         <div className="mt-6">
                             <form
-                                action="#"
-                                method="POST"
                                 className="space-y-6"
                                 onSubmit={handleSubmit(async (data) => {
                                     try {

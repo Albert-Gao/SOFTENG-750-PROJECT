@@ -1,33 +1,70 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { PATHS } from '../../routes/routes.constants'
+import { useForm } from 'react-hook-form'
+import { AxiosError } from 'axios'
+import { useMutation } from 'react-query'
+import { FormErrorText } from '../../components/FormErrorText'
+import { emailRegEx } from '../../utils/emailRegEx'
+import { loginAPI } from '../../api/auth.api'
+import { Auth } from '../../utils/Auth'
+
+const LoginHeader: React.FC = () => (
+    <div>
+        <Link to={PATHS.HOME}>
+            <img
+                className="w-auto h-12 mx-auto"
+                src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
+                alt="Workflow"
+            />
+        </Link>
+        <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
+            Sign in to your account
+        </h2>
+        <p className="mt-2 text-sm text-center text-gray-600">
+            or
+            <Link
+                to={PATHS.REGISTER}
+                className="ml-2 font-medium text-indigo-600 hover:text-indigo-500"
+            >
+                join WikiChat for free
+            </Link>
+        </p>
+    </div>
+)
 
 const Login: React.FC = () => {
+    const { register, handleSubmit, errors, formState } = useForm<{
+        email: string
+        password: string
+    }>()
+    const mutation = useMutation(loginAPI.query)
+    const history = useHistory()
+
     return (
         <div className="flex items-center justify-center min-h-screen px-4 py-12 bg-gray-50 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
-                <div>
-                    <Link to={PATHS.HOME}>
-                        <img
-                            className="w-auto h-12 mx-auto"
-                            src="https://tailwindui.com/img/logos/workflow-mark-indigo-600.svg"
-                            alt="Workflow"
-                        />
-                    </Link>
-                    <h2 className="mt-6 text-3xl font-extrabold text-center text-gray-900">
-                        Sign in to your account
-                    </h2>
-                    <p className="mt-2 text-sm text-center text-gray-600">
-                        or
-                        <Link
-                            to={PATHS.REGISTER}
-                            className="ml-2 font-medium text-indigo-600 hover:text-indigo-500"
-                        >
-                            join WikiChat for free
-                        </Link>
-                    </p>
-                </div>
-                <form className="mt-8 space-y-6" action="#" method="POST">
+                <LoginHeader />
+                <form
+                    className="mt-8 space-y-6"
+                    onSubmit={handleSubmit(async (data) => {
+                        try {
+                            const response = await mutation.mutateAsync(data)
+
+                            if (response.data?.accessToken) {
+                                Auth.saveAuth(response.data?.accessToken)
+                                history.replace(PATHS.HOME)
+                            } else {
+                                alert(
+                                    'Something wrong with server, please try again later',
+                                )
+                            }
+                        } catch (e) {
+                            console.table('e', e)
+                            alert((e as AxiosError).response?.data?.message)
+                        }
+                    })}
+                >
                     <input type="hidden" name="remember" value="true" />
                     <div className="-space-y-px rounded-md shadow-sm">
                         <div>
@@ -39,10 +76,16 @@ const Login: React.FC = () => {
                                 name="email"
                                 type="email"
                                 autoComplete="email"
-                                required
+                                ref={register({
+                                    required: true,
+                                    pattern: emailRegEx,
+                                })}
                                 className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Email address"
                             />
+                            <FormErrorText isError={!!errors.email}>
+                                Please enter valid email
+                            </FormErrorText>
                         </div>
                         <div>
                             <label htmlFor="password" className="sr-only">
@@ -53,10 +96,13 @@ const Login: React.FC = () => {
                                 name="password"
                                 type="password"
                                 autoComplete="current-password"
-                                required
+                                ref={register({ required: true })}
                                 className="relative block w-full px-3 py-2 text-gray-900 placeholder-gray-500 border border-gray-300 rounded-none appearance-none rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Password"
                             />
+                            <FormErrorText isError={!!errors.password}>
+                                Please enter your password
+                            </FormErrorText>
                         </div>
                     </div>
 
@@ -88,6 +134,7 @@ const Login: React.FC = () => {
 
                     <div>
                         <button
+                            disabled={formState.isSubmitting}
                             type="submit"
                             className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
