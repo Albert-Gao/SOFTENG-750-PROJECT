@@ -1,8 +1,10 @@
 import ReactModal from 'react-modal'
+import { Link } from 'react-router-dom'
 import { useAtom } from 'jotai'
 import { submitNewsAtom } from '../../state'
 import { SubmitNewsModalHeader } from './components/SubmitNewsModalHeader'
 import { SubmitNewsModalField } from './components/SubmitNewsModalField'
+import { PATHS } from '../../routes/routes.constants'
 
 export const SubmitNewsModal: React.FC<{
     isOpen: boolean
@@ -58,8 +60,8 @@ export const SubmitNewsModal: React.FC<{
                 <div className="flex justify-between">
                     <div className="pt-4 pb-6 pl-4">
                         <div className="flex mt-4 text-sm">
-                            <a
-                                href="#"
+                            <Link
+                                to={PATHS.FEATURES}
                                 className="inline-flex items-center text-gray-500 group hover:text-gray-900"
                             >
                                 {/* <!-- Heroicon name: solid/question-mark-circle --> */}
@@ -79,7 +81,7 @@ export const SubmitNewsModal: React.FC<{
                                 <span className="ml-2">
                                     Learn more about sharing
                                 </span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
 
