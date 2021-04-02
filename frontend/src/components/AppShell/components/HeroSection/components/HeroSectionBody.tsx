@@ -9,6 +9,7 @@ export const HeroSectionBody: React.FC = () => {
                 <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
                     <span className="block xl:inline">A WikiPedia</span>
                     <span className="block text-indigo-600 xl:inline">
+                        {' '}
                         that social
                     </span>
                 </h1>
@@ -23,7 +24,7 @@ export const HeroSectionBody: React.FC = () => {
                             to={PATHS.REGISTER}
                             className="flex items-center justify-center w-full px-8 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
                         >
-                            Get started
+                            Join For Free
                         </Link>
                     </div>
                 </div>
