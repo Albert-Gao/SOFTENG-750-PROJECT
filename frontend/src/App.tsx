@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter } from 'react-router-dom'
 import { useAtom } from 'jotai'
 import { AuthChecker } from './components/AuthChecker'
@@ -7,7 +7,9 @@ import { submitNewsAtom } from './state'
 import { SubmitNewsModal } from './components/SubmitNewsModal/SubmitNewsModal'
 import Modal from 'react-modal'
 
-Modal.setAppElement('#root')
+if (process.env.NODE_ENV !== 'test') {
+    Modal.setAppElement('#root')
+}
 
 const App: React.FC = () => {
     const [{ isSubmitNewsModalOpen }] = useAtom(submitNewsAtom)
