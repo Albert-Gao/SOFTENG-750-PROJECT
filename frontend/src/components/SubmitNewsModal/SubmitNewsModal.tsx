@@ -46,7 +46,7 @@ export const SubmitNewsModal: React.FC<{
                 className="flex flex-col bg-white divide-y divide-gray-200 shadow-xl"
                 onSubmit={handleSubmit(async (data) => {
                     try {
-                        const response = await mutation.mutateAsync(data)
+                        await mutation.mutateAsync(data)
 
                         closeModal()
 
