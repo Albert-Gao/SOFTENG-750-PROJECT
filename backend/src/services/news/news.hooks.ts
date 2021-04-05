@@ -1,19 +1,18 @@
 import * as authentication from '@feathersjs/authentication'
+import { getWikiPageInfo } from './hooks/getWikiPageInfo'
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = authentication.hooks
 
 export default {
     before: {
-        all: [
-            //  authenticate('jwt')
-        ],
+        all: [],
         find: [],
         get: [],
-        create: [],
-        update: [],
-        patch: [],
-        remove: [],
+        create: [authenticate('jwt'), getWikiPageInfo],
+        update: [authenticate('jwt')],
+        patch: [authenticate('jwt')],
+        remove: [authenticate('jwt')],
     },
 
     after: {

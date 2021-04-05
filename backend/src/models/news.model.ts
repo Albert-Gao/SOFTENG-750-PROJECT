@@ -3,10 +3,14 @@
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 import { Application } from '../declarations'
-import { Model, Mongoose, Document } from 'mongoose'
+import { Model, Mongoose, Document, Types } from 'mongoose'
 
 export interface NewsDocument extends Document {
     title: string
+    description: string
+    wikipediaUrl: string
+    author: string
+    vote: number
 }
 
 export interface NewsModel extends Model<NewsDocument> {}
@@ -17,10 +21,17 @@ export default function (app: Application): Model<any> {
     const { Schema } = mongooseClient
     const schema = new Schema<NewsDocument, NewsModel>(
         {
-            title: { type: String, required: true },
+            title: { type: String, default: '' },
+            description: { type: String, default: '' },
+            authorWords: { type: String, default: '' },
+            wikipediaUrl: { type: String, required: true, unique: true },
+            author: { type: Types.ObjectId, ref: 'users', required: true },
+            vote: { type: Number, default: 0 },
         },
         {
             timestamps: true,
+            strictQuery: 'throw',
+            strict: 'throw',
         },
     )
 
