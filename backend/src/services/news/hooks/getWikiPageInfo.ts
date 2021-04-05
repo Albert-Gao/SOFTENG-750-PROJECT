@@ -50,6 +50,7 @@ export const getWikiPageInfo = async (context: HookContext) => {
         const html = page.data
         context.data.title = getPageTitle(html)
         context.data.description = getPageShortDescription(html)
+        context.data.author = context.params.user?._id
     } catch (e) {
         console.log(e)
         throw new GeneralError(

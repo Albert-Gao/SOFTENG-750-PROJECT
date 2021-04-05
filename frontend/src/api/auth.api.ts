@@ -1,6 +1,6 @@
 import { QueryFunction } from './types'
 import axios from 'axios'
-import { getUrl } from './api.utils'
+import { getHeaders, getUrl } from './api.utils'
 
 interface Params {
     email: string
@@ -28,9 +28,7 @@ export const loginAPI: QueryFunction<Params, Response> = {
                 password,
             },
             {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: getHeaders({ isAuth: false }),
             },
         )
 
@@ -48,9 +46,7 @@ export const registerAPI: QueryFunction<Params, Response> = {
                 password,
             },
             {
-                headers: {
-                    'Content-Type': 'application/json',
-                },
+                headers: getHeaders({ isAuth: false }),
             },
         )
         const getJwtResponse = await loginAPI.query({ email, password })
