@@ -23,6 +23,7 @@ export default function (app: Application): Model<any> {
         {
             title: { type: String, default: '' },
             description: { type: String, default: '' },
+            authorWords: { type: String, default: '' },
             wikipediaUrl: { type: String, required: true, unique: true },
             author: { type: Types.ObjectId, ref: 'users', required: true },
             vote: { type: Number, default: 0 },
