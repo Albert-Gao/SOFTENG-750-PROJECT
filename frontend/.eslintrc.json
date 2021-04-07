@@ -6,7 +6,9 @@
     "overrides": [
         {
             "files": ["**/*.ts?(x)"],
-            "rules": {}
+            "rules": {
+                "jsx-a11y/anchor-is-valid": 0
+            }
         }
     ]
 }
