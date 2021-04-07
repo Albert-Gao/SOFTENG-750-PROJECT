@@ -1,14 +1,14 @@
-import { QueryFunction } from './types'
+import { PaginationQuery, QueryFunction } from './types'
 import axios from 'axios'
 import { getHeaders, getUrl } from './api.utils'
 import { News } from '../utils/types'
 
-interface Params {
+interface CreateNewsAPIParams {
     wikipediaUrl: string
     authorWords?: string
 }
 
-export const createNewsAPI: QueryFunction<Params, News> = {
+export const createNewsAPI: QueryFunction<CreateNewsAPIParams, News> = {
     query: async ({ wikipediaUrl, authorWords }) => {
         const getJwtResponse = await axios.post(
             getUrl('/news'),
@@ -26,9 +26,23 @@ export const createNewsAPI: QueryFunction<Params, News> = {
     queryKey: 'createNewsAPI',
 }
 
-export const getNewsAPI: QueryFunction<Params, News> = {
-    query: async ({ wikipediaUrl }) => {
-        const getJwtResponse = await axios.get(getUrl('/news'))
+interface GetNewsAPIParams {
+    skip: number
+    limit?: number
+}
+
+export const getNewsAPI: QueryFunction<
+    GetNewsAPIParams,
+    PaginationQuery<News>
+> = {
+    query: async ({ skip, limit = 15 }) => {
+        const getJwtResponse = await axios.get(
+            getUrl('/news', {
+                $skip: skip,
+                $limit: limit,
+                $populate: 'author',
+            }),
+        )
         return getJwtResponse
     },
     queryKey: 'getNewsAPI',

@@ -1,3 +1,11 @@
+export interface User {
+    createdAt: string
+    email: string
+    password: string
+    updatedAt: string
+    nickName: string
+}
+
 export interface News {
     title: string
     description: string
@@ -5,7 +13,7 @@ export interface News {
     vote: number
     _id: string
     wikipediaUrl: string
-    author: string
+    author: User
     createdAt: string
     updatedAt: string
 }
