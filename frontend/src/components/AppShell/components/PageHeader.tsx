@@ -26,7 +26,7 @@ const SubmitButton: React.FC = () => {
 export const PageHeader: React.FC = () => {
     const { pathname } = useLocation()
 
-    if (pathname === PATHS.FEATURES) return null
+    if ([PATHS.FEATURES, PATHS.FAQ].includes(pathname as PATHS)) return null
 
     const route = PAGE_TITLE_MAP.find((config) => config.path === pathname)
 

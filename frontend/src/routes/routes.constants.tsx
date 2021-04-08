@@ -2,6 +2,7 @@ export enum PATHS {
     ABOUT = '/about',
     DETAIL = '/detail/:id',
     FEATURES = '/features',
+    FAQ = '/faq',
     HOME = '/',
     PROFILE = '/profile',
     PROFILE_FAV_LIST = '/profile/fav-list',
@@ -16,7 +17,7 @@ export const PAGE_TITLE_MAP = [
     { path: PATHS.HOME, TITLE: 'Home' },
     { path: PATHS.FEATURES, TITLE: 'Features', isBeforeAuth: true },
     { path: PATHS.ABOUT, TITLE: 'About', isBeforeAuth: true },
-    { path: PATHS.DETAIL, TITLE: 'Detail' },
+    { path: PATHS.FAQ, TITLE: 'FAQ' },
 
     // for profile
     { path: PATHS.PROFILE, TITLE: 'Profile', isProfileMenu: true },
