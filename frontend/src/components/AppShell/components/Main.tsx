@@ -14,7 +14,7 @@ export const Main: React.FC<{ isAuth: boolean }> = ({ isAuth, children }) => {
     const { pathname } = useLocation()
 
     if (
-        [PATHS.HOME, PATHS.FEATURES, PATHS.ABOUT].includes(
+        [PATHS.HOME, PATHS.FEATURES, PATHS.ABOUT, PATHS.FAQ].includes(
             (pathname as unknown) as PATHS,
         )
     ) {

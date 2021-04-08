@@ -20,6 +20,12 @@ export const routesWithAppShell: RouteConfig[] = [
         ),
     },
     {
+        path: PATHS.FAQ,
+        component: React.lazy(
+            () => import(/* webpackChunkName: "faqPage" */ '../pages/FAQ/FAQ'),
+        ),
+    },
+    {
         path: PATHS.ABOUT,
         component: React.lazy(
             () =>
