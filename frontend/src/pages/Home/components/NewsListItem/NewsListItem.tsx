@@ -1,6 +1,7 @@
 import { ActionButton } from './components/ActionButton'
 import { AuthorAvatar } from './components/AuthorAvatar'
 import { AuthorName } from './components/AuthorName'
+import { AuthorWords } from './components/AuthorWords'
 import { NewsDate } from './components/NewsDate'
 import { NewsDescription } from './components/NewsDescription'
 import { NewsItemMenuButton } from './components/NewsItemMenuButton'
@@ -14,6 +15,7 @@ export const NewsListItem: React.FC<{
     title: string
     description: string
     wikipediaUrl: string
+    authorWords?: string
 }> = ({
     // TODO: remove this after finising avatar feature
     authorAvatar = 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
@@ -22,6 +24,7 @@ export const NewsListItem: React.FC<{
     title,
     description,
     wikipediaUrl,
+    authorWords,
 }) => {
     return (
         <article aria-labelledby="question-title-81614">
@@ -39,6 +42,9 @@ export const NewsListItem: React.FC<{
                     </div>
                 </div>
             </div>
+
+            <AuthorWords authorWords={authorWords} />
+
             <NewsTitle wikipediaUrl={wikipediaUrl} text={title} />
 
             <NewsDescription text={description} />

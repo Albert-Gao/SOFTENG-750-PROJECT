@@ -39,6 +39,7 @@ export const NewsList: React.FC = () => {
                             author,
                             createdAt,
                             description,
+                            authorWords,
                         }) => (
                             <li className="px-4 py-6 bg-white shadow sm:p-6 sm:rounded-lg">
                                 <NewsListItem
@@ -46,6 +47,7 @@ export const NewsList: React.FC = () => {
                                     authorName={author.nickName}
                                     newsDate={createdAt}
                                     title={title}
+                                    authorWords={authorWords}
                                     description={description}
                                 />
                             </li>
