@@ -2,11 +2,7 @@ import React from 'react'
 import { NewsList } from './components/NewsList'
 
 const Home: React.FC = () => {
-    return (
-        <div>
-            <NewsList />
-        </div>
-    )
+    return <NewsList />
 }
 
 export default Home
