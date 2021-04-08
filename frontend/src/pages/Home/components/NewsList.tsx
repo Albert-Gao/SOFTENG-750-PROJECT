@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useQuery } from 'react-query'
 import { useAtom } from 'jotai'
 import { getNewsAPI } from '../../../api/news.api'
-import { getNewsListAtom } from '../../../state'
+import { newsAtom } from '../../../state'
 import { NewsListItem } from './NewsListItem/NewsListItem'
 import { LoadQuery } from '../../../components/LoadQuery'
 
 export const NewsList: React.FC = () => {
-    const [{ skipped }, setGetNewsListAtom] = useAtom(getNewsListAtom)
+    const [{ skipped, shouldRefetch }, setNewsAtom] = useAtom(newsAtom)
     const pageQueryInfo = {
         skipped,
     }
@@ -20,13 +20,25 @@ export const NewsList: React.FC = () => {
                 if (!response?.data) return
 
                 const { total, skip } = response.data
-                setGetNewsListAtom({
+                setNewsAtom(({ shouldRefetch, ...rest }) => ({
+                    ...rest,
                     totalNewsAvailable: total,
                     skipped: skip,
-                })
+                    shouldRefetch,
+                }))
             },
         },
     )
+
+    useEffect(() => {
+        if (shouldRefetch) {
+            refetch()
+            setNewsAtom((v) => ({
+                ...v,
+                shouldRefetch: false,
+            }))
+        }
+    }, [shouldRefetch])
 
     return (
         <LoadQuery refetch={refetch} status={status} data={data}>
