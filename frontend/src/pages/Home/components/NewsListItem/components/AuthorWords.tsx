@@ -17,7 +17,7 @@ export const AuthorWords: React.FC<{ authorWords?: string }> = ({
     authorWords,
 }) =>
     authorWords ? (
-        <div className="relative py-3 pl-12 pr-4 mt-3 rounded-md bg-gray-50 sm:flex sm:items-start sm:justify-between">
+        <div className="relative py-3 pl-12 pr-4 mt-3 bg-gray-200 rounded-md sm:flex sm:items-start sm:justify-between">
             <Icon />
             <span className="text-sm italic font-medium text-gray-500">
                 {authorWords}
