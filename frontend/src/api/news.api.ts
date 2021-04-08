@@ -46,6 +46,9 @@ export const getNewsAPI: QueryFunction<
                 $skip: skipCount,
                 $limit: limit,
                 $populate: 'author',
+                $sort: {
+                    createdAt: -1,
+                },
             }),
         )
         return getJwtResponse

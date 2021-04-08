@@ -136,7 +136,7 @@ const Login: React.FC = () => {
                         <button
                             disabled={formState.isSubmitting}
                             type="submit"
-                            className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md disabled:opacity-50 group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                 {/* <!-- Heroicon name: solid/lock-closed --> */}
