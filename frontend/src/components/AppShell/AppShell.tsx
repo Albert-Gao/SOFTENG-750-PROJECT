@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 import { PATHS } from '../../routes/routes.constants'
 import { Auth } from '../../utils/Auth'
+import { Footer } from './components/Footer'
 import { HeroSection } from './components/HeroSection/HeroSection'
 import { Main } from './components/Main'
 import { MobileNavBarToggleButton } from './components/MobileNavButtonToggleButton'
@@ -119,6 +120,8 @@ export const AppShell: React.FC = ({ children }) => {
             )}
 
             <Main isAuth={isAuth}>{children}</Main>
+
+            <Footer />
         </div>
     )
 }
