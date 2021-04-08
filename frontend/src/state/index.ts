@@ -1,2 +1,1 @@
-export * from './submitNewsAtom'
-export * from './getNewsListAtom'
+export * from './newsAtom'

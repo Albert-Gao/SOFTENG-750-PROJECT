@@ -1,6 +1,6 @@
 import ReactModal from 'react-modal'
 import { useAtom } from 'jotai'
-import { submitNewsAtom } from '../../state'
+import { newsAtom } from '../../state'
 import { SubmitNewsModalHeader } from './components/SubmitNewsModalHeader'
 import { SubmitNewsModalField } from './components/SubmitNewsModalField'
 import { useForm } from 'react-hook-form'
@@ -21,7 +21,7 @@ export const SubmitNewsModal: React.FC<{
     isOpen: boolean
 }> = ({ isOpen }) => {
     const { addToast } = useToasts()
-    const [, setSubmitNewsAtom] = useAtom(submitNewsAtom)
+    const [, setNewsAtom] = useAtom(newsAtom)
     const resolver = useYupValidationResolver(validationSchema)
     const { register, handleSubmit, errors } = useForm<{
         wikipediaUrl: string
@@ -30,7 +30,7 @@ export const SubmitNewsModal: React.FC<{
     const mutation = useMutation(createNewsAPI.query)
 
     function closeModal() {
-        setSubmitNewsAtom({ isSubmitNewsModalOpen: false })
+        setNewsAtom((v) => ({ ...v, isSubmitNewsModalOpen: false }))
     }
 
     return (
@@ -49,7 +49,10 @@ export const SubmitNewsModal: React.FC<{
                         await mutation.mutateAsync(data)
 
                         closeModal()
-
+                        setNewsAtom((v) => ({
+                            ...v,
+                            shouldRefetch: true,
+                        }))
                         addToast('Successfully submitted the news!', {
                             appearance: 'success',
                         })
