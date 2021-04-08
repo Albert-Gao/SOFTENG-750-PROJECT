@@ -1,6 +1,6 @@
 import React from 'react'
 import { useLocation } from 'react-router'
-import { PAGE_TITLE_MAP } from '../../../routes/routes.constants'
+import { PAGE_TITLE_MAP, PATHS } from '../../../routes/routes.constants'
 import { useAtom } from 'jotai'
 import { newsAtom } from '../../../state'
 
@@ -25,6 +25,8 @@ const SubmitButton: React.FC = () => {
 
 export const PageHeader: React.FC = () => {
     const { pathname } = useLocation()
+
+    if (pathname === PATHS.FEATURES) return null
 
     const route = PAGE_TITLE_MAP.find((config) => config.path === pathname)
 
