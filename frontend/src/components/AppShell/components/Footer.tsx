@@ -21,7 +21,10 @@ export const Footer: React.FC = () => {
                     <FooterGitHubButton />
                 </div>
                 <p className="mt-8 text-base text-center text-gray-400">
-                    &copy; 2021 COMPSCI 732 Group 17 - Red Rhinoceros.
+                    &copy; 2021
+                </p>
+                <p className="mt-1 text-base text-center text-gray-400">
+                    COMPSCI 732 Group 17 - Red Rhinoceros.
                 </p>
                 <p className="mt-1 text-base text-center text-gray-400">
                     All rights reserved.
