@@ -27,7 +27,7 @@ export const NewsListItem: React.FC<{
     authorWords,
 }) => {
     return (
-        <article aria-labelledby="question-title-81614">
+        <article aria-labelledby="question-title-81614" className="w-full">
             <div>
                 <div className="flex space-x-3">
                     <AuthorAvatar avatarSrc={authorAvatar} />

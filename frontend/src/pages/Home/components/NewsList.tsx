@@ -43,7 +43,7 @@ export const NewsList: React.FC = () => {
     return (
         <LoadQuery refetch={refetch} status={status} data={data}>
             {(data) => (
-                <ul className="space-y-4">
+                <ul className="flex flex-col items-center space-y-4">
                     {data?.data.data.map(
                         ({
                             title,
@@ -56,7 +56,7 @@ export const NewsList: React.FC = () => {
                         }) => (
                             <li
                                 key={_id}
-                                className="px-4 py-6 bg-white shadow sm:p-6 sm:rounded-lg"
+                                className="w-full max-w-2xl px-4 py-6 bg-white rounded-lg shadow sm:p-6"
                             >
                                 <NewsListItem
                                     wikipediaUrl={wikipediaUrl}
