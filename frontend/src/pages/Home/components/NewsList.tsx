@@ -40,8 +40,12 @@ export const NewsList: React.FC = () => {
                             createdAt,
                             description,
                             authorWords,
+                            _id,
                         }) => (
-                            <li className="px-4 py-6 bg-white shadow sm:p-6 sm:rounded-lg">
+                            <li
+                                key={_id}
+                                className="px-4 py-6 bg-white shadow sm:p-6 sm:rounded-lg"
+                            >
                                 <NewsListItem
                                     wikipediaUrl={wikipediaUrl}
                                     authorName={author.nickName}
