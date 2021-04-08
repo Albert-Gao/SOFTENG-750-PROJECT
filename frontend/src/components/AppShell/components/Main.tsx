@@ -13,7 +13,7 @@ const Container: React.FC<{ isAuth: boolean }> = ({ isAuth, children }) => (
 export const Main: React.FC<{ isAuth: boolean }> = ({ isAuth, children }) => {
     const { pathname } = useLocation()
 
-    if (pathname === PATHS.HOME) {
+    if (pathname === PATHS.HOME || pathname === PATHS.FEATURES) {
         return (
             <Container isAuth={isAuth}>
                 <div className="px-1 py-6 rounded-lg sm:px-6">{children}</div>
