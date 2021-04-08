@@ -33,8 +33,8 @@ export const ExpandButton: React.FC<{
                 aria-hidden="true"
             >
                 <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
                     strokeWidth="2"
                     d="M19 9l-7 7-7-7"
                 />

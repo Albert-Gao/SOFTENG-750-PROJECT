@@ -42,6 +42,7 @@ export const ProfileMenu: React.FC<{
     items.push(
         // @ts-ignore
         <a
+            key={PATHS.HOME}
             type="button"
             onClick={() => {
                 menuItemOnClick()
