@@ -27,7 +27,7 @@ export const createNewsAPI: QueryFunction<CreateNewsAPIParams, News> = {
 }
 
 interface GetNewsAPIParams {
-    skip: number
+    skipped: number
     limit?: number
 }
 
@@ -35,10 +35,15 @@ export const getNewsAPI: QueryFunction<
     GetNewsAPIParams,
     PaginationQuery<News>
 > = {
-    query: async ({ skip, limit = 15 }) => {
+    query: async ({ limit = 15, skipped }) => {
+        let skipCount = skipped
+        if (skipped > 0) {
+            skipCount = skipped + 15
+        }
+
         const getJwtResponse = await axios.get(
             getUrl('/news', {
-                $skip: skip,
+                $skip: skipCount,
                 $limit: limit,
                 $populate: 'author',
             }),
