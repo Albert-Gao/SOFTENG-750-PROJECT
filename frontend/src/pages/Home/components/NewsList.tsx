@@ -38,7 +38,7 @@ export const NewsList: React.FC = () => {
                 shouldRefetch: false,
             }))
         }
-    }, [shouldRefetch])
+    }, [shouldRefetch, refetch, setNewsAtom])
 
     return (
         <LoadQuery refetch={refetch} status={status} data={data}>
