@@ -1,6 +1,7 @@
 import * as feathersAuthentication from '@feathersjs/authentication'
 import * as local from '@feathersjs/authentication-local'
 import { HookContext } from '@feathersjs/feathers'
+import { getAvatars } from '../../utils/getAvatars'
 // Don't remove this comment. It's needed to format import lines nicely.
 
 const { authenticate } = feathersAuthentication.hooks
@@ -18,12 +19,28 @@ async function addNickNameFromEmail(context: HookContext) {
     return context
 }
 
+async function addRandomAvatar(context: HookContext) {
+    const avatars = getAvatars()
+    const randomAvatar = avatars[Math.floor(Math.random() * avatars.length)]
+
+    context.data = {
+        ...context.data,
+        avatar: randomAvatar,
+    }
+
+    return context
+}
+
 export default {
     before: {
         all: [],
         find: [authenticate('jwt')],
         get: [authenticate('jwt')],
-        create: [hashPassword('password'), addNickNameFromEmail],
+        create: [
+            hashPassword('password'),
+            addNickNameFromEmail,
+            addRandomAvatar,
+        ],
         update: [hashPassword('password'), authenticate('jwt')],
         patch: [hashPassword('password'), authenticate('jwt')],
         remove: [authenticate('jwt')],

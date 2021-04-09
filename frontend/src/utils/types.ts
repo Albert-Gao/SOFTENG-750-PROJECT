@@ -4,6 +4,7 @@ export interface User {
     password: string
     updatedAt: string
     nickName: string
+    avatar: string
 }
 
 export interface News {

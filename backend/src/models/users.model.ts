@@ -4,6 +4,7 @@
 // for more of what you can do here.
 import { Application } from '../declarations'
 import { Model, Mongoose } from 'mongoose'
+import { getAvatars } from '../utils/getAvatars'
 
 export default function (app: Application): Model<any> {
     const modelName = 'users'
@@ -19,6 +20,7 @@ export default function (app: Application): Model<any> {
                 required: true,
             },
             password: { type: String, trim: true, required: true },
+            avatar: { type: String, enum: getAvatars(), required: true },
         },
         {
             timestamps: true,
