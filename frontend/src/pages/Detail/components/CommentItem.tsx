@@ -1,6 +1,12 @@
+import { DateTime } from '../../../utils/DateTime'
 import { getAvatarSVG } from '../../../utils/getAvatarSVG'
 
-export const CommentItem: React.FC<{ avatar?: string }> = ({ avatar = '' }) => {
+export const CommentItem: React.FC<{
+    avatar?: string
+    authorName: string
+    text: string
+    createdAt: string
+}> = ({ createdAt, avatar = '', authorName, text }) => {
     return (
         <div className="flex space-x-3">
             <div className="flex-shrink-0">
@@ -13,22 +19,17 @@ export const CommentItem: React.FC<{ avatar?: string }> = ({ avatar = '' }) => {
             <div>
                 <div className="text-sm">
                     <a href="#" className="font-medium text-gray-900">
-                        Leslie Alexander
+                        {authorName}
                     </a>
                 </div>
                 <div className="mt-1 text-sm text-gray-700">
-                    <p>
-                        Ducimus quas delectus ad maxime totam doloribus
-                        reiciendis ex. Tempore dolorem maiores. Similique
-                        voluptatibus tempore non ut.
-                    </p>
+                    <p>{text}</p>
                 </div>
                 <div className="mt-2 space-x-2 text-sm">
-                    <span className="font-medium text-gray-500">4d ago</span>
+                    <span className="font-medium text-gray-500">
+                        {DateTime.utc2LocalRelative(createdAt)}
+                    </span>
                     <span className="font-medium text-gray-500">&middot;</span>
-                    <button type="button" className="font-medium text-gray-900">
-                        Reply
-                    </button>
                 </div>
             </div>
         </div>

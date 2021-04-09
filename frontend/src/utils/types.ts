@@ -1,21 +1,31 @@
-export interface User {
+interface TimeStamp {
     createdAt: string
-    email: string
-    password: string
     updatedAt: string
-    nickName: string
-    avatar: string
+}
+
+interface ID {
     _id: string
 }
 
-export interface News {
+export interface User extends TimeStamp, ID {
+    email: string
+    password: string
+    nickName: string
+    avatar: string
+}
+
+export interface News extends TimeStamp, ID {
     title: string
     description: string
     authorWords: string
-    vote: number
-    _id: string
     wikipediaUrl: string
     author: User
-    createdAt: string
-    updatedAt: string
+    votesCount: number
+    commentsCount: number
+}
+
+export interface NewsComment extends TimeStamp, ID {
+    news: string
+    author: User
+    text: string
 }
