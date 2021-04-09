@@ -65,6 +65,7 @@ export const NewsList: React.FC = () => {
                                     title={title}
                                     authorWords={authorWords}
                                     description={description}
+                                    authorAvatar={author.avatar}
                                 />
                             </li>
                         ),

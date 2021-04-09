@@ -8,6 +8,8 @@ import { FormErrorText } from '../../components/FormErrorText'
 import { registerAPI } from '../../api/auth.api'
 import { Auth } from '../../utils/Auth'
 import { emailRegEx } from '../../utils/emailRegEx'
+import { useAtom } from 'jotai'
+import { userAtom } from '../../state'
 
 const Header: React.FC = () => (
     <div>
@@ -40,6 +42,7 @@ const Register: React.FC = () => {
     }>()
     const mutation = useMutation(registerAPI.query)
     const history = useHistory()
+    const [, setUserAtom] = useAtom(userAtom)
 
     return (
         <div className="flex min-h-screen bg-white">
@@ -58,6 +61,19 @@ const Register: React.FC = () => {
                                         )
 
                                         if (response.data?.accessToken) {
+                                            if (response.data.user) {
+                                                const user = response.data.user
+                                                Auth.saveUserInfo(user)
+                                                setUserAtom({
+                                                    avatar: user.avatar,
+                                                    createdAt: user.createdAt,
+                                                    email: user.email,
+                                                    nickName: user.nickName,
+                                                    updatedAt: user.updatedAt,
+                                                    _id: user._id,
+                                                })
+                                            }
+
                                             Auth.saveAuth(
                                                 response.data?.accessToken,
                                             )

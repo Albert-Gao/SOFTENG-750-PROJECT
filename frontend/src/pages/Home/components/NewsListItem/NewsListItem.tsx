@@ -17,8 +17,7 @@ export const NewsListItem: React.FC<{
     wikipediaUrl: string
     authorWords?: string
 }> = ({
-    // TODO: remove this after finising avatar feature
-    authorAvatar = 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
+    authorAvatar,
     authorName,
     newsDate,
     title,
@@ -26,6 +25,7 @@ export const NewsListItem: React.FC<{
     wikipediaUrl,
     authorWords,
 }) => {
+    console.log('authorAvatar', authorAvatar)
     return (
         <article aria-labelledby="question-title-81614" className="w-full">
             <div>
