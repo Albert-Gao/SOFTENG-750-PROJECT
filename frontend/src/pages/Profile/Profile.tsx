@@ -1,4 +1,5 @@
 import React from 'react'
+import { ProfileSectionSubmitButton } from '../../components/ProfileSectionSubmitButton'
 
 const Profile: React.FC = () => {
     return (
@@ -118,6 +119,7 @@ const Profile: React.FC = () => {
                         </div>
                     </div>
                 </div>
+                <ProfileSectionSubmitButton />
             </form>
         </>
     )

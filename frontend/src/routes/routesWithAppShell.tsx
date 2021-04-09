@@ -63,13 +63,30 @@ export const routesWithAppShell: RouteConfig[] = [
                 ),
         ),
     },
-
     {
         path: PATHS.PROFILE_NEWS_SUBMISSION_LIST,
         component: React.lazy(
             () =>
                 import(
                     /* webpackChunkName: "profileNewsSubmissionListPage" */ '../pages/ProfileNewsSubmissionList/ProfileNewsSubmissionList'
+                ),
+        ),
+    },
+    {
+        path: PATHS.PROFILE_PRIVACY,
+        component: React.lazy(
+            () =>
+                import(
+                    /* webpackChunkName: "profilePrivacyPage" */ '../pages/ProfilePrivacy/ProfilePrivacy'
+                ),
+        ),
+    },
+    {
+        path: PATHS.PROFILE_COMMENTS,
+        component: React.lazy(
+            () =>
+                import(
+                    /* webpackChunkName: "profileCommentsPage" */ '../pages/ProfileComments/ProfileComments'
                 ),
         ),
     },
