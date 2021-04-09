@@ -9,6 +9,7 @@ import { AddToFavouriteButton } from './components/AddToFavouriteButton'
 import { CheckWikiPageButton } from './components/CheckWikiPageButton'
 import { Comments } from './components/Comments'
 import { InfoPanel } from './components/InfoPanel'
+import { SectionTitle } from './components/SectionTitle'
 
 const Box: React.FC = ({ children }) => (
     <div
@@ -62,23 +63,26 @@ const Detail: React.FC = () => {
                             </div>
                             <InfoPanel
                                 isMobile={true}
+                                commentsCount={info.commentsCount}
+                                votesCount={info.votesCount}
                                 createdAt={info.createdAt}
                                 authorNickName={info.author.nickName}
                                 authorAvatar={info.author.avatar}
                             />
-                            <h3 className="mt-6 -mb-2 text-sm font-bold text-gray-500">
-                                Why I like it?
-                            </h3>
-                            <AuthorWords authorWords={info.authorWords} />
+                            <div className="mt-5">
+                                <SectionTitle>Why I like it?</SectionTitle>
+                                <AuthorWords authorWords={info.authorWords} />
+                            </div>
                             {info.description && (
-                                <div className="py-3 xl:pt-6 xl:pb-0">
+                                <div className="py-3 mt-7 xl:pt-6 xl:pb-0">
                                     <h2 className="sr-only">Description</h2>
+                                    <SectionTitle>Brief</SectionTitle>
                                     <div className="prose max-w-none">
                                         <p>{info.description}</p>
                                     </div>
                                 </div>
                             )}
-                            <Comments />
+                            <Comments newsId={id} />
                         </div>
 
                         <InfoPanel
@@ -86,6 +90,8 @@ const Detail: React.FC = () => {
                             createdAt={info.createdAt}
                             authorNickName={info.author.nickName}
                             authorAvatar={info.author.avatar}
+                            commentsCount={info.commentsCount}
+                            votesCount={info.votesCount}
                         />
                     </Box>
                 )

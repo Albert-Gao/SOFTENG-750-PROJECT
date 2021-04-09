@@ -1,5 +1,6 @@
 import { DateTime } from '../../../utils/DateTime'
 import { getAvatarSVG } from '../../../utils/getAvatarSVG'
+import { SectionTitle } from './SectionTitle'
 
 const CommentsIcon = () => (
     <svg
@@ -10,9 +11,9 @@ const CommentsIcon = () => (
         aria-hidden="true"
     >
         <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
         />
     </svg>
 )
@@ -38,9 +39,9 @@ const DateTimeIcon = () => (
         aria-hidden="true"
     >
         <path
-            fill-rule="evenodd"
+            fillRule="evenodd"
             d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z"
-            clip-rule="evenodd"
+            clipRule="evenodd"
         />
     </svg>
 )
@@ -50,7 +51,16 @@ export const InfoPanel: React.FC<{
     createdAt: string
     authorNickName: string
     authorAvatar: string
-}> = ({ isMobile, createdAt, authorNickName, authorAvatar }) => {
+    commentsCount: number
+    votesCount: number
+}> = ({
+    commentsCount = 0,
+    votesCount = 0,
+    isMobile,
+    createdAt,
+    authorNickName,
+    authorAvatar,
+}) => {
     return (
         <aside
             className={isMobile ? 'mt-8 xl:hidden' : 'hidden xl:block xl:pl-8'}
@@ -61,14 +71,14 @@ export const InfoPanel: React.FC<{
                     {/* <!-- Heroicon name: solid/lock-open --> */}
                     <LikeIcon />
                     <span className="text-sm font-medium text-green-700">
-                        4 Likes
+                        {votesCount} Likes
                     </span>
                 </div>
                 <div className="flex items-center space-x-2">
                     {/* <!-- Heroicon name: solid/chat-alt --> */}
                     <CommentsIcon />
                     <span className="text-sm font-medium text-gray-900">
-                        4 comments
+                        {commentsCount} comments
                     </span>
                 </div>
                 <div className="flex items-center space-x-2">
@@ -84,9 +94,7 @@ export const InfoPanel: React.FC<{
             </div>
             <div className="py-6 mt-6 space-y-8 border-t border-gray-200">
                 <div>
-                    <h2 className="text-sm font-medium text-gray-500">
-                        Creator
-                    </h2>
+                    <SectionTitle>Creator</SectionTitle>
                     <ul className="mt-3 space-y-3">
                         <li className="flex justify-start">
                             <a href="#" className="flex items-center space-x-3">
