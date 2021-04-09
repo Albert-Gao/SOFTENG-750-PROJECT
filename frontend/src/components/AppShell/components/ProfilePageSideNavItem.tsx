@@ -2,7 +2,7 @@ import classNames from 'classnames'
 import { Link } from 'react-router-dom'
 import { PATHS } from '../../../routes/routes.constants'
 
-const ICON_MAP = {
+export const PROFILE_PAGE_ICON_MAP = {
     profile: ({ css }: { css: string }) => (
         <svg
             className={css}
@@ -134,14 +134,14 @@ export const ProfilePageSideNavItem: React.FC<{
     path: PATHS
     isSelected: boolean
     label: string
-    iconType: keyof typeof ICON_MAP
+    iconType: keyof typeof PROFILE_PAGE_ICON_MAP
 }> = ({ path, isSelected, label, iconType }) => {
     const svgCssClasses = classNames('flex-shrink-0 w-6 h-6 mr-3 -ml-1', {
         'text-gray-400 group-hover:text-gray-500': !isSelected,
         'text-indigo-500 group-hover:text-indigo-500': isSelected,
     })
 
-    const Icon = ICON_MAP[iconType]
+    const Icon = PROFILE_PAGE_ICON_MAP[iconType]
 
     return (
         <Link

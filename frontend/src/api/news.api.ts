@@ -55,3 +55,15 @@ export const getNewsAPI: QueryFunction<
     },
     queryKey: 'getNewsAPI',
 }
+
+export const getSingleNewsAPI: QueryFunction<{ id: string }, News> = {
+    query: async ({ id }) => {
+        const getJwtResponse = await axios.get(
+            getUrl(`/news/${id}`, {
+                $populate: 'author',
+            }),
+        )
+        return getJwtResponse
+    },
+    queryKey: 'getSingleNewsAPI',
+}

@@ -1,7 +1,7 @@
 import { ActionButton } from './components/ActionButton'
 import { AuthorAvatar } from './components/AuthorAvatar'
 import { AuthorName } from './components/AuthorName'
-import { AuthorWords } from './components/AuthorWords'
+import { AuthorWords } from '../../../../components/AuthorWords'
 import { NewsDate } from './components/NewsDate'
 import { NewsDescription } from './components/NewsDescription'
 import { NewsItemMenuButton } from './components/NewsItemMenuButton'
