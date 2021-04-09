@@ -1,7 +1,12 @@
+import { useAtom } from 'jotai'
 import React from 'react'
 import { ProfileSectionSubmitButton } from '../../components/ProfileSectionSubmitButton'
+import { userAtom } from '../../state'
+import { getAvatarSVG } from '../../utils/getAvatarSVG'
 
 const Profile: React.FC = () => {
+    const [user] = useAtom(userAtom)
+
     return (
         <>
             <form
@@ -32,7 +37,7 @@ const Profile: React.FC = () => {
                                 </label>
                                 <div className="flex mt-1 rounded-md shadow-sm">
                                     <span className="items-center block px-6 py-2 text-gray-500 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm">
-                                        abc@abc.com
+                                        {user.email}
                                     </span>
                                 </div>
                             </div>
@@ -69,8 +74,8 @@ const Profile: React.FC = () => {
                                     >
                                         <img
                                             className="w-full h-full rounded-full"
-                                            src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80"
-                                            alt=""
+                                            src={getAvatarSVG(user.avatar)}
+                                            alt="avatar"
                                         />
                                     </div>
                                     <div className="ml-5 rounded-md shadow-sm">
@@ -81,7 +86,6 @@ const Profile: React.FC = () => {
                                             >
                                                 <span>Change</span>
                                                 <span className="sr-only">
-                                                    {' '}
                                                     user photo
                                                 </span>
                                             </label>
@@ -98,9 +102,9 @@ const Profile: React.FC = () => {
 
                             <div className="relative hidden overflow-hidden rounded-full lg:block">
                                 <img
-                                    className="relative w-40 h-40 rounded-full"
-                                    src="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=320&h=320&q=80"
-                                    alt=""
+                                    className="relative w-40 h-40 bg-gray-200 rounded-full"
+                                    src={getAvatarSVG(user.avatar)}
+                                    alt="avatar"
                                 />
                                 <label
                                     htmlFor="user-photo"

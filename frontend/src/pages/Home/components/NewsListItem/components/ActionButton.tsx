@@ -1,3 +1,6 @@
+import { useHistory } from 'react-router-dom'
+import { PATHS } from '../../../../../routes/routes.constants'
+
 const ICON_MAP = {
     like: (
         <svg
@@ -28,16 +31,25 @@ const ICON_MAP = {
 } as const
 
 export const ActionButton: React.FC<{
+    id: string
     quantity: number
     ariaLabel: string
     icon: keyof typeof ICON_MAP
-}> = ({ quantity, ariaLabel, icon }) => (
-    <span className="inline-flex items-center text-sm">
-        <button className="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
-            {/* <!-- Heroicon name: solid/thumb-up --> */}
-            {ICON_MAP[icon]}
-            <span className="font-medium text-gray-900">{quantity}</span>
-            <span className="sr-only">{ariaLabel}</span>
-        </button>
-    </span>
-)
+}> = ({ quantity, ariaLabel, icon, id }) => {
+    const history = useHistory()
+    const onClick =
+        icon === 'like' ? () => {} : () => history.push(PATHS.DETAIL_RAW + id)
+
+    return (
+        <span className="inline-flex items-center text-sm">
+            <button
+                className="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
+                onClick={onClick}
+            >
+                {ICON_MAP[icon]}
+                <span className="font-medium text-gray-900">{quantity}</span>
+                <span className="sr-only">{ariaLabel}</span>
+            </button>
+        </span>
+    )
+}
