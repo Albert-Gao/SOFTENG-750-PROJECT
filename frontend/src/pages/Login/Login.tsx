@@ -8,6 +8,8 @@ import { FormErrorText } from '../../components/FormErrorText'
 import { emailRegEx } from '../../utils/emailRegEx'
 import { loginAPI } from '../../api/auth.api'
 import { Auth } from '../../utils/Auth'
+import { userAtom } from '../../state'
+import { useAtom } from 'jotai'
 
 const LoginHeader: React.FC = () => (
     <div>
@@ -39,6 +41,7 @@ const Login: React.FC = () => {
         password: string
     }>()
     const mutation = useMutation(loginAPI.query)
+    const [, setUserAtom] = useAtom(userAtom)
     const history = useHistory()
 
     return (
@@ -52,6 +55,19 @@ const Login: React.FC = () => {
                             const response = await mutation.mutateAsync(data)
 
                             if (response.data?.accessToken) {
+                                if (response.data.user) {
+                                    const user = response.data.user
+                                    Auth.saveUserInfo(user)
+                                    setUserAtom({
+                                        avatar: user.avatar,
+                                        createdAt: user.createdAt,
+                                        email: user.email,
+                                        nickName: user.nickName,
+                                        updatedAt: user.updatedAt,
+                                        _id: user._id,
+                                    })
+                                }
+
                                 Auth.saveAuth(response.data?.accessToken)
                                 history.replace(PATHS.HOME)
                             } else {

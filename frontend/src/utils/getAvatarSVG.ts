@@ -52,9 +52,9 @@ const SVG_SRC_MAP = {
 
 export type AvatarType = keyof typeof SVG_SRC_MAP
 
-export const getAvatarSVG = (avatar: keyof typeof SVG_SRC_MAP) => {
+export const getAvatarSVG = (avatar: string) => {
     if (avatar in SVG_SRC_MAP) {
-        return SVG_SRC_MAP[avatar]
+        return SVG_SRC_MAP[avatar as AvatarType]
     }
 
     // if not valid avatar key, we return random avatar
