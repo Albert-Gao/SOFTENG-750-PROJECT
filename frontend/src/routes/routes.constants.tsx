@@ -1,6 +1,8 @@
 export enum PATHS {
     ABOUT = '/about',
     DETAIL = '/detail/:id',
+    DETAIL_RAW = '/detail/',
+
     FEATURES = '/features',
     FAQ = '/faq',
     HOME = '/',

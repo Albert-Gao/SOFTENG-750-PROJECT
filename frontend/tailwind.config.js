@@ -1,4 +1,5 @@
 const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 module.exports = {
     purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
@@ -11,6 +12,9 @@ module.exports = {
             fontFamily: {
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                rose: colors.rose,
+            },
         },
     },
     variants: {
@@ -21,5 +25,6 @@ module.exports = {
     plugins: [
         require('@tailwindcss/forms'),
         require('@tailwindcss/aspect-ratio'),
+        require('@tailwindcss/typography'),
     ],
 }

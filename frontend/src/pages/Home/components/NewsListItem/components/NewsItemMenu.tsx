@@ -1,5 +1,9 @@
-export const NewsItemMenu: React.FC<{ isMenuOpen: boolean }> = ({
+import { Link } from 'react-router-dom'
+import { PATHS } from '../../../../../routes/routes.constants'
+
+export const NewsItemMenu: React.FC<{ isMenuOpen: boolean; id: string }> = ({
     isMenuOpen,
+    id,
 }) => {
     if (!isMenuOpen) return null
 
@@ -39,8 +43,8 @@ export const NewsItemMenu: React.FC<{ isMenuOpen: boolean }> = ({
                     </svg>
                     <span>Add to favorites</span>
                 </a>
-                <a
-                    href="#"
+                <Link
+                    to={PATHS.DETAIL_RAW + id}
                     className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
                     role="menuitem"
                 >
@@ -58,29 +62,8 @@ export const NewsItemMenu: React.FC<{ isMenuOpen: boolean }> = ({
                             clipRule="evenodd"
                         />
                     </svg>
-                    <span>Embed</span>
-                </a>
-                <a
-                    href="#"
-                    className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem"
-                >
-                    {/* <!-- Heroicon name: solid/flag --> */}
-                    <svg
-                        className="w-5 h-5 mr-3 text-gray-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                    >
-                        <path
-                            fillRule="evenodd"
-                            d="M3 6a3 3 0 013-3h10a1 1 0 01.8 1.6L14.25 8l2.55 3.4A1 1 0 0116 13H6a1 1 0 00-1 1v3a1 1 0 11-2 0V6z"
-                            clipRule="evenodd"
-                        />
-                    </svg>
-                    <span>Report content</span>
-                </a>
+                    <span>Check detail</span>
+                </Link>
             </div>
         </div>
     )

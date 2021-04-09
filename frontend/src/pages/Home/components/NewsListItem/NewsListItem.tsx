@@ -9,6 +9,7 @@ import { NewsTitle } from './components/NewsTitle'
 import { ShareButton } from './components/ShareButton'
 
 export const NewsListItem: React.FC<{
+    id: string
     authorAvatar?: string
     authorName: string
     newsDate: string
@@ -17,6 +18,7 @@ export const NewsListItem: React.FC<{
     wikipediaUrl: string
     authorWords?: string
 }> = ({
+    id,
     authorAvatar,
     authorName,
     newsDate,
@@ -25,7 +27,6 @@ export const NewsListItem: React.FC<{
     wikipediaUrl,
     authorWords,
 }) => {
-    console.log('authorAvatar', authorAvatar)
     return (
         <article aria-labelledby="question-title-81614" className="w-full">
             <div>
@@ -33,11 +34,11 @@ export const NewsListItem: React.FC<{
                     <AuthorAvatar avatarSrc={authorAvatar} />
                     <div className="flex-1 min-w-0">
                         <AuthorName name={authorName} />
-                        <NewsDate dateString={newsDate} />
+                        <NewsDate id={id} dateString={newsDate} />
                     </div>
                     <div className="flex self-center flex-shrink-0">
                         <div className="relative inline-block text-left">
-                            <NewsItemMenuButton />
+                            <NewsItemMenuButton id={id} />
                         </div>
                     </div>
                 </div>
@@ -51,8 +52,14 @@ export const NewsListItem: React.FC<{
 
             <div className="flex justify-between mt-6 space-x-8">
                 <div className="flex space-x-6">
-                    <ActionButton quantity={29} ariaLabel="likes" icon="like" />
                     <ActionButton
+                        quantity={29}
+                        id={id}
+                        ariaLabel="likes"
+                        icon="like"
+                    />
+                    <ActionButton
+                        id={id}
                         quantity={30}
                         ariaLabel="replies"
                         icon="reply"
