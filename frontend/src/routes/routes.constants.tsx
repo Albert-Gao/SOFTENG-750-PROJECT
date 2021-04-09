@@ -23,15 +23,15 @@ export const PAGE_TITLE_MAP = [
 
     // for profile
     { path: PATHS.PROFILE, TITLE: 'Profile', isProfileMenu: true },
+    {
+        path: PATHS.PROFILE_PRIVACY,
+        TITLE: 'Privacy',
+        isProfileMenu: true,
+    },
     { path: PATHS.PROFILE_FAV_LIST, TITLE: 'Favourites', isProfileMenu: true },
     {
         path: PATHS.PROFILE_NEWS_SUBMISSION_LIST,
         TITLE: 'Submitted News',
-        isProfileMenu: true,
-    },
-    {
-        path: PATHS.PROFILE_PRIVACY,
-        TITLE: 'Privacy',
         isProfileMenu: true,
     },
     {
