@@ -53,6 +53,7 @@ export const NewsList: React.FC = () => {
                             description,
                             authorWords,
                             _id,
+                            commentsCount,
                         }) => (
                             <li
                                 key={_id}
@@ -67,6 +68,7 @@ export const NewsList: React.FC = () => {
                                     authorWords={authorWords}
                                     description={description}
                                     authorAvatar={author.avatar}
+                                    commentsCount={commentsCount}
                                 />
                             </li>
                         ),
