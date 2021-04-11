@@ -24,7 +24,7 @@ export const createCommentAPI: QueryFunction<
             },
         )
 
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'createCommentAPI',
 }
@@ -33,10 +33,11 @@ export const getCommentsAPI: QueryFunction<
     {
         skipped: number
         limit?: number
+        newsId: string
     },
     PaginationQuery<NewsComment>
 > = {
-    query: async ({ limit = 15, skipped }) => {
+    query: async ({ newsId, limit = 15, skipped }) => {
         let skipCount = skipped
         if (skipped > 0) {
             skipCount = skipped + 15
@@ -50,9 +51,10 @@ export const getCommentsAPI: QueryFunction<
                 $sort: {
                     createdAt: -1,
                 },
+                news: newsId,
             }),
         )
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'getCommentsAPI',
 }
@@ -64,7 +66,7 @@ export const getSingleCommentAPI: QueryFunction<{ id: string }, NewsComment> = {
                 $populate: 'author',
             }),
         )
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'getSingleCommentAPI',
 }

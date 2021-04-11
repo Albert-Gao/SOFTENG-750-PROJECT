@@ -54,9 +54,9 @@ const Login: React.FC = () => {
                         try {
                             const response = await mutation.mutateAsync(data)
 
-                            if (response.data?.accessToken) {
-                                if (response.data.user) {
-                                    const user = response.data.user
+                            if (response.accessToken) {
+                                if (response.user) {
+                                    const user = response.user
                                     Auth.saveUserInfo(user)
                                     setUserAtom({
                                         avatar: user.avatar,
@@ -68,7 +68,7 @@ const Login: React.FC = () => {
                                     })
                                 }
 
-                                Auth.saveAuth(response.data?.accessToken)
+                                Auth.saveAuth(response?.accessToken)
                                 history.replace(PATHS.HOME)
                             } else {
                                 alert(

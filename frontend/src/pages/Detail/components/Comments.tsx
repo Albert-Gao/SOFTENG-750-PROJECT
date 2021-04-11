@@ -1,9 +1,8 @@
-import { useAtom } from 'jotai'
 import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 import { getCommentsAPI } from '../../../api/comments.api'
 import { LoadQuery } from '../../../components/LoadQuery'
-import { commentsAtom } from '../../../state/commentsAtom'
+import { useUpdateComments } from '../../../utils/hooks/useUpdateComments'
 import { CommentItem } from './CommentItem'
 import { PostComment } from './PostComment'
 
@@ -38,24 +37,25 @@ const CommentsContainer: React.FC = ({ children }) => (
 )
 
 export const Comments: React.FC<{ newsId: string }> = ({ newsId }) => {
-    const [{ news }, setCommentsAtom] = useAtom(commentsAtom)
-    const commentsInfo = news[newsId] ?? {
-        skipped: 0,
-        total: 0,
-        shouldUpdateCommentsList: false,
-    }
+    const {
+        setCommentsAtom,
+        commentsInfo,
+        toggleUpdateComments,
+        shouldUpdateCommentsList,
+    } = useUpdateComments(newsId)
     const { data, refetch, status } = useQuery(
         [getCommentsAPI.queryKey, { newsId }],
         () =>
             getCommentsAPI.query({
                 skipped: commentsInfo?.skipped ?? 0,
+                newsId,
             }),
         {
             keepPreviousData: true,
             onSuccess: (response) => {
-                if (!response?.data) return
+                if (!response) return
 
-                const { total, skip } = response.data
+                const { total, skip } = response
                 setCommentsAtom((v) => ({
                     ...v,
                     [newsId]: { total, skipped: skip },
@@ -65,24 +65,16 @@ export const Comments: React.FC<{ newsId: string }> = ({ newsId }) => {
     )
 
     useEffect(() => {
-        if (commentsInfo.shouldUpdateCommentsList) {
+        if (shouldUpdateCommentsList) {
             refetch()
-            setCommentsAtom((v) => ({
-                news: {
-                    ...v.news,
-                    [newsId]: {
-                        skipped: v.news[newsId].skipped,
-                        total: v.news[newsId].total,
-                        shouldUpdateCommentsList: false,
-                    },
-                },
-            }))
+            toggleUpdateComments()
         }
     }, [
-        commentsInfo.shouldUpdateCommentsList,
+        shouldUpdateCommentsList,
         newsId,
         refetch,
         setCommentsAtom,
+        toggleUpdateComments,
     ])
 
     return (
@@ -91,7 +83,7 @@ export const Comments: React.FC<{ newsId: string }> = ({ newsId }) => {
 
             <LoadQuery status={status} data={data} refetch={refetch}>
                 {(data) => {
-                    const response = data?.data?.data ?? []
+                    const response = data?.data ?? []
 
                     if (response.length === 0) {
                         return null
@@ -100,12 +92,7 @@ export const Comments: React.FC<{ newsId: string }> = ({ newsId }) => {
                     return (
                         <CommentsContainer>
                             {response.map((commentInfo) => (
-                                <li
-                                    key={
-                                        // @ts-ignore
-                                        commentInfo._id
-                                    }
-                                >
+                                <li key={commentInfo._id}>
                                     <CommentItem
                                         text={commentInfo.text}
                                         authorName={commentInfo.author.nickName}

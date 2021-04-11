@@ -20,7 +20,7 @@ export interface News extends TimeStamp, ID {
     authorWords: string
     wikipediaUrl: string
     author: User
-    votesCount: number
+    votingRecords: [User]
     commentsCount: number
 }
 
