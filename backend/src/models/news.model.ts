@@ -31,7 +31,9 @@ export default function (app: Application): Model<any> {
                 ref: 'users',
                 required: true,
             },
-            votesCount: { type: Number, default: 0 },
+            votingRecords: [
+                { type: Schema.Types.ObjectId, ref: 'users', required: true },
+            ],
             commentsCount: { type: Number, default: 0 },
         },
         {
