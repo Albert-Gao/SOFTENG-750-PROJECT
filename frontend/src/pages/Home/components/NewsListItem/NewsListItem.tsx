@@ -17,6 +17,7 @@ export const NewsListItem: React.FC<{
     description: string
     wikipediaUrl: string
     authorWords?: string
+    commentsCount: number
 }> = ({
     id,
     authorAvatar,
@@ -26,6 +27,7 @@ export const NewsListItem: React.FC<{
     description,
     wikipediaUrl,
     authorWords,
+    commentsCount = 0,
 }) => {
     return (
         <article aria-labelledby="question-title-81614" className="w-full">
@@ -60,7 +62,7 @@ export const NewsListItem: React.FC<{
                     />
                     <ActionButton
                         id={id}
-                        quantity={30}
+                        quantity={commentsCount}
                         ariaLabel="replies"
                         icon="reply"
                     />
