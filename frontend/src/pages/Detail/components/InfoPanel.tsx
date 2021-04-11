@@ -1,5 +1,6 @@
 import { DateTime } from '../../../utils/DateTime'
 import { getAvatarSVG } from '../../../utils/getAvatarSVG'
+import { InfoPanelLikeActionButton } from './InfoPanelLikeActionButton'
 import { SectionTitle } from './SectionTitle'
 
 const CommentsIcon = () => (
@@ -15,18 +16,6 @@ const CommentsIcon = () => (
             d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
             clipRule="evenodd"
         />
-    </svg>
-)
-
-const LikeIcon = () => (
-    <svg
-        className="w-5 h-5 text-green-500"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 20 20"
-        fill="currentColor"
-        aria-hidden="true"
-    >
-        <path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.79l.05.025A4 4 0 008.943 18h5.416a2 2 0 001.962-1.608l1.2-6A2 2 0 0015.56 8H12V4a2 2 0 00-2-2 1 1 0 00-1 1v.667a4 4 0 01-.8 2.4L6.8 7.933a4 4 0 00-.8 2.4z" />
     </svg>
 )
 
@@ -53,6 +42,9 @@ export const InfoPanel: React.FC<{
     authorAvatar: string
     commentsCount: number
     votesCount: number
+    newsId: string
+    isVoted: boolean
+    refetch: () => void
 }> = ({
     commentsCount = 0,
     votesCount = 0,
@@ -60,6 +52,10 @@ export const InfoPanel: React.FC<{
     createdAt,
     authorNickName,
     authorAvatar,
+    newsId,
+    isVoted,
+    refetch,
+    children,
 }) => {
     return (
         <aside
@@ -67,22 +63,21 @@ export const InfoPanel: React.FC<{
         >
             <h2 className="sr-only">Details</h2>
             <div className="space-y-5">
+                <InfoPanelLikeActionButton
+                    isVoted={isVoted}
+                    newsId={newsId}
+                    votesCount={votesCount}
+                    refetch={refetch}
+                >
+                    {children}
+                </InfoPanelLikeActionButton>
                 <div className="flex items-center space-x-2">
-                    {/* <!-- Heroicon name: solid/lock-open --> */}
-                    <LikeIcon />
-                    <span className="text-sm font-medium text-green-700">
-                        {votesCount} Likes
-                    </span>
-                </div>
-                <div className="flex items-center space-x-2">
-                    {/* <!-- Heroicon name: solid/chat-alt --> */}
                     <CommentsIcon />
                     <span className="text-sm font-medium text-gray-900">
                         {commentsCount} comments
                     </span>
                 </div>
                 <div className="flex items-center space-x-2">
-                    {/* <!-- Heroicon name: solid/calendar --> */}
                     <DateTimeIcon />
                     <span className="text-sm font-medium text-gray-900">
                         Created on{' '}

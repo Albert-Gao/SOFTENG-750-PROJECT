@@ -17,9 +17,9 @@ export const NewsList: React.FC = () => {
         {
             keepPreviousData: true,
             onSuccess: (response) => {
-                if (!response?.data) return
+                if (!response) return
 
-                const { total, skip } = response.data
+                const { total, skip } = response
                 setNewsAtom(({ shouldRefetch, ...rest }) => ({
                     ...rest,
                     totalNewsAvailable: total,
@@ -44,7 +44,7 @@ export const NewsList: React.FC = () => {
         <LoadQuery refetch={refetch} status={status} data={data}>
             {(data) => (
                 <ul className="flex flex-col items-center space-y-4">
-                    {data?.data.data.map(
+                    {data?.data.map(
                         ({
                             title,
                             wikipediaUrl,
@@ -54,6 +54,7 @@ export const NewsList: React.FC = () => {
                             authorWords,
                             _id,
                             commentsCount,
+                            votingRecords,
                         }) => (
                             <li
                                 key={_id}
@@ -69,6 +70,8 @@ export const NewsList: React.FC = () => {
                                     description={description}
                                     authorAvatar={author.avatar}
                                     commentsCount={commentsCount}
+                                    votingRecords={votingRecords}
+                                    refetch={refetch}
                                 />
                             </li>
                         ),

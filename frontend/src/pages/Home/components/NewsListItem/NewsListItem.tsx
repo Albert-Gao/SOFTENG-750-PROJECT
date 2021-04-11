@@ -1,4 +1,3 @@
-import { ActionButton } from './components/ActionButton'
 import { AuthorAvatar } from './components/AuthorAvatar'
 import { AuthorName } from './components/AuthorName'
 import { AuthorWords } from '../../../../components/AuthorWords'
@@ -7,6 +6,12 @@ import { NewsDescription } from './components/NewsDescription'
 import { NewsItemMenuButton } from './components/NewsItemMenuButton'
 import { NewsTitle } from './components/NewsTitle'
 import { ShareButton } from './components/ShareButton'
+import { User } from '../../../../utils/types'
+import { userAtom } from '../../../../state'
+import { useAtom } from 'jotai'
+import { AvatarWall } from '../../../../components/AvatarWall'
+import { CommentActionButton } from './components/CommentActionButton'
+import { LikeActionButton } from './components/LikeActionButton'
 
 export const NewsListItem: React.FC<{
     id: string
@@ -18,6 +23,8 @@ export const NewsListItem: React.FC<{
     wikipediaUrl: string
     authorWords?: string
     commentsCount: number
+    votingRecords: Array<User>
+    refetch: () => void
 }> = ({
     id,
     authorAvatar,
@@ -28,7 +35,11 @@ export const NewsListItem: React.FC<{
     wikipediaUrl,
     authorWords,
     commentsCount = 0,
+    votingRecords = [],
+    refetch,
 }) => {
+    const [currentUser] = useAtom(userAtom)
+
     return (
         <article aria-labelledby="question-title-81614" className="w-full">
             <div>
@@ -54,18 +65,19 @@ export const NewsListItem: React.FC<{
 
             <div className="flex justify-between mt-6 space-x-8">
                 <div className="flex space-x-6">
-                    <ActionButton
-                        quantity={29}
-                        id={id}
-                        ariaLabel="likes"
-                        icon="like"
-                    />
-                    <ActionButton
-                        id={id}
-                        quantity={commentsCount}
-                        ariaLabel="replies"
-                        icon="reply"
-                    />
+                    <LikeActionButton
+                        quantity={votingRecords.length}
+                        newsId={id}
+                        isVoted={
+                            !!votingRecords.find(
+                                (user) => user._id === currentUser._id,
+                            )
+                        }
+                        refetch={refetch}
+                    >
+                        <AvatarWall avatarList={votingRecords} />
+                    </LikeActionButton>
+                    <CommentActionButton id={id} quantity={commentsCount} />
                 </div>
                 <ShareButton />
             </div>

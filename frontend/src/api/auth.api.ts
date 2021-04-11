@@ -30,7 +30,7 @@ export const loginAPI: QueryFunction<Params, Response> = {
             },
         )
 
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'loginAPI',
 }

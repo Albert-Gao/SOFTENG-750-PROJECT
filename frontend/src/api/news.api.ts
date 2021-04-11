@@ -21,7 +21,7 @@ export const createNewsAPI: QueryFunction<CreateNewsAPIParams, News> = {
             },
         )
 
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'createNewsAPI',
 }
@@ -45,13 +45,13 @@ export const getNewsAPI: QueryFunction<
             getUrl('/news', {
                 $skip: skipCount,
                 $limit: limit,
-                $populate: 'author',
+                $populate: ['author', 'votingRecords'],
                 $sort: {
                     createdAt: -1,
                 },
             }),
         )
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'getNewsAPI',
 }
@@ -60,10 +60,29 @@ export const getSingleNewsAPI: QueryFunction<{ id: string }, News> = {
     query: async ({ id }) => {
         const getJwtResponse = await axios.get(
             getUrl(`/news/${id}`, {
-                $populate: 'author',
+                $populate: ['author', 'votingRecords'],
             }),
         )
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'getSingleNewsAPI',
+}
+
+export const voteNewsApi: QueryFunction<
+    { newsId: string; userId: string; isVoted: boolean },
+    News
+> = {
+    query: async ({ isVoted, newsId, userId }) => {
+        const getJwtResponse = await axios.patch(
+            getUrl(`/news/${newsId}`),
+            {
+                [isVoted ? '$pull' : '$addToSet']: { votingRecords: userId },
+            },
+            {
+                headers: getHeaders(),
+            },
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'voteNewsApi',
 }

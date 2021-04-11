@@ -20,12 +20,13 @@ export default {
         find: [],
         get: [],
         create: [
-            async (context: HookContext) => {
+            async (context: HookContext<any>) => {
                 const newsId = context.data.news
                 context.app.service('news').patch(newsId, {
                     // @ts-ignore
                     $inc: { commentsCount: 1 },
                 })
+                return context
             },
         ],
         update: [],
