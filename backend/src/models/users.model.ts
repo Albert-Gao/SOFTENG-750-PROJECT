@@ -21,6 +21,13 @@ export default function (app: Application): Model<any> {
             },
             password: { type: String, trim: true, required: true },
             avatar: { type: String, enum: getAvatars(), required: true },
+            favourites: [
+                {
+                    type: mongooseClient.Schema.Types.ObjectId,
+                    ref: 'news',
+                    required: true,
+                },
+            ],
         },
         {
             timestamps: true,
