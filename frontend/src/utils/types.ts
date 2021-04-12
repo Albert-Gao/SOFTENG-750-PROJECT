@@ -12,6 +12,7 @@ export interface User extends TimeStamp, ID {
     password: string
     nickName: string
     avatar: string
+    favourites: string[]
 }
 
 export interface News extends TimeStamp, ID {

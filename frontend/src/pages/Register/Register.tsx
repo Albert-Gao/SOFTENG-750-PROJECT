@@ -71,6 +71,7 @@ const Register: React.FC = () => {
                                                     nickName: user.nickName,
                                                     updatedAt: user.updatedAt,
                                                     _id: user._id,
+                                                    favourites: user.favourites,
                                                 })
                                             }
 
