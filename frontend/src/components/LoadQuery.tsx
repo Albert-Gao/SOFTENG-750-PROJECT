@@ -1,5 +1,5 @@
 import { QueryObserverResult, RefetchOptions, useQuery } from 'react-query'
-import Loader from 'react-loader-spinner'
+import { Spinner } from './Spinner'
 
 const ReloadButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
     <button
@@ -33,12 +33,7 @@ export function LoadQuery<ResponseDataType>({
     if (status === 'loading') {
         return (
             <Box>
-                <Loader
-                    type="Bars"
-                    color="rgba(79, 70, 229, var(--tw-bg-opacity))"
-                    height={30}
-                    width={30}
-                />
+                <Spinner />
             </Box>
         )
     }

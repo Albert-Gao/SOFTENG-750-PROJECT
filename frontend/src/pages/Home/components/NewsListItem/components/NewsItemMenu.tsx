@@ -1,23 +1,16 @@
 import { Link } from 'react-router-dom'
 import { PROFILE_PAGE_ICON_MAP } from '../../../../../components/AppShell/components/ProfilePageSideNavItem'
+import { Spinner } from '../../../../../components/Spinner'
 import { PATHS } from '../../../../../routes/routes.constants'
+import { useFavAction } from '../../../../../utils/hooks/useFavAction'
 
 export const NewsItemMenu: React.FC<{ isMenuOpen: boolean; id: string }> = ({
     isMenuOpen,
     id,
 }) => {
-    if (!isMenuOpen) return null
+    const { status, addOrRemoveFav, hasAddedToFav } = useFavAction(id)
 
-    /* <!--
-        Dropdown menu, show/hide based on menu state.
-      
-        Entering: "transition ease-out duration-100"
-          From: "transform opacity-0 scale-95"
-          To: "transform opacity-100 scale-100"
-        Leaving: "transition ease-in duration-75"
-          From: "transform opacity-100 scale-100"
-          To: "transform opacity-0 scale-95"
-      --> */
+    if (!isMenuOpen) return null
 
     return (
         <div
@@ -27,16 +20,26 @@ export const NewsItemMenu: React.FC<{ isMenuOpen: boolean; id: string }> = ({
             aria-labelledby="options-menu-0"
         >
             <div className="py-1" role="none">
-                <a
-                    href="#"
-                    className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                    role="menuitem"
-                >
-                    {PROFILE_PAGE_ICON_MAP.heart({
-                        css: 'w-5 h-5 mr-3 text-gray-400',
-                    })}
-                    <span>Add to favorites</span>
-                </a>
+                {status === 'loading' ? (
+                    <Spinner height={20} width={20} />
+                ) : (
+                    <button
+                        className="flex w-full px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
+                        role="menuitem"
+                        onClick={addOrRemoveFav}
+                    >
+                        {PROFILE_PAGE_ICON_MAP.heart({
+                            css: `w-5 h-5 mr-3 ${
+                                hasAddedToFav ? 'text-red-600' : 'text-gray-400'
+                            }`,
+                        })}
+
+                        <span>
+                            {hasAddedToFav ? 'Remove from' : 'Add to'} favorites
+                        </span>
+                    </button>
+                )}
+
                 <Link
                     to={PATHS.DETAIL_RAW + id}
                     className="flex px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900"
