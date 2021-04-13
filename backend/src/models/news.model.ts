@@ -10,7 +10,8 @@ export interface NewsDocument extends Document {
     description: string
     wikipediaUrl: string
     author: string
-    vote: number
+    votesCount: number
+    commentsCount: number
 }
 
 export interface NewsModel extends Model<NewsDocument> {}
@@ -30,7 +31,10 @@ export default function (app: Application): Model<any> {
                 ref: 'users',
                 required: true,
             },
-            vote: { type: Number, default: 0 },
+            votingRecords: [
+                { type: Schema.Types.ObjectId, ref: 'users', required: true },
+            ],
+            commentsCount: { type: Number, default: 0 },
         },
         {
             timestamps: true,

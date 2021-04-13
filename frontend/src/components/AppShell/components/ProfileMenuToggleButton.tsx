@@ -1,12 +1,10 @@
-import { useAtom } from 'jotai'
 import React from 'react'
-import { userAtom } from '../../../state'
-import { getAvatarSVG } from '../../../utils/getAvatarSVG'
+import { useCurrentUserAvatar } from '../../../utils/hooks/useCurrentUserAvatar'
 
 export const ProfileMenuToggleButton: React.FC<{
     onClick: React.EventHandler<React.SyntheticEvent>
 }> = ({ onClick }) => {
-    const [user] = useAtom(userAtom)
+    const { currentUserAvatar } = useCurrentUserAvatar()
 
     return (
         <div>
@@ -21,7 +19,7 @@ export const ProfileMenuToggleButton: React.FC<{
                 <span className="sr-only">Open user menu</span>
                 <img
                     className="w-8 h-8 bg-gray-300 rounded-full"
-                    src={getAvatarSVG(user.avatar)}
+                    src={currentUserAvatar}
                     alt="avatar"
                 />
             </button>

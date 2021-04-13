@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { NewsItemMenu } from './NewsItemMenu'
 
-export const NewsItemMenuButton: React.FC = () => {
+export const NewsItemMenuButton: React.FC<{ id: string }> = ({ id }) => {
     const [isMenuOpen, setIsMenuOpen] = useState(false)
     return (
         <>
@@ -27,7 +27,7 @@ export const NewsItemMenuButton: React.FC = () => {
                     <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z" />
                 </svg>
             </button>
-            <NewsItemMenu isMenuOpen={isMenuOpen} />
+            <NewsItemMenu isMenuOpen={isMenuOpen} id={id} />
         </>
     )
 }

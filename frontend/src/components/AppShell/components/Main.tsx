@@ -55,6 +55,10 @@ export const Main: React.FC<{ isAuth: boolean }> = ({ isAuth, children }) => {
         )
     }
 
+    if (pathname.startsWith(PATHS.DETAIL_RAW)) {
+        return <>{children}</>
+    }
+
     return (
         <Container isAuth={isAuth}>
             <div className="px-2 py-6 bg-white rounded-lg shadow sm:px-6">
