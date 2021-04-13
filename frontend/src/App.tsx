@@ -66,9 +66,13 @@ const App: React.FC = () => {
         <ToastProvider autoDismiss placement="top-center">
             <ReactQueryProvider>
                 <BrowserRouter>
-                    <Inner>
+                    {Auth.isAuth() ? (
+                        <Inner>
+                            <AuthChecker />
+                        </Inner>
+                    ) : (
                         <AuthChecker />
-                    </Inner>
+                    )}
                 </BrowserRouter>
                 <SubmitNewsModal isOpen={isSubmitNewsModalOpen} />
             </ReactQueryProvider>
