@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Auth } from '../utils/Auth'
-import { News, User } from '../utils/types'
+import { SVG_SRC_MAP } from '../utils/getAvatarSVG'
+import { User } from '../utils/types'
 import { getUrl, getHeaders } from './api.utils'
 import { QueryFunction } from './types'
 
@@ -28,7 +29,7 @@ export const getUserInfoApi: QueryFunction<
 
 export const newsToFavApi: QueryFunction<
     { newsId: string; isAdded: boolean },
-    News
+    User
 > = {
     query: async ({ isAdded, newsId }) => {
         const userId = Auth.getUserInfo()._id
@@ -45,4 +46,25 @@ export const newsToFavApi: QueryFunction<
         return getJwtResponse.data
     },
     queryKey: 'newsToFavApi',
+}
+
+export const changeUserAvatarApi: QueryFunction<
+    { newAvatar: keyof typeof SVG_SRC_MAP },
+    User
+> = {
+    query: async ({ newAvatar }) => {
+        const userId = Auth.getUserInfo()._id
+
+        const getJwtResponse = await axios.patch(
+            getUrl(`/users/${userId}`),
+            {
+                avatar: newAvatar,
+            },
+            {
+                headers: getHeaders(),
+            },
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'changeUserAvatarApi',
 }
