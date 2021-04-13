@@ -12,45 +12,41 @@ export const Teams: React.FC = () => (
                     <li>
                         <TeamMember
                             portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                            name="Emma Dorsey"
-                            title="Senior Front-end Developer"
-                            description="Ultricies massa malesuada viverra cras
-                                lobortis. Tempor orci hac ligula dapibus
-                                mauris sit ut eu. Eget turpis urna
-                                maecenas cras. Nisl dictum."
+                            name="Albert Gao"
+                            title="Software Developer"
+                            description="
+                            UPI: hgao611
+                            ID: 638709360"
                         />
                     </li>
                     <li>
                         <TeamMember
                             portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                            name="Emma Dorsey"
-                            title="Senior Front-end Developer"
-                            description="Ultricies massa malesuada viverra cras
-                                lobortis. Tempor orci hac ligula dapibus
-                                mauris sit ut eu. Eget turpis urna
-                                maecenas cras. Nisl dictum."
+                            name="Yuxin Chen"
+                            title="Software Developer"
+                            description="
+                            UPI: yche864
+                            ID: 120924250"
                         />
                     </li>
                     <li>
                         <TeamMember
                             portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                            name="Emma Dorsey"
-                            title="Senior Front-end Developer"
-                            description="Ultricies massa malesuada viverra cras
-                                lobortis. Tempor orci hac ligula dapibus
-                                mauris sit ut eu. Eget turpis urna
-                                maecenas cras. Nisl dictum."
+                            name="Evan Zhou"
+                            title="Software Developer"
+                            description="
+                            UPI: yzho976
+                            ID: 669861533"
                         />
                     </li>
                     <li>
                         <TeamMember
                             portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
-                            name="Emma Dorsey"
-                            title="Senior Front-end Developer"
-                            description="Ultricies massa malesuada viverra cras
-                                lobortis. Tempor orci hac ligula dapibus
-                                mauris sit ut eu. Eget turpis urna
-                                maecenas cras. Nisl dictum."
+                            name="Henry Yang"
+                            title="Software Developer"
+                            description="
+                            UPI: syan386
+                            ID: 742097923"
                         />
                     </li>
                 </ul>

@@ -20,34 +20,30 @@ export const Introduction: React.FC = () => (
                 {/* <!-- Content area --> */}
                 <div className="pt-12 sm:pt-16 lg:pt-20">
                     <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-                        On a mission to empower teams
+                        SOFTENG 750/ COMPSCI 732 WikiChat Project Overview
                     </h2>
                     <div className="mt-6 space-y-6 text-gray-500">
                         <p className="text-lg">
-                            Sagittis scelerisque nulla cursus in enim
-                            consectetur quam. Dictum urna sed consectetur neque
-                            tristique pellentesque. Blandit amet, sed aenean
-                            erat arcu morbi. Cursus faucibus nunc nisl netus
-                            morbi vel porttitor vitae ut. Amet vitae fames
-                            senectus vitae.
+                            Wikipedia is one of the most popular online
+                            resources, so on average, people spend quite a bit
+                            of time on Wikipedia; yet there is surprisingly
+                            little social interaction possibility. The talk
+                            pages on Wikipedia are predominantly for editorial
+                            discussions and not for general discussion on a
+                            topic and also have some drawbacks, being basically
+                            just a wikipage. This project is about building a
+                            social media web app around Wikipedia that may offer
+                            functions such as forum, recommender, commenting and
+                            Q&A functions. Various ways of linking to Wikipedia
+                            content/importing content are possible, ideal would
+                            be a system where one can annotate questions and
+                            comments directly to specific points in the text.
                         </p>
                         <p className="text-base leading-7">
-                            Sollicitudin tristique eros erat odio sed vitae,
-                            consequat turpis elementum. Lorem nibh vel, eget
-                            pretium arcu vitae. Eros eu viverra donec ut
-                            volutpat donec laoreet quam urna. Sollicitudin
-                            tristique eros erat odio sed vitae, consequat turpis
-                            elementum. Lorem nibh vel, eget pretium arcu vitae.
-                            Eros eu viverra donec ut volutpat donec laoreet quam
-                            urna.
-                        </p>
-                        <p className="text-base leading-7">
-                            Rhoncus nisl, libero egestas diam fermentum dui. At
-                            quis tincidunt vel ultricies. Vulputate aliquet
-                            velit faucibus semper. Pellentesque in venenatis
-                            vestibulum consectetur nibh id. In id ut tempus
-                            egestas. Enim sit aliquam nec, a. Morbi enim
-                            fermentum lacus in. Viverra.
+                            Our intention and motivation to develop this forum
+                            is that users can not find a place within Wikipedia
+                            to discuss and express their opinions on specific
+                            topics.
                         </p>
                     </div>
                 </div>
