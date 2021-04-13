@@ -23,7 +23,7 @@ import A47scientist from '../assets/47-scientist.svg'
 import A49bellboy from '../assets/49-bellboy.svg'
 import A50king from '../assets/50-king.svg'
 
-const SVG_SRC_MAP = {
+export const SVG_SRC_MAP = {
     A02man,
     A03pirates,
     A04girl,

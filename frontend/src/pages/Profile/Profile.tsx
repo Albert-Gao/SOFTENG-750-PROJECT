@@ -1,11 +1,13 @@
 import { useAtom } from 'jotai'
-import React from 'react'
+import React, { useState } from 'react'
 import { ProfileSectionSubmitButton } from '../../components/ProfileSectionSubmitButton'
 import { userAtom } from '../../state'
 import { getAvatarSVG } from '../../utils/getAvatarSVG'
+import { ChangeAvatarModal } from './components/ChangeAvatarModal'
 
 const Profile: React.FC = () => {
-    const [user] = useAtom(userAtom)
+    const [{ email, avatar }] = useAtom(userAtom)
+    const [isOpen, setIsOpen] = useState(false)
 
     return (
         <>
@@ -37,9 +39,13 @@ const Profile: React.FC = () => {
                                 </label>
                                 <div className="flex mt-1 rounded-md shadow-sm">
                                     <span className="items-center block px-6 py-2 text-gray-500 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm">
-                                        {user.email}
+                                        {email}
                                     </span>
                                 </div>
+                                <p className="mt-1 text-xs text-gray-500">
+                                    You can not change the email once
+                                    registered!
+                                </p>
                             </div>
 
                             <div className="col-span-12 sm:col-span-6">
@@ -71,31 +77,13 @@ const Profile: React.FC = () => {
                                     <div
                                         className="flex-shrink-0 inline-block w-12 h-12 overflow-hidden rounded-full"
                                         aria-hidden="true"
+                                        onClick={() => setIsOpen(true)}
                                     >
                                         <img
                                             className="w-full h-full rounded-full"
-                                            src={getAvatarSVG(user.avatar)}
+                                            src={getAvatarSVG(avatar)}
                                             alt="avatar"
                                         />
-                                    </div>
-                                    <div className="ml-5 rounded-md shadow-sm">
-                                        <div className="relative flex items-center justify-center px-3 py-2 border border-gray-300 rounded-md group hover:bg-gray-50 focus-within:ring-2 focus-within:ring-offset-2 focus-within:ring-light-blue-500">
-                                            <label
-                                                htmlFor="user_photo"
-                                                className="relative text-sm font-medium leading-4 text-gray-700 pointer-events-none"
-                                            >
-                                                <span>Change</span>
-                                                <span className="sr-only">
-                                                    user photo
-                                                </span>
-                                            </label>
-                                            <input
-                                                id="user_photo"
-                                                name="user_photo"
-                                                type="file"
-                                                className="absolute w-full h-full border-gray-300 rounded-md opacity-0 cursor-pointer"
-                                            />
-                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -103,23 +91,28 @@ const Profile: React.FC = () => {
                             <div className="relative hidden overflow-hidden rounded-full lg:block">
                                 <img
                                     className="relative w-40 h-40 bg-gray-200 rounded-full"
-                                    src={getAvatarSVG(user.avatar)}
+                                    src={getAvatarSVG(avatar)}
                                     alt="avatar"
                                 />
                                 <label
+                                    onClick={() => setIsOpen(true)}
                                     htmlFor="user-photo"
-                                    className="absolute inset-0 flex items-center justify-center w-full h-full text-sm font-medium text-white bg-black bg-opacity-75 opacity-0 hover:opacity-100 focus-within:opacity-100"
+                                    className="absolute inset-0 flex items-center justify-center w-full h-full text-sm font-medium text-white bg-black bg-opacity-75 opacity-0 hover:opacity-100"
                                 >
                                     <span>Change</span>
-                                    <span className="sr-only"> user photo</span>
+                                    <span className="sr-only">user photo</span>
                                     <input
-                                        type="file"
+                                        type="text"
                                         id="user-photo"
                                         name="user-photo"
                                         className="absolute inset-0 w-full h-full border-gray-300 rounded-md opacity-0 cursor-pointer"
                                     />
                                 </label>
                             </div>
+                            <ChangeAvatarModal
+                                isOpen={isOpen}
+                                closeModal={() => setIsOpen(false)}
+                            />
                         </div>
                     </div>
                 </div>
