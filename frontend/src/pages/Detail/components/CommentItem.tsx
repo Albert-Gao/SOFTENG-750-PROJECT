@@ -2,13 +2,14 @@ import { DateTime } from '../../../utils/DateTime'
 import { getAvatarSVG } from '../../../utils/getAvatarSVG'
 
 export const CommentItem: React.FC<{
+    css?: string
     avatar?: string
     authorName: string
     text: string
     createdAt: string
-}> = ({ createdAt, avatar = '', authorName, text }) => {
+}> = ({ css, createdAt, avatar = '', authorName, text }) => {
     return (
-        <div className="flex space-x-3">
+        <div className={`flex space-x-3 ${css}`}>
             <div className="flex-shrink-0">
                 <img
                     className="w-10 h-10 bg-gray-400 rounded-full"

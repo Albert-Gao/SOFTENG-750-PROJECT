@@ -2,6 +2,7 @@ import { PaginationQuery, QueryFunction } from './types'
 import axios from 'axios'
 import { getHeaders, getUrl } from './api.utils'
 import { NewsComment } from '../utils/types'
+import { Auth } from '../utils/Auth'
 
 export const createCommentAPI: QueryFunction<
     {
@@ -69,4 +70,34 @@ export const getSingleCommentAPI: QueryFunction<{ id: string }, NewsComment> = {
         return getJwtResponse.data
     },
     queryKey: 'getSingleCommentAPI',
+}
+
+export const getCurrentUserCommentsAPI: QueryFunction<
+    {
+        skipped: number
+        limit?: number
+    },
+    PaginationQuery<NewsComment>
+> = {
+    query: async ({ limit = 60, skipped }) => {
+        const userId = Auth.getUserInfo()._id
+        let skipCount = skipped
+        if (skipped > 0) {
+            skipCount = skipped + 15
+        }
+
+        const getJwtResponse = await axios.get(
+            getUrl('/comments', {
+                $skip: skipCount,
+                $limit: limit,
+                $populate: 'author',
+                $sort: {
+                    createdAt: -1,
+                },
+                author: userId,
+            }),
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'getCurrentUserCommentsAPI',
 }
