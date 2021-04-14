@@ -2,6 +2,7 @@ import { PaginationQuery, QueryFunction } from './types'
 import axios from 'axios'
 import { getHeaders, getUrl } from './api.utils'
 import { News } from '../utils/types'
+import { Auth } from '../utils/Auth'
 
 interface CreateNewsAPIParams {
     wikipediaUrl: string
@@ -85,4 +86,21 @@ export const voteNewsApi: QueryFunction<
         return getJwtResponse.data
     },
     queryKey: 'voteNewsApi',
+}
+
+export const getFavNewsApi: QueryFunction<any, News[]> = {
+    query: async () => {
+        const userId = Auth.getUserInfo()._id
+
+        const getJwtResponse = await axios.get(
+            getUrl(`/users/${userId}`, {
+                $populate: ['favourites'],
+            }),
+            {
+                headers: getHeaders(),
+            },
+        )
+        return getJwtResponse.data.favourites
+    },
+    queryKey: 'getFavNewsApi',
 }
