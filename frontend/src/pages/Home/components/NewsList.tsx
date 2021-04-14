@@ -61,6 +61,7 @@ export const NewsList: React.FC = () => {
                                 className="w-full max-w-2xl px-4 py-6 bg-white rounded-lg shadow sm:p-6"
                             >
                                 <NewsListItem
+                                    authorId={author._id}
                                     id={_id}
                                     wikipediaUrl={wikipediaUrl}
                                     authorName={author.nickName}

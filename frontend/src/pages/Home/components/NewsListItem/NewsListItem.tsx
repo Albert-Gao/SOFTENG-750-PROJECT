@@ -24,8 +24,10 @@ export const NewsListItem: React.FC<{
     authorWords?: string
     commentsCount: number
     votingRecords: Array<User>
+    authorId: string
     refetch: () => void
 }> = ({
+    authorId,
     id,
     authorAvatar,
     authorName,
@@ -44,9 +46,9 @@ export const NewsListItem: React.FC<{
         <article aria-labelledby="question-title-81614" className="w-full">
             <div>
                 <div className="flex space-x-3">
-                    <AuthorAvatar avatarSrc={authorAvatar} />
+                    <AuthorAvatar avatarSrc={authorAvatar} userId={authorId} />
                     <div className="flex-1 min-w-0">
-                        <AuthorName name={authorName} />
+                        <AuthorName name={authorName} userId={authorId} />
                         <NewsDate id={id} dateString={newsDate} />
                     </div>
                     <div className="flex self-center flex-shrink-0">

@@ -55,7 +55,10 @@ export const Main: React.FC<{ isAuth: boolean }> = ({ isAuth, children }) => {
         )
     }
 
-    if (pathname.startsWith(PATHS.DETAIL_RAW)) {
+    if (
+        pathname.startsWith(PATHS.DETAIL_RAW) ||
+        pathname.startsWith(PATHS.USER_RAW)
+    ) {
         return <>{children}</>
     }
 

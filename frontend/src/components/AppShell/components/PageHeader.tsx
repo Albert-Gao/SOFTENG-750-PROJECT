@@ -28,7 +28,8 @@ export const PageHeader: React.FC = () => {
 
     if (
         [PATHS.FEATURES, PATHS.FAQ].includes(pathname as PATHS) ||
-        pathname.startsWith(PATHS.DETAIL_RAW)
+        pathname.startsWith(PATHS.DETAIL_RAW) ||
+        pathname.startsWith(PATHS.USER_RAW)
     )
         return null
 

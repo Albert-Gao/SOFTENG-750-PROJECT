@@ -25,7 +25,10 @@ export const AppShell: React.FC = ({ children }) => {
             {isAuth ? (
                 <div
                     className={`${
-                        pathname.startsWith(PATHS.DETAIL_RAW) ? '' : 'pb-32'
+                        pathname.startsWith(PATHS.DETAIL_RAW) ||
+                        pathname.startsWith(PATHS.USER_RAW)
+                            ? ''
+                            : 'pb-32'
                     } bg-indigo-600`}
                 >
                     <nav className="bg-indigo-600 border-b border-indigo-300 border-opacity-25 lg:border-none">

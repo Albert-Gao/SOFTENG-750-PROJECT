@@ -90,4 +90,11 @@ export const routesWithAppShell: RouteConfig[] = [
                 ),
         ),
     },
+    {
+        path: PATHS.USER,
+        component: React.lazy(
+            () =>
+                import(/* webpackChunkName: "userPage" */ '../pages/User/User'),
+        ),
+    },
 ]
