@@ -19,6 +19,18 @@ function logout() {
 }
 
 function saveUserInfo(user: User) {
+    let userInfo = user
+    if (!('privacy' in userInfo)) {
+        userInfo = {
+            // @ts-ignore
+            ...userInfo,
+            privacy: {
+                shouldShowEmail: true,
+                shouldShowFavouritePage: true,
+                shouldShowSubmittedNews: true,
+            },
+        }
+    }
     window.localStorage.setItem('user', JSON.stringify(user))
 }
 function getUserInfo(): User {

@@ -9,4 +9,9 @@ export const userAtom = atom<Omit<User, 'password'>>({
     updatedAt: '',
     favourites: [],
     _id: '',
+    privacy: {
+        shouldShowEmail: true,
+        shouldShowFavouritePage: true,
+        shouldShowSubmittedNews: true,
+    },
 })

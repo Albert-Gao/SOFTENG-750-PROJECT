@@ -72,6 +72,17 @@ const Register: React.FC = () => {
                                                     updatedAt: user.updatedAt,
                                                     _id: user._id,
                                                     favourites: user.favourites,
+                                                    privacy: {
+                                                        shouldShowEmail:
+                                                            user.privacy
+                                                                .shouldShowEmail,
+                                                        shouldShowFavouritePage:
+                                                            user.privacy
+                                                                .shouldShowFavouritePage,
+                                                        shouldShowSubmittedNews:
+                                                            user.privacy
+                                                                .shouldShowSubmittedNews,
+                                                    },
                                                 })
                                             }
 
