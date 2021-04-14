@@ -22,6 +22,7 @@ function saveUserInfo(user: User) {
     let userInfo = user
     if (!('privacy' in userInfo)) {
         userInfo = {
+            // @ts-ignore
             ...userInfo,
             privacy: {
                 shouldShowEmail: true,
