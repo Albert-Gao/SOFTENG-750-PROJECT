@@ -68,3 +68,19 @@ export const changeUserAvatarApi: QueryFunction<
     },
     queryKey: 'changeUserAvatarApi',
 }
+
+export const changeUserInfoApi: QueryFunction<Partial<User>, User> = {
+    query: async (updatedInfo) => {
+        const userId = Auth.getUserInfo()._id
+
+        const getJwtResponse = await axios.patch(
+            getUrl(`/users/${userId}`),
+            updatedInfo,
+            {
+                headers: getHeaders(),
+            },
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'changeUserInfoApi',
+}
