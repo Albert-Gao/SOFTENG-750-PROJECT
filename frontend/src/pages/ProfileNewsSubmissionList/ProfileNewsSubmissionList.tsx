@@ -14,7 +14,7 @@ const ProfileNewsSubmissionList: React.FC = () => {
     )
 
     return (
-        <ul className="flex flex-col items-center divide-y divide-gray-200 over6low-y-auto pt-14 lg:col-span-9">
+        <ul className="flex flex-col items-center divide-y divide-gray-200 pt-14 lg:col-span-9">
             <LoadQuery status={status} data={data} refetch={refetch}>
                 {(data) => (
                     <>
