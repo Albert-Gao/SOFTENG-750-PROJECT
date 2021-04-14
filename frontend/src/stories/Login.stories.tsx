@@ -11,7 +11,14 @@ export default {
 
 const Template: Story<LoginProps> = (args) => <Login {...args} />
 
-export const LogIn = Template.bind({})
-LogIn.args = {
-    user: {},
+export const LogInButton = Template.bind({})
+LogInButton.args = {
+    loginButton: true,
+    textBox: false,
+}
+
+export const TextBox = Template.bind({})
+TextBox.args = {
+    loginButton: false,
+    textBox: true,
 }
