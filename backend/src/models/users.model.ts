@@ -28,6 +28,11 @@ export default function (app: Application): Model<any> {
                     required: true,
                 },
             ],
+            privacy: {
+                shouldShowEmail: { type: Boolean, default: true },
+                shouldShowFavouritePage: { type: Boolean, default: true },
+                shouldShowSubmittedNews: { type: Boolean, default: true },
+            },
         },
         {
             timestamps: true,
