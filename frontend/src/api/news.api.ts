@@ -104,3 +104,30 @@ export const getFavNewsApi: QueryFunction<any, News[]> = {
     },
     queryKey: 'getFavNewsApi',
 }
+
+export const getCurrentUserSubmittedNewsAPI: QueryFunction<
+    GetNewsAPIParams,
+    PaginationQuery<News>
+> = {
+    query: async ({ limit = 50, skipped }) => {
+        const userId = Auth.getUserInfo()._id
+        let skipCount = skipped
+        if (skipped > 0) {
+            skipCount = skipped + 15
+        }
+
+        const getJwtResponse = await axios.get(
+            getUrl('/news', {
+                $skip: skipCount,
+                $limit: limit,
+                $populate: ['author', 'votingRecords'],
+                $sort: {
+                    createdAt: -1,
+                },
+                author: userId,
+            }),
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'getCurrentUserSubmittedNewsAPI',
+}
