@@ -104,11 +104,10 @@ export const getFavNewsApi: QueryFunction<{ userId?: string }, News[]> = {
 }
 
 export const getCurrentUserSubmittedNewsAPI: QueryFunction<
-    GetNewsAPIParams,
+    { userId?: string } & GetNewsAPIParams,
     PaginationQuery<News>
 > = {
-    query: async ({ limit = 50, skipped }) => {
-        const userId = Auth.getUserInfo()._id
+    query: async ({ userId = Auth.getUserInfo()._id, limit = 50, skipped }) => {
         let skipCount = skipped
         if (skipped > 0) {
             skipCount = skipped + 15
