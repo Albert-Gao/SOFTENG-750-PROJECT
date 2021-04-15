@@ -1,22 +1,54 @@
-import React, { useState } from 'react'
+import { useAtom } from 'jotai'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import { useMutation } from 'react-query'
+import { useToasts } from 'react-toast-notifications'
+import { changeUserInfoApi } from '../../api/users.api'
 import { ProfileSectionSubmitButton } from '../../components/ProfileSectionSubmitButton'
+import { userAtom } from '../../state'
+import { Auth } from '../../utils/Auth'
 import { PrivacySettingItem } from './components/PrivacySettingItem'
 
 const ProfilePrivacy: React.FC = () => {
-    const [shouldDisplayEmail, setShouldDisplayEmail] = useState(false)
-    const [shouldDisplayFavourites, setShouldDisplayFavourites] = useState(
-        false,
-    )
     const [
-        shouldDisplaySubmittedNews,
-        setShouldDisplaySubmittedNews,
-    ] = useState(false)
+        {
+            privacy: {
+                shouldShowEmail,
+                shouldShowFavouritePage,
+                shouldShowSubmittedNews,
+            } = {
+                shouldShowEmail: true,
+                shouldShowFavouritePage: true,
+                shouldShowSubmittedNews: true,
+            },
+        },
+    ] = useAtom(userAtom)
+
+    const { register, watch, setValue, handleSubmit } = useForm({
+        defaultValues: {
+            shouldShowEmail,
+            shouldShowFavouritePage,
+            shouldShowSubmittedNews,
+        },
+    })
+    const { addToast } = useToasts()
+    const mutation = useMutation(changeUserInfoApi.query)
+
+    const shouldShowEmailWatched = watch('shouldShowEmail')
+    const shouldShowFavouritePageWatched = watch('shouldShowFavouritePage')
+    const shouldShowSubmittedNewsWatched = watch('shouldShowSubmittedNews')
 
     return (
         <form
             className="divide-y divide-gray-200 lg:col-span-9"
-            action="#"
-            method="POST"
+            onSubmit={handleSubmit(async (privacy) => {
+                try {
+                    const response = await mutation.mutateAsync({ privacy })
+                    Auth.saveUserInfo(response)
+                } catch (e) {
+                    addToast('Something wrong happened, please try again later')
+                }
+            })}
         >
             {/* <!-- Privacy section --> */}
             <div className="pt-6 divide-y divide-gray-200">
@@ -31,32 +63,57 @@ const ProfilePrivacy: React.FC = () => {
                     </div>
                     <ul className="mt-2 divide-y divide-gray-200">
                         <PrivacySettingItem
+                            register={register}
+                            name="shouldShowEmail"
                             title="Display email"
                             description="Enabling this will display your email address on your public profile page."
-                            isEnabled={shouldDisplayEmail}
-                            onClick={() => setShouldDisplayEmail((v) => !v)}
+                            isEnabled={shouldShowEmailWatched}
+                            onClick={() => {
+                                setValue(
+                                    'shouldShowEmail',
+                                    !shouldShowEmailWatched,
+                                )
+                            }}
                         />
 
                         <PrivacySettingItem
+                            register={register}
+                            name="shouldShowFavouritePage"
                             title="Display Favourites"
                             description="Enabling this will display your favourite list on your public profile page."
-                            isEnabled={shouldDisplayFavourites}
-                            onClick={() =>
-                                setShouldDisplayFavourites((v) => !v)
-                            }
+                            isEnabled={shouldShowFavouritePageWatched}
+                            onClick={() => {
+                                setValue(
+                                    'shouldShowFavouritePage',
+                                    !shouldShowFavouritePageWatched,
+                                )
+                            }}
                         />
 
                         <PrivacySettingItem
+                            register={register}
+                            name="shouldShowSubmittedNews"
                             title="Display Submitted News"
                             description="Enabling this will display your favourite list on your public profile page."
-                            isEnabled={shouldDisplaySubmittedNews}
-                            onClick={() =>
-                                setShouldDisplaySubmittedNews((v) => !v)
-                            }
+                            isEnabled={shouldShowSubmittedNewsWatched}
+                            onClick={() => {
+                                setValue(
+                                    'shouldShowSubmittedNews',
+                                    !shouldShowSubmittedNewsWatched,
+                                )
+                            }}
                         />
                     </ul>
                 </div>
-                <ProfileSectionSubmitButton />
+                <ProfileSectionSubmitButton
+                    disabled={
+                        shouldShowEmailWatched === shouldShowEmail &&
+                        shouldShowFavouritePage ===
+                            shouldShowFavouritePageWatched &&
+                        shouldShowSubmittedNews ===
+                            shouldShowSubmittedNewsWatched
+                    }
+                />
             </div>
         </form>
     )
