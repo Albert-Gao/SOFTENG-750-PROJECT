@@ -5,6 +5,7 @@ import { getOtherUserInfoApi } from '../../api/users.api'
 import { LoadQuery } from '../../components/LoadQuery'
 import { FavTab } from './components/FavTab'
 import { ProfileTab } from './components/ProfileTab'
+import { SubmittedNewsTab } from './components/SubmittedNewsTab'
 import { Tabs } from './components/Tabs'
 import { UserHeader } from './components/UserHeader'
 
@@ -63,6 +64,14 @@ const User: React.FC = () => {
                                 }
                                 // @ts-ignore
                                 favNews={user.favourites}
+                            />
+                        )}
+                        {currentTab === 'submitted' && (
+                            <SubmittedNewsTab
+                                userId={id}
+                                shouldShowSubmittedNews={
+                                    user.privacy.shouldShowSubmittedNews
+                                }
                             />
                         )}
                     </article>
