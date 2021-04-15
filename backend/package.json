@@ -32,8 +32,7 @@
         "remove:build": "shx rm -rf lib/",
         "compile": "tsc",
         "prettier": "pretty-quick",
-        "tsc": "tsc",
-        "postinstall": "npm run remove:build && npm run compile"
+        "tsc": "tsc"
     },
     "standard": {
         "env": [
