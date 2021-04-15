@@ -31,8 +31,7 @@
         "jest": "jest  --forceExit",
         "remove:build": "shx rm -rf lib/",
         "prettier": "pretty-quick",
-        "build": "tsc",
-        "render:build": "./node_modules/.bin/tsc",
+        "build": "npm ci && tsc",
         "local:build": "tsc"
     },
     "standard": {
