@@ -84,3 +84,16 @@ export const changeUserInfoApi: QueryFunction<Partial<User>, User> = {
     },
     queryKey: 'changeUserInfoApi',
 }
+
+export const getOtherUserInfoApi: QueryFunction<{ userId: string }, User> = {
+    query: async ({ userId }) => {
+        const getJwtResponse = await axios.get(
+            getUrl(`/users/${userId}`, { $populate: ['favourites'] }),
+            {
+                headers: getHeaders(),
+            },
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'getOtherUserInfoApi',
+}
