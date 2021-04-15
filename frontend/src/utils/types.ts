@@ -13,6 +13,11 @@ export interface User extends TimeStamp, ID {
     nickName: string
     avatar: string
     favourites: string[]
+    privacy: {
+        shouldShowEmail: boolean
+        shouldShowFavouritePage: boolean
+        shouldShowSubmittedNews: boolean
+    }
 }
 
 export interface News extends TimeStamp, ID {

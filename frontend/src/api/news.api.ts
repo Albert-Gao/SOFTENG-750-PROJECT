@@ -88,13 +88,11 @@ export const voteNewsApi: QueryFunction<
     queryKey: 'voteNewsApi',
 }
 
-export const getFavNewsApi: QueryFunction<any, News[]> = {
-    query: async () => {
-        const userId = Auth.getUserInfo()._id
-
+export const getFavNewsApi: QueryFunction<{ userId?: string }, News[]> = {
+    query: async ({ userId = Auth.getUserInfo()._id }) => {
         const getJwtResponse = await axios.get(
             getUrl(`/users/${userId}`, {
-                $populate: ['favourites'],
+                $populate: ['favourites', 'favourites.author'],
             }),
             {
                 headers: getHeaders(),

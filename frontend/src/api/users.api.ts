@@ -68,3 +68,32 @@ export const changeUserAvatarApi: QueryFunction<
     },
     queryKey: 'changeUserAvatarApi',
 }
+
+export const changeUserInfoApi: QueryFunction<Partial<User>, User> = {
+    query: async (updatedInfo) => {
+        const userId = Auth.getUserInfo()._id
+
+        const getJwtResponse = await axios.patch(
+            getUrl(`/users/${userId}`),
+            updatedInfo,
+            {
+                headers: getHeaders(),
+            },
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'changeUserInfoApi',
+}
+
+export const getOtherUserInfoApi: QueryFunction<{ userId: string }, User> = {
+    query: async ({ userId }) => {
+        const getJwtResponse = await axios.get(
+            getUrl(`/users/${userId}`, { $populate: ['favourites'] }),
+            {
+                headers: getHeaders(),
+            },
+        )
+        return getJwtResponse.data
+    },
+    queryKey: 'getOtherUserInfoApi',
+}
