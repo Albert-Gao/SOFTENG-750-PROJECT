@@ -12,6 +12,8 @@ server.on('listening', () =>
     logger.info(
         'Feathers application started on http://%s:%d',
         app.get('host'),
-        port,
+        process.env.NODE_ENV === 'production'
+            ? process.env.PORT
+            : app.get('port'),
     ),
 )
