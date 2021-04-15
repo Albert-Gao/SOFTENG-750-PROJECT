@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { FavTab } from './components/FavTab'
+import { ProfileTab } from './components/ProfileTab'
+import { SubmittedNewsTab } from './components/SubmittedNewsTab'
+import { TabButton } from './components/TabButton'
 
 const Box: React.FC = ({ children }) => (
     <div
@@ -17,7 +21,19 @@ const Box: React.FC = ({ children }) => (
     </div>
 )
 
+const TABS = {
+    profile: ProfileTab,
+    fav: FavTab,
+    submitted: SubmittedNewsTab,
+}
+
 const User: React.FC = () => {
+    const [currentTab, setCurrentTab] = useState<
+        'profile' | 'fav' | 'submitted'
+    >('profile')
+
+    const Tab = TABS[currentTab]
+
     return (
         <Box>
             <article>
@@ -57,132 +73,39 @@ const User: React.FC = () => {
                                 aria-label="Tabs"
                             >
                                 {/* <!-- Current: "border-pink-500 text-gray-900", Default: "border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300" --> */}
-                                <a
-                                    href="#"
-                                    className="px-1 py-4 text-sm font-medium text-gray-900 border-b-2 border-pink-500 whitespace-nowrap"
-                                    aria-current="page"
+                                <TabButton
+                                    onClick={() => {
+                                        setCurrentTab('profile')
+                                    }}
+                                    isCurrent={currentTab === 'profile'}
                                 >
                                     Profile
-                                </a>
+                                </TabButton>
 
-                                <a
-                                    href="#"
-                                    className="px-1 py-4 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 whitespace-nowrap"
+                                <TabButton
+                                    onClick={() => {
+                                        setCurrentTab('fav')
+                                    }}
+                                    isCurrent={currentTab === 'fav'}
                                 >
                                     Favourites
-                                </a>
+                                </TabButton>
 
-                                <a
-                                    href="#"
-                                    className="px-1 py-4 text-sm font-medium text-gray-500 border-b-2 border-transparent hover:text-gray-700 hover:border-gray-300 whitespace-nowrap"
+                                <TabButton
+                                    onClick={() => {
+                                        setCurrentTab('submitted')
+                                    }}
+                                    isCurrent={currentTab === 'submitted'}
                                 >
                                     Submitted News
-                                </a>
+                                </TabButton>
                             </nav>
                         </div>
                     </div>
                 </div>
 
                 {/* <!-- Description list --> */}
-                <div className="max-w-5xl px-4 mx-auto mt-6 sm:px-6 lg:px-8">
-                    <dl className="grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2">
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Phone
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                (555) 123-4567
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Email
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                ricardocooper@example.com
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Title
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                Senior Front-End Developer
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Team
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                Product Development
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Location
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                San Francisco
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Sits
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                Oasis, 4th floor
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Salary
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                $145,000
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-1">
-                            <dt className="text-sm font-medium text-gray-500">
-                                Birthday
-                            </dt>
-                            <dd className="mt-1 text-sm text-gray-900">
-                                June 8, 1990
-                            </dd>
-                        </div>
-
-                        <div className="sm:col-span-2">
-                            <dt className="text-sm font-medium text-gray-500">
-                                About
-                            </dt>
-                            <dd className="mt-1 space-y-5 text-sm text-gray-900 max-w-prose">
-                                <p>
-                                    Tincidunt quam neque in cursus viverra orci,
-                                    dapibus nec tristique. Nullam ut sit dolor
-                                    consectetur urna, dui cras nec sed. Cursus
-                                    risus congue arcu aenean posuere aliquam.
-                                </p>
-                                <p>
-                                    Et vivamus lorem pulvinar nascetur non.
-                                    Pulvinar a sed platea rhoncus ac mauris
-                                    amet. Urna, sem pretium sit pretium urna,
-                                    senectus vitae. Scelerisque fermentum,
-                                    cursus felis dui suspendisse velit pharetra.
-                                    Augue et duis cursus maecenas eget quam
-                                    lectus. Accumsan vitae nascetur pharetra
-                                    rhoncus praesent dictum risus suspendisse.
-                                </p>
-                            </dd>
-                        </div>
-                    </dl>
-                </div>
+                <Tab />
             </article>
         </Box>
     )
