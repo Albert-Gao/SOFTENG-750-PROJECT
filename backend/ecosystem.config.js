@@ -5,6 +5,7 @@ module.exports = {
             watch: '.',
             env: {
                 DEBUG: '*',
+                NODE_ENV: 'production',
             },
         },
     ],
