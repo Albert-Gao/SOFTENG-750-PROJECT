@@ -1,5 +1,5 @@
 {
-    "host": "backend-app.feathersjs.com",
-    "port": "PORT",
+    "host": "wiki-chat.herokuapp.com",
+    "port": 3030,
     "mongodb": "mongodb+srv://wiki-chat-admin:BZvvXaGpRlR7cDD8@cluster0.zzfok.mongodb.net/myFirstDatabase?retryWrites=true&w=majority"
 }
