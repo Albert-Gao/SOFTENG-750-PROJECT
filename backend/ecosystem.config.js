@@ -3,6 +3,9 @@ module.exports = {
         {
             script: './lib/index.js',
             watch: '.',
+            env: {
+                DEBUG: '*',
+            },
         },
     ],
     // deploy: {
