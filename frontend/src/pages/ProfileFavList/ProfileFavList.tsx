@@ -5,9 +5,8 @@ import { LoadQuery } from '../../components/LoadQuery'
 import { NewsListItem } from '../Home/components/NewsListItem/NewsListItem'
 
 const ProfileFavList: React.FC = () => {
-    const { status, refetch, data } = useQuery(
-        getFavNewsApi.queryKey,
-        getFavNewsApi.query,
+    const { status, refetch, data } = useQuery(getFavNewsApi.queryKey, () =>
+        getFavNewsApi.query({}),
     )
 
     return (

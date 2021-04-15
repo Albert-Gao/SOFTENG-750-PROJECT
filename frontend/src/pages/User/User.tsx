@@ -3,6 +3,7 @@ import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 import { getOtherUserInfoApi } from '../../api/users.api'
 import { LoadQuery } from '../../components/LoadQuery'
+import { FavTab } from './components/FavTab'
 import { ProfileTab } from './components/ProfileTab'
 import { Tabs } from './components/Tabs'
 import { UserHeader } from './components/UserHeader'
@@ -53,6 +54,15 @@ const User: React.FC = () => {
                                 email={user.email}
                                 createdAt={user.createdAt}
                                 updatedAt={user.updatedAt}
+                            />
+                        )}
+                        {currentTab === 'fav' && (
+                            <FavTab
+                                shouldShowFavouritePage={
+                                    user.privacy.shouldShowFavouritePage
+                                }
+                                // @ts-ignore
+                                favNews={user.favourites}
                             />
                         )}
                     </article>
