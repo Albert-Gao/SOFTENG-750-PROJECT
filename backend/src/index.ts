@@ -10,7 +10,7 @@ process.on('unhandledRejection', (reason, p) =>
 console.log('process.env.PORT', process.env.PORT)
 server.on('listening', () =>
     logger.info(
-        'Feathers application started on http://%s:%d',
+        'Feathers application started on: http://%s:%d',
         app.get('host'),
 
         process.env.PORT != null ? process.env.PORT : app.get('port'),
