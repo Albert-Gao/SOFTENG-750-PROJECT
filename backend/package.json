@@ -62,7 +62,8 @@
         "mongoose": "^5.12.3",
         "pm2": "^4.5.6",
         "serve-favicon": "^2.5.0",
-        "winston": "^3.3.3"
+        "winston": "^3.3.3",
+        "typescript": "^4.2.3"
     },
     "devDependencies": {
         "@types/compression": "^1.7.0",
@@ -84,7 +85,6 @@
         "shx": "^0.3.3",
         "ts-jest": "^26.5.4",
         "ts-node": "^9.1.1",
-        "ts-node-dev": "^1.1.6",
-        "typescript": "^4.2.3"
+        "ts-node-dev": "^1.1.6"
     }
 }
