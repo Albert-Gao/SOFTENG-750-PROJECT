@@ -4,7 +4,6 @@ module.exports = {
             script: './lib/index.js',
             watch: '.',
             env: {
-                DEBUG: '*',
                 NODE_ENV: 'production',
             },
         },
