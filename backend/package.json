@@ -31,7 +31,7 @@
         "jest": "jest  --forceExit",
         "remove:build": "shx rm -rf lib/",
         "prettier": "pretty-quick",
-        "build": "tsc"
+        "build": "npm bin && printenv PATH && ls \"$(npm bin)\" && npm list && tsc"
     },
     "standard": {
         "env": [
