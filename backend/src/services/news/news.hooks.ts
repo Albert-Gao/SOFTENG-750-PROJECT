@@ -6,20 +6,22 @@ import { getWikiPageInfo } from './hooks/getWikiPageInfo'
 const { authenticate } = authentication.hooks
 
 async function removePasswordFromUserInfo(context: HookContext) {
-    const newsList = context.result.data
+    if (context.result?.data) {
+        const newsList = context.result.data
 
-    const afterRemovingPassword = newsList.map((item: any) => {
-        const author = item.author
-        delete author.password
-        delete author.__v
+        const afterRemovingPassword = newsList.map((item: any) => {
+            const author = item.author
+            delete author.password
+            delete author.__v
 
-        return {
-            ...item,
-            author,
-        }
-    })
+            return {
+                ...item,
+                author,
+            }
+        })
 
-    context.result.data = afterRemovingPassword
+        context.result.data = afterRemovingPassword
+    }
 
     return context
 }
