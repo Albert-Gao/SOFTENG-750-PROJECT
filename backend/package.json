@@ -51,6 +51,7 @@
         "@feathersjs/socketio": "^4.5.11",
         "@feathersjs/transport-commons": "^4.5.11",
         "@types/jsdom": "^16.2.10",
+        "axios": "^0.21.1",
         "compression": "^1.7.4",
         "cors": "^2.8.5",
         "feathers-mongodb": "^6.3.0",
@@ -62,8 +63,9 @@
         "mongoose": "^5.12.3",
         "pm2": "^4.5.6",
         "serve-favicon": "^2.5.0",
-        "winston": "^3.3.3",
-        "typescript": "^4.2.3",
+        "winston": "^3.3.3"
+    },
+    "devDependencies": {
         "@types/compression": "^1.7.0",
         "@types/cors": "^2.8.10",
         "@types/jest": "^26.0.22",
@@ -72,7 +74,6 @@
         "@types/serve-favicon": "^2.5.2",
         "@typescript-eslint/eslint-plugin": "^4.21.0",
         "@typescript-eslint/parser": "^4.21.0",
-        "axios": "^0.21.1",
         "eslint": "^7.23.0",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-prettier": "^3.3.1",
@@ -83,7 +84,7 @@
         "shx": "^0.3.3",
         "ts-jest": "^26.5.4",
         "ts-node": "^9.1.1",
-        "ts-node-dev": "^1.1.6"
-    },
-    "devDependencies": {}
+        "ts-node-dev": "^1.1.6",
+        "typescript": "^4.2.3"
+    }
 }
