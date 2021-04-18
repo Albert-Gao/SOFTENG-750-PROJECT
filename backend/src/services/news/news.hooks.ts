@@ -29,15 +29,7 @@ async function removePasswordFromUserInfo(context: HookContext) {
 export default {
     before: {
         all: [],
-        find: [
-            async (context: HookContext) => {
-                context.params.query = {
-                    ...context.params.query,
-                    // $populate: 'users',
-                }
-                return context
-            },
-        ],
+        find: [],
         get: [],
         create: [authenticate('jwt'), getWikiPageInfo],
         update: [authenticate('jwt')],
