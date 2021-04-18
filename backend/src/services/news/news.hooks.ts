@@ -14,7 +14,7 @@ async function removePasswordFromUserInfo(context: HookContext) {
     const newsList = context.result.data
 
     const afterRemovingPassword = newsList.map((item: any) => {
-        if (!item.author.password) {
+        if (!item.author?.password) {
             return item
         }
 
