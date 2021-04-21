@@ -1,10 +1,90 @@
-import React from 'react'
+import React, { useState } from 'react'
+import {
+    EmailShareButton,
+    FacebookShareButton,
+    PocketShareButton,
+    RedditShareButton,
+    TwitterShareButton,
+    EmailIcon,
+    FacebookIcon,
+    PocketIcon,
+    RedditIcon,
+    TwitterIcon,
+} from 'react-share'
+import { getUrl } from '../../../../../api/api.utils'
 
-export const ShareButton: React.FC = () => {
+const ICON_SIZE = 32
+
+const ButtonBox: React.FC = ({ children }) => (
+    <div className="mr-1">{children}</div>
+)
+
+const getTitle = (newsTitle: string) =>
+    `Hi, I found an interesting Wikipedia about ${newsTitle} to share with you`
+
+const Buttons: React.FC<{ urlToShare: string; newsTitle: string }> = ({
+    urlToShare,
+    newsTitle,
+}) => {
     return (
-        <div className="flex text-sm">
+        <div className="absolute z-50 flex p-3 bg-white border-gray-100 rounded-lg shadow top-7 broder-solid">
+            <ButtonBox>
+                <EmailShareButton
+                    url={urlToShare}
+                    subject={getTitle(newsTitle)}
+                >
+                    <EmailIcon size={ICON_SIZE} />
+                </EmailShareButton>
+            </ButtonBox>
+
+            <ButtonBox>
+                <FacebookShareButton
+                    url={urlToShare}
+                    quote={getTitle(newsTitle)}
+                >
+                    <FacebookIcon size={ICON_SIZE} />
+                </FacebookShareButton>
+            </ButtonBox>
+
+            <ButtonBox>
+                <TwitterShareButton
+                    url={urlToShare}
+                    title={getTitle(newsTitle)}
+                >
+                    <TwitterIcon size={ICON_SIZE} />
+                </TwitterShareButton>
+            </ButtonBox>
+
+            <ButtonBox>
+                <RedditShareButton url={urlToShare} title={getTitle(newsTitle)}>
+                    <RedditIcon size={ICON_SIZE} />
+                </RedditShareButton>
+            </ButtonBox>
+
+            <div>
+                <PocketShareButton url={urlToShare} title={getTitle(newsTitle)}>
+                    <PocketIcon size={ICON_SIZE} />
+                </PocketShareButton>
+            </div>
+        </div>
+    )
+}
+
+export const ShareButton: React.FC<{ newsId: string; newsTitle: string }> = ({
+    newsId,
+    newsTitle,
+}) => {
+    const [isOpen, setIsOpen] = useState(false)
+    return (
+        <div className="relative flex text-sm">
             <span className="inline-flex items-center text-sm">
-                <button className="inline-flex space-x-2 text-gray-400 hover:text-gray-500">
+                <button
+                    className="inline-flex space-x-2 text-gray-400 hover:text-gray-500"
+                    type="button"
+                    onClick={() => {
+                        setIsOpen((v) => !v)
+                    }}
+                >
                     {/* <!-- Heroicon name: solid/share --> */}
                     <svg
                         className="w-5 h-5"
@@ -18,6 +98,12 @@ export const ShareButton: React.FC = () => {
                     <span className="font-medium text-gray-900">Share</span>
                 </button>
             </span>
+            {isOpen && (
+                <Buttons
+                    urlToShare={getUrl(`/detail/${newsId}`)}
+                    newsTitle={newsTitle}
+                />
+            )}
         </div>
     )
 }
