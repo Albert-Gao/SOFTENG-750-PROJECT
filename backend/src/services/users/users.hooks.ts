@@ -33,12 +33,7 @@ async function addRandomAvatar(context: HookContext) {
 
 export default {
     before: {
-        all: [
-            async (context: HookContext) => {
-                console.log('context.params', context.params)
-                return context
-            },
-        ],
+        all: [],
         find: [authenticate('jwt')],
         get: [authenticate('jwt')],
         create: [

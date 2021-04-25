@@ -1,0 +1,8 @@
+---
+services:
+    - type: web
+      name: wiki-chat
+      env: node
+      repo: https://github.com/Albert-Gao/SOFTENG-750-PROJECT
+      buildCommand: npm ci && npm run build
+      startCommand: 'true'

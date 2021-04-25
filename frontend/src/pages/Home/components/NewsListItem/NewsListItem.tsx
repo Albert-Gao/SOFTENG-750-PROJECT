@@ -81,7 +81,7 @@ export const NewsListItem: React.FC<{
                     </LikeActionButton>
                     <CommentActionButton id={id} quantity={commentsCount} />
                 </div>
-                <ShareButton />
+                <ShareButton newsId={id} newsTitle={title} />
             </div>
         </article>
     )

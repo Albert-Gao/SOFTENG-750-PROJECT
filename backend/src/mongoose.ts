@@ -4,7 +4,7 @@ import logger from './logger'
 
 export default function (app: Application): void {
     mongoose
-        .connect(app.get('mongodb'), {
+        .connect(process.env.MONGODB ?? app.get('mongodb'), {
             useCreateIndex: true,
             useNewUrlParser: true,
             useUnifiedTopology: true,
