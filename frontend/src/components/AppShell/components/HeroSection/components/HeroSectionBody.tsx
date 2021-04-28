@@ -14,9 +14,7 @@ export const HeroSectionBody: React.FC = () => {
                     </span>
                 </h1>
                 <p className="max-w-md mx-auto mt-3 text-base text-gray-500 sm:text-lg md:mt-5 md:text-xl md:max-w-3xl">
-                    Anim aute id magna aliqua ad ad non deserunt sunt. Qui irure
-                    qui lorem cupidatat commodo. Elit sunt amet fugiat veniam
-                    occaecat fugiat aliqua.
+                    Welcome to Wikipedia forum - Meet passions and friends
                 </p>
                 <div className="max-w-md mx-auto mt-5 sm:flex sm:justify-center md:mt-8">
                     <div className="rounded-md shadow">
