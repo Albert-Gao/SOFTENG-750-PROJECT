@@ -1,0 +1,47 @@
+name: Cypress Tests
+
+on:
+  push:
+    branches: [master, dev]
+
+jobs:
+  cypress-run:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: "14"
+
+      - name: Get Cache
+        uses: actions/cache@v2
+        id: yarn-build-cache
+        with:
+          path: |
+            ~/.npm
+            ~/.cache/Cypress
+            build
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        working-directory: ./frontend
+        run: |
+          npm ci --silent
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          working-directory: ./frontend
+          build: npm run build
+          start: npm start
+          record: true
+        env:
+          # pass the Dashboard record key as an environment variable
+          CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+          # pass GitHub token to allow accurately detecting a build vs a re-run build
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

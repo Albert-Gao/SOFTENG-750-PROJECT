@@ -9,7 +9,8 @@
         "eject": "react-scripts eject",
         "prettier": "pretty-quick",
         "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public"
+        "build-storybook": "build-storybook -s public",
+        "cypress:open": "cypress open"
     },
     "browserslist": {
         "production": [
@@ -65,6 +66,7 @@
         "@tailwindcss/postcss7-compat": "^2.0.3",
         "@tailwindcss/typography": "^0.4.0",
         "autoprefixer": "^9.8.6",
+        "cypress": "^7.2.0",
         "eslint-config-prettier": "^8.2.0",
         "eslint-plugin-prettier": "^3.4.0",
         "postcss": "^7.0.35",
