@@ -7,7 +7,7 @@ export const LightCallToAction: React.FC = () => (
             <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl">
                 <span className="block">Ready to dive in?</span>
                 <span className="block text-indigo-600">
-                    Start your sharing your ideas today.
+                    Start sharing your ideas NOW
                 </span>
             </h2>
             <div className="flex mt-8 lg:mt-0 lg:flex-shrink-0">
