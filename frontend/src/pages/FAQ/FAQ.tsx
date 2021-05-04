@@ -12,36 +12,24 @@ const FAQ: React.FC = () => {
                     </h2>
                     <dl className="mt-6 space-y-6 divide-y divide-gray-200">
                         <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
+                            question="Can I post any topics from Wikipedia?"
+                            answer="Yes! The &#039;submit news&#039; function allows users to insert wiki url and add more information."
                         />
                         <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
+                            question="How can I submit news?"
+                            answer="Just by clicking &#039;submit news&#039; button in Home Page! Then typing anything you are interested in~."
                         />
                         <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
+                            question="How can I chage my personal information?"
+                            answer="Just click profile on the top left corner, youcan change your nickname."
                         />
                         <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
+                            question="Can I save the topics that I am interested in?"
+                            answer="Absolutely! You can click favouriate button of the topic and chick it out in &#039;Favouriates&#039;."
                         />
                         <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
-                        />
-                        <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
-                        />
-                        <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
-                        />
-                        <Question
-                            question="What&#039;s the best thing about Switzerland?"
-                            answer="I don&#039;t know, but the flag is a big plus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas cupiditate laboriosam fugiat."
+                            question="What can I do if I want to join the discussion?"
+                            answer="Just simply make comments below the topic that you are interested in!!."
                         />
                     </dl>
                 </div>
