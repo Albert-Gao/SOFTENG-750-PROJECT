@@ -11,50 +11,44 @@ const Features: React.FC = () => (
                 <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
                     <FeatureSlot
                         iconType="deploy"
-                        title="Push to Deploy"
-                        description="Ac tincidunt sapien vehicula erat auctor
-                            pellentesque rhoncus. Et magna sit morbi
-                            lobortis."
+                        title="Upload Wiki Topics"
+                        description="You can submit interesting topics and
+                            initiate discussions."
                     />
 
                     <FeatureSlot
                         iconType="lock"
-                        title="SSL Certificates"
-                        description="Ac tincidunt sapien vehicula erat auctor
-                            pellentesque rhoncus. Et magna sit morbi
-                            lobortis."
+                        title="Authenticated Account"
+                        description="The user need to register and verify to
+                            browse and discuss."
                     />
 
                     <FeatureSlot
                         iconType="refresh"
-                        title="Simple Queues"
-                        description="Ac tincidunt sapien vehicula erat auctor
-                            pellentesque rhoncus. Et magna sit morbi
-                            lobortis."
+                        title="Real-time Update"
+                        description="WikiChat provides users with the latest
+                            and hottest news."
                     />
 
                     <FeatureSlot
                         iconType="shield"
-                        title="Advanced Security"
-                        description="Ac tincidunt sapien vehicula erat auctor
-                            pellentesque rhoncus. Et magna sit morbi
-                            lobortis."
+                        title="Safe browsing"
+                        description="Browsing and publishing are protected by
+                            the system security."
                     />
 
                     <FeatureSlot
                         iconType="cogwheel"
-                        title=" Powerful API"
-                        description="Ac tincidunt sapien vehicula erat auctor
-                            pellentesque rhoncus. Et magna sit morbi
-                            lobortis."
+                        title="Customized Setting"
+                        description="You can edit personal profile and
+                            preference."
                     />
 
                     <FeatureSlot
                         iconType="shelf"
                         title="Database Backups"
-                        description="Ac tincidunt sapien vehicula erat auctor
-                            pellentesque rhoncus. Et magna sit morbi
-                            lobortis."
+                        description="We have strong database support,
+                            users can browse at ease."
                     />
                 </div>
             </div>

@@ -11,7 +11,7 @@ export const Teams: React.FC = () => (
                 <ul className="space-y-12 lg:grid lg:grid-cols-2 lg:items-start lg:gap-x-8 lg:gap-y-12 lg:space-y-0">
                     <li>
                         <TeamMember
-                            portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                            portraitSrc="https://static.turbosquid.com/Preview/2018/06/01__15_20_02/I1.png2D1B80B1-846B-45E9-BE40-0AFCF8B26367Res300.jpg"
                             name="Albert Gao"
                             title="Software Developer"
                             description="
@@ -21,7 +21,7 @@ export const Teams: React.FC = () => (
                     </li>
                     <li>
                         <TeamMember
-                            portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                            portraitSrc="https://static.turbosquid.com/Preview/2018/06/01__15_20_02/I1.png2D1B80B1-846B-45E9-BE40-0AFCF8B26367Res300.jpg"
                             name="Yuxin Chen"
                             title="Software Developer"
                             description="
@@ -31,7 +31,7 @@ export const Teams: React.FC = () => (
                     </li>
                     <li>
                         <TeamMember
-                            portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                            portraitSrc="https://static.turbosquid.com/Preview/2018/06/01__15_20_02/I1.png2D1B80B1-846B-45E9-BE40-0AFCF8B26367Res300.jpg"
                             name="Evan Zhou"
                             title="Software Developer"
                             description="
@@ -41,7 +41,7 @@ export const Teams: React.FC = () => (
                     </li>
                     <li>
                         <TeamMember
-                            portraitSrc="https://images.unsplash.com/photo-1517365830460-955ce3ccd263?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=8&w=1024&h=1024&q=80"
+                            portraitSrc="https://static.turbosquid.com/Preview/2018/06/01__15_20_02/I1.png2D1B80B1-846B-45E9-BE40-0AFCF8B26367Res300.jpg"
                             name="Henry Yang"
                             title="Software Developer"
                             description="
