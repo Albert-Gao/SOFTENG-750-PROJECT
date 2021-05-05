@@ -2,7 +2,7 @@ import FAQ from '../pages/FAQ/FAQ'
 import { getStoryTemplate, Meta } from './utils'
 
 export default {
-    title: 'Example/FAQ',
+    title: 'Pages/FAQ',
     component: FAQ,
 } as Meta
 
