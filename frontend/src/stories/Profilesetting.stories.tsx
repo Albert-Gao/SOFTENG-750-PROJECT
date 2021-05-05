@@ -2,7 +2,7 @@ import User from '../pages/User/User'
 import { getStoryTemplate, Meta } from './utils'
 
 export default {
-    title: 'Example/Profile',
+    title: 'Pages/Profile',
     component: User,
 } as Meta
 
