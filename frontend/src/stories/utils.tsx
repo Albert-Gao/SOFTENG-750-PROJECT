@@ -19,6 +19,7 @@ export function getStoryTemplate<
     const Template: StoryWithComponentProps<
         typeof Component,
         ComponentChildrenType
+        // @ts-ignore
     > = (args) => <Component {...args} />
     return Template
 }
