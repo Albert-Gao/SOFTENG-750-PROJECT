@@ -1,15 +1,12 @@
-import React from 'react'
-// also exported from '@storybook/react' if you can deal with breaking changes in 6.1
-import { Story, Meta } from '@storybook/react/types-6-0'
-
-import { Aboutt, AboutProps } from './AboutPage'
+import About from '../pages/About/About'
+import { getStoryTemplate, Meta } from './utils'
 
 export default {
     title: 'Example/About',
-    component: Aboutt,
+    component: About,
 } as Meta
 
-const Template: Story<AboutProps> = (args) => <Aboutt {...args} />
+const Template = getStoryTemplate(About)
 
 export const AboutPage = Template.bind({})
 AboutPage.args = {}
