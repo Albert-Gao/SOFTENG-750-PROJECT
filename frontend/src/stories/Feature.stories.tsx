@@ -2,7 +2,7 @@ import Features from '../pages/Features/Features'
 import { getStoryTemplate, Meta } from './utils'
 
 export default {
-    title: 'Example/Features',
+    title: 'Pages/Features',
     component: Features,
 } as Meta
 
