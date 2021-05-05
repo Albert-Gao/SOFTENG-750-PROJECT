@@ -2,7 +2,7 @@ import About from '../pages/About/About'
 import { getStoryTemplate, Meta } from './utils'
 
 export default {
-    title: 'Example/About',
+    title: 'Pages/About',
     component: About,
 } as Meta
 
