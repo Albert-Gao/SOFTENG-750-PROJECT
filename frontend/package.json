@@ -8,9 +8,10 @@
         "test": "craco test",
         "eject": "react-scripts eject",
         "prettier": "pretty-quick",
+        "cypress:open": "cypress open",
         "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "build-storybook -s public",
-        "cypress:open": "cypress open"
+        "build-storybook": "npm run build-tailwind && build-storybook -s ./src/stories/assets",
+        "build-tailwind": "npx tailwindcss build src/index.css -o src/stories/assets/app.css"
     },
     "browserslist": {
         "production": [
@@ -70,6 +71,7 @@
         "eslint-config-prettier": "^8.2.0",
         "eslint-plugin-prettier": "^3.4.0",
         "postcss": "^7.0.35",
+        "postcss-cli": "^7.1.2",
         "prettier": "2.2.1",
         "pretty-quick": "^3.1.0",
         "react-refresh": "^0.10.0",
