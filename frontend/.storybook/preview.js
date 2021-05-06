@@ -2,7 +2,7 @@ import { ReactQueryProvider } from '../src/components/ReactQueryProvider'
 import { ToastProvider } from 'react-toast-notifications'
 import { BrowserRouter } from 'react-router-dom'
 import React from 'react'
-import '../src/index.css'
+import '../src/stories/assets/app.css'
 
 export const parameters = {
     actions: { argTypesRegex: '^on[A-Z].*' },
