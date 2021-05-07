@@ -49,8 +49,7 @@ const Profile: React.FC = () => {
                             Profile
                         </h2>
                         <p className="mt-1 text-sm text-gray-500">
-                            This information will be displayed publicly so be
-                            careful what you share.
+                            Your profile will be displayed to the public.
                         </p>
                     </div>
 
@@ -94,6 +93,9 @@ const Profile: React.FC = () => {
                                     name="nickName"
                                     className="block w-1/2 px-3 py-2 mt-1 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-light-blue-500 focus:border-light-blue-500 sm:text-sm"
                                 />
+                                <p className="mt-1 text-xs text-gray-500">
+                                    Remember to save after changing!
+                                </p>
                                 <FormErrorText
                                     isError={!!formInfo.errors.nickName}
                                 >

@@ -86,7 +86,7 @@ export const SubmitNewsModal: React.FC<{
                                 </SubmitNewsModalField>
 
                                 <SubmitNewsModalField
-                                    label="Why I love this wikipedia (Optional)"
+                                    label="Additional opinions about this wikipedia (Optional)"
                                     htmlFor="description"
                                 >
                                     <textarea
