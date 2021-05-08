@@ -80,7 +80,7 @@ export const PostComment: React.FC<{ newsId: string }> = ({ newsId }) => {
                             }
                             try {
                                 await mutation.mutateAsync({
-                                    authorId: user._id,
+                                    authorId: user._id || '',
                                     newsId,
                                     text,
                                 })
