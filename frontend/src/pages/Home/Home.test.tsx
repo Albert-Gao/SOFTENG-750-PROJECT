@@ -206,7 +206,7 @@ describe('<Home />', () => {
             expect(getAllByTestId('wiki-news-list-item')).toHaveLength(
                 MOCK_NEWS_RESPONSE.data.length,
             )
-
+            
             expect(
                 getByText(MOCK_NEWS_RESPONSE.data[0].title),
             ).toBeInTheDocument()
