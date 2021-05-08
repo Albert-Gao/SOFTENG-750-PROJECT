@@ -31,13 +31,17 @@ const User: React.FC = () => {
     const [currentTab, setCurrentTab] = useState<
         'profile' | 'fav' | 'submitted'
     >('profile')
-    const { data, refetch, status } = useQuery(
-        getOtherUserInfoApi.queryKey,
-        () => getOtherUserInfoApi.query({ userId: id }),
+    const {
+        data,
+        refetch,
+        status,
+        error,
+    } = useQuery(getOtherUserInfoApi.queryKey, () =>
+        getOtherUserInfoApi.query({ userId: id }),
     )
 
     return (
-        <LoadQuery status={status} data={data!} refetch={refetch}>
+        <LoadQuery status={status} data={data!} refetch={refetch} error={error}>
             {(user) => (
                 <Box>
                     <article style={{ width: '100%' }}>

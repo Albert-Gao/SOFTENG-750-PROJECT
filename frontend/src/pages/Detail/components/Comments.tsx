@@ -43,7 +43,7 @@ export const Comments: React.FC<{ newsId: string }> = ({ newsId }) => {
         toggleUpdateComments,
         shouldUpdateCommentsList,
     } = useUpdateComments(newsId)
-    const { data, refetch, status } = useQuery(
+    const { data, refetch, status, error } = useQuery(
         [getCommentsAPI.queryKey, { newsId }],
         () =>
             getCommentsAPI.query({
@@ -81,7 +81,12 @@ export const Comments: React.FC<{ newsId: string }> = ({ newsId }) => {
         <Container>
             <PostComment newsId={newsId} />
 
-            <LoadQuery status={status} data={data} refetch={refetch}>
+            <LoadQuery
+                status={status}
+                data={data}
+                refetch={refetch}
+                error={error}
+            >
                 {(data) => {
                     const response = data?.data ?? []
 
