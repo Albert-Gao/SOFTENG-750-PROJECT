@@ -1,6 +1,6 @@
 name: Node.js CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -28,6 +28,9 @@ jobs:
     - name: Tests
       working-directory: ./frontend
       run: npm run test
-    - name: Build
+    - name: Build App
       working-directory: ./frontend
       run: npm run build
+    - name: Build Storybook
+      working-directory: ./frontend
+      run: npm run build-storybook
