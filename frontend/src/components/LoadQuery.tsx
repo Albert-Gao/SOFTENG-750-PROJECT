@@ -28,7 +28,9 @@ export function LoadQuery<ResponseDataType>({
         options?: RefetchOptions,
     ) => Promise<QueryObserverResult<ResponseDataType, any>>
     data: ResponseDataType
-    children: (data: ResponseDataType) => JSX.Element | null
+    children: (
+        data: ResponseDataType,
+    ) => JSX.Element | JSX.Element[] | null | undefined
 }): JSX.Element | null {
     if (status === 'loading') {
         return (
@@ -50,7 +52,7 @@ export function LoadQuery<ResponseDataType>({
     }
 
     if (status === 'success' && data) {
-        return children(data)
+        return <>{children(data)}</>
     }
 
     return null

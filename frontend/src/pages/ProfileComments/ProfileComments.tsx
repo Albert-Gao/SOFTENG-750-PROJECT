@@ -16,20 +16,18 @@ const ProfileComments: React.FC = () => {
     return (
         <ul className="flex flex-col px-8 overflow-y-auto lg:col-span-6">
             <LoadQuery status={status} data={data} refetch={refetch}>
-                {(data) => (
-                    <>
-                        {data?.data.map((commentInfo) => (
-                            <CommentItem
-                                key={commentInfo._id}
-                                css="my-12"
-                                text={commentInfo.text}
-                                authorName={commentInfo.author.nickName}
-                                avatar={commentInfo.author.avatar}
-                                createdAt={commentInfo.createdAt}
-                            />
-                        ))}
-                    </>
-                )}
+                {(data) =>
+                    data?.data.map((commentInfo) => (
+                        <CommentItem
+                            key={commentInfo._id}
+                            css="my-12"
+                            text={commentInfo.text}
+                            authorName={commentInfo.author.nickName}
+                            avatar={commentInfo.author.avatar}
+                            createdAt={commentInfo.createdAt}
+                        />
+                    ))
+                }
             </LoadQuery>
         </ul>
     )
