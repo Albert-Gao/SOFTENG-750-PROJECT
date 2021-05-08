@@ -9,6 +9,7 @@ export const ExpandButton: React.FC<{
         className="flex items-start justify-between w-full text-left text-gray-400"
         aria-controls="faq-0"
         aria-expanded="false"
+        data-testid="faq-question"
         onClick={() => {
             setIsQuestionOpen((v) => !v)
         }}
