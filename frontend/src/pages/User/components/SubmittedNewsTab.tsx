@@ -8,7 +8,7 @@ export const SubmittedNewsTab: React.FC<{
     shouldShowSubmittedNews: boolean
     userId: string
 }> = ({ userId, shouldShowSubmittedNews }) => {
-    const { status, data, refetch } = useQuery(
+    const { status, data, refetch, error } = useQuery(
         getCurrentUserSubmittedNewsAPI.queryKey,
         () => {
             if (shouldShowSubmittedNews) {
@@ -29,7 +29,12 @@ export const SubmittedNewsTab: React.FC<{
     return (
         <TabBox>
             <ul className="flex flex-col items-center divide-y divide-gray-200 pt-14 lg:col-span-9">
-                <LoadQuery status={status} data={data} refetch={refetch}>
+                <LoadQuery
+                    status={status}
+                    data={data}
+                    refetch={refetch}
+                    error={error}
+                >
                     {(data) => {
                         if (!data) return null
 
