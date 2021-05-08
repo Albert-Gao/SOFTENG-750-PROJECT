@@ -40,7 +40,7 @@ const Login: React.FC = () => {
         email: string
         password: string
     }>()
-    const mutation = useMutation(loginAPI.query)
+    const mutation = useMutation(loginAPI?.query)
     const [, setUserAtom] = useAtom(userAtom)
     const history = useHistory()
 
