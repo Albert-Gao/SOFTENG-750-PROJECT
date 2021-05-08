@@ -189,18 +189,4 @@ describe('<ProfileFavList />', () => {
             expect(getFavNewsAPIMock).toHaveBeenCalledTimes(1)
         })
     })
-
-    it('should fetch the fav list', async () => {
-        render(
-            <TestWrapper>
-                <ProfileFavList />
-            </TestWrapper>,
-        )
-
-        const getFavNewsMock = jest.spyOn(getFavNewsApi, 'query')
-
-        await waitFor(() => {
-            expect(getFavNewsMock).toHaveBeenCalledTimes(1)
-        })
-    })
 })
