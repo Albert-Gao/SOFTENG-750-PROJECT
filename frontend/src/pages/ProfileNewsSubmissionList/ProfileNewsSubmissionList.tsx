@@ -9,13 +9,19 @@ const ProfileNewsSubmissionList: React.FC = () => {
         status,
         refetch,
         data,
+        error,
     } = useQuery(getCurrentUserSubmittedNewsAPI.queryKey, () =>
         getCurrentUserSubmittedNewsAPI.query({ skipped: 0 }),
     )
 
     return (
         <ul className="flex flex-col items-center divide-y divide-gray-200 pt-14 lg:col-span-9">
-            <LoadQuery status={status} data={data} refetch={refetch}>
+            <LoadQuery
+                status={status}
+                data={data}
+                refetch={refetch}
+                error={error}
+            >
                 {(data) => (
                     <>
                         {data?.data.map(

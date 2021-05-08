@@ -10,7 +10,7 @@
         "prettier": "pretty-quick",
         "cypress:open": "cypress open",
         "storybook": "start-storybook -p 6006 -s public",
-        "build-storybook": "npm run build-tailwind && build-storybook -s ./src/stories/assets",
+        "build-storybook": "npm run build-tailwind && build-storybook --quiet -s ./src/stories/assets",
         "build-tailwind": "npx tailwindcss build src/index.css -o src/stories/assets/app.css"
     },
     "browserslist": {

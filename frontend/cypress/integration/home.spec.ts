@@ -1,10 +1,26 @@
-describe('My First Test', () => {
-    it('Does not do much!', () => {
-        cy.visit('https://example.cypress.io')
+describe('WikiChat Home page before authentication', () => {
+    before(() => {
+        cy.visit('https://softeng-750-project.vercel.app/')
+    })
 
-        cy.contains('type').click()
+    it('should render the nav bar!', () => {
+        cy.get('nav').should('contain', 'Features').should('contain', 'About')
+        cy.get('a[href="/login"]').should('contain', 'Log in')
+    })
 
-        // Should be on a new URL which includes '/commands/actions'
-        cy.url().should('include', '/commands/actions')
+    it('should render the slogan!', () => {
+        cy.get('h1').should('contain', 'A WikiPedia that social')
+    })
+
+    it('should render the Register button!', () => {
+        cy.get('a[href="/register"]').should('contain', 'Join For Free')
+    })
+
+    it('should render the Footer!', () => {
+        cy.get('footer')
+            .should('contain', 'Features')
+            .should('contain', 'About')
+            .should('contain', 'FAQ')
+            .should('contain', 'COMPSCI 732 Group 17 - Red Rhinoceros.')
     })
 })
