@@ -8,7 +8,6 @@ const MOCK_SUBMISSIONS_RESPONSE = {
     total: 1,
     limit: 50,
     skip: 0,
-    userId: '6077a511c36ee06aa53db3ad',
     data: [
         {
             _id: '6077a511c36ee06aa53db3ad',
