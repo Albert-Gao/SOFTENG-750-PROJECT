@@ -6,7 +6,7 @@ export const FeatureSlot: React.FC<{
     description: string
     iconType: React.ComponentProps<typeof FeatureIcon>['type']
 }> = ({ title, description, iconType }) => (
-    <div className="pt-6">
+    <div className="pt-6" data-testid="feature-slot">
         <div className="flow-root px-6 pb-8 rounded-lg bg-gray-50">
             <div className="-mt-6">
                 <div>

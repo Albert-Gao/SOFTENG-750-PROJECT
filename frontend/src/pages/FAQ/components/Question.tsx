@@ -21,7 +21,12 @@ export const Question: React.FC<{ question: string; answer: string }> = ({
             </dt>
             {isQuestionOpen && (
                 <dd className="pr-12 mt-2" id="faq-0">
-                    <p className="text-base text-gray-500">{answer}</p>
+                    <p
+                        className="text-base text-gray-500"
+                        data-testid="faq-answer"
+                    >
+                        {answer}
+                    </p>
                 </dd>
             )}
         </div>

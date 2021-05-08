@@ -58,7 +58,7 @@ const ProfilePrivacy: React.FC = () => {
                             Privacy
                         </h2>
                         <p className="mt-1 text-sm text-gray-500">
-                            These settings will affect your public profile page.
+                            Manage you private settings of your public profile.
                         </p>
                     </div>
                     <ul className="mt-2 divide-y divide-gray-200">
@@ -66,7 +66,7 @@ const ProfilePrivacy: React.FC = () => {
                             register={register}
                             name="shouldShowEmail"
                             title="Display email"
-                            description="Enabling this will display your email address on your public profile page."
+                            description="Show your email address on your public profile page."
                             isEnabled={shouldShowEmailWatched}
                             onClick={() => {
                                 setValue(
@@ -80,7 +80,7 @@ const ProfilePrivacy: React.FC = () => {
                             register={register}
                             name="shouldShowFavouritePage"
                             title="Display Favourites"
-                            description="Enabling this will display your favourite list on your public profile page."
+                            description="Show your favourite list on your public profile page."
                             isEnabled={shouldShowFavouritePageWatched}
                             onClick={() => {
                                 setValue(
@@ -94,7 +94,7 @@ const ProfilePrivacy: React.FC = () => {
                             register={register}
                             name="shouldShowSubmittedNews"
                             title="Display Submitted News"
-                            description="Enabling this will display your favourite list on your public profile page."
+                            description="Show your favourite list on your public profile page."
                             isEnabled={shouldShowSubmittedNewsWatched}
                             onClick={() => {
                                 setValue(
