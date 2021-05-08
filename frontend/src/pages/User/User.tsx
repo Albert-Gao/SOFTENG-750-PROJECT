@@ -9,7 +9,7 @@ import { SubmittedNewsTab } from './components/SubmittedNewsTab'
 import { Tabs } from './components/Tabs'
 import { UserHeader } from './components/UserHeader'
 
-const Box: React.FC = ({ children }) => (
+export const Box: React.FC = ({ children }) => (
     <div
         className="flex h-screen overflow-hidden bg-white"
         style={{ height: 'max-content' }}
