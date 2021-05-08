@@ -34,9 +34,9 @@ describe('/features', () => {
         expect(getByText('Upload Wiki Topics')).toBeInTheDocument()
         expect(getByText('Authenticated Account')).toBeInTheDocument()
         expect(getByText('Quick Update')).toBeInTheDocument()
-        expect(getByText('Safe browsing')).toBeInTheDocument()
+        expect(getByText('Safe Browsing')).toBeInTheDocument()
         expect(getByText('Customized Setting')).toBeInTheDocument()
-        expect(getByText('Interactive web')).toBeInTheDocument()
+        expect(getByText('Interactive Web')).toBeInTheDocument()
     })
 
     it('should render a advertisement', () => {
