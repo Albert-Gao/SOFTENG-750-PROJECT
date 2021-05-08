@@ -32,7 +32,7 @@ const Features: React.FC = () => (
 
                     <FeatureSlot
                         iconType="shield"
-                        title="Safe browsing"
+                        title="Safe Browsing"
                         description="You can choose not to show your favourites or liked news."
                     />
 
