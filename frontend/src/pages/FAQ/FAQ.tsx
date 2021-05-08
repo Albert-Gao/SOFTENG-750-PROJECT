@@ -21,11 +21,11 @@ const FAQ: React.FC = () => {
                         />
                         <Question
                             question="How can I chage my personal information?"
-                            answer="Just click profile on the top left corner, youcan change your nickname."
+                            answer="Just click profile on the top left corner, you can change your nickname."
                         />
                         <Question
                             question="Can I save the topics that I am interested in?"
-                            answer="Absolutely! You can click favouriate button of the topic and chick it out in &#039;Favouriates&#039;."
+                            answer="Absolutely! You can click favourite button of the topic and chick it out in &#039;Favourites&#039;."
                         />
                         <Question
                             question="What can I do if I want to join the discussion?"
