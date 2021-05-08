@@ -11,7 +11,7 @@ const Container: React.FC<{ isAuth: boolean }> = ({ isAuth, children }) => (
     </main>
 )
 
-const SettingsPageContainer: React.FC = ({ children }) => (
+export const SettingsPageContainer: React.FC = ({ children }) => (
     <main className="relative -mt-32">
         <div className="max-w-screen-xl px-4 pb-6 mx-auto sm:px-6 lg:pb-16 lg:px-8">
             <div className="overflow-hidden bg-white rounded-lg shadow">
