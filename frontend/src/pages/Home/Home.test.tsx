@@ -25,8 +25,6 @@ const MOCK_NEWS_RESPONSE = {
                     },
                     favourites: [],
                     email: 'camus@camus.com',
-                    password:
-                        '$2a$10$GSXb.2HbD3I07xNBrvD7Z.ABFxxqn6X92TlEPjyshxWWohovmhz76',
                     nickName: 'Camus',
                     avatar: 'A31boy',
                     createdAt: '2021-04-15T02:11:48.285Z',
