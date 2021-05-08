@@ -15,7 +15,7 @@ jobs:
         node-version: '14.x'
     - uses: bahmutov/npm-install@v1
       with:
-        working-directory: frontend
+        working-directory: ./frontend
     - name: Tests
       working-directory: ./frontend
       run: npm run test
@@ -24,4 +24,4 @@ jobs:
       run: npm run build
     - name: Build Storybook
       working-directory: ./frontend
-      run: npm run build-storybook
+      run: npm run build-storybook -- --loglevel warn
