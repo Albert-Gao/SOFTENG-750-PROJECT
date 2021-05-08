@@ -26,8 +26,6 @@ const MOCK_SUBMISSIONS_RESPONSE = {
                     '6077a0a0c36ee06aa53db3a7',
                 ],
                 email: 'albertgaohy@gmail.com',
-                password:
-                    '$2a$10$nZS/SEX.Vq7NR1L1zk50pO.x0l6n/fEbOgAHPoLGm.S/7AiGV6MEO',
                 nickName: 'albertgaohy',
                 avatar: 'A03pirates',
                 createdAt: '2021-04-15T02:07:37.711Z',
@@ -71,6 +69,7 @@ describe('<ProfileNewsSubmissionList />', () => {
         )
 
         await waitFor(() => {
+
             expect(getCurrentUserSubmittedNewsAPIMock).toHaveBeenCalledTimes(1)
         })
     })
@@ -80,7 +79,7 @@ describe('<ProfileNewsSubmissionList />', () => {
             getCurrentUserSubmittedNewsAPI,
             'query',
         )
-
+        //@ts-expect-error 
         getCurrentUserSubmittedNewsAPIMock.mockResolvedValue(MOCK_SUBMISSIONS_RESPONSE)
 
         const { getByText } = render(
