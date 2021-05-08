@@ -9,27 +9,31 @@ const ProfileComments: React.FC = () => {
         status,
         refetch,
         data,
+        error,
     } = useQuery(getCurrentUserCommentsAPI.queryKey, () =>
         getCurrentUserCommentsAPI.query({ skipped: 0 }),
     )
 
     return (
         <ul className="flex flex-col px-8 overflow-y-auto lg:col-span-6">
-            <LoadQuery status={status} data={data} refetch={refetch}>
-                {(data) => (
-                    <>
-                        {data?.data.map((commentInfo) => (
-                            <CommentItem
-                                key={commentInfo._id}
-                                css="my-12"
-                                text={commentInfo.text}
-                                authorName={commentInfo.author.nickName}
-                                avatar={commentInfo.author.avatar}
-                                createdAt={commentInfo.createdAt}
-                            />
-                        ))}
-                    </>
-                )}
+            <LoadQuery
+                status={status}
+                data={data}
+                refetch={refetch}
+                error={error}
+            >
+                {(data) =>
+                    data?.data.map((commentInfo) => (
+                        <CommentItem
+                            key={commentInfo._id}
+                            css="my-12"
+                            text={commentInfo.text}
+                            authorName={commentInfo.author.nickName}
+                            avatar={commentInfo.author.avatar}
+                            createdAt={commentInfo.createdAt}
+                        />
+                    ))
+                }
             </LoadQuery>
         </ul>
     )

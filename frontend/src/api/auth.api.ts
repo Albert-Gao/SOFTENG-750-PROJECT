@@ -11,7 +11,7 @@ interface Params {
 interface Response {
     accessToken: string
     authentication: {
-        strategy: 'local'
+        strategy: string
     }
     user: User
 }

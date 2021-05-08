@@ -40,7 +40,7 @@ const Register: React.FC = () => {
         email: string
         password: string
     }>()
-    const mutation = useMutation(registerAPI.query)
+    const mutation = useMutation(registerAPI?.query)
     const history = useHistory()
     const [, setUserAtom] = useAtom(userAtom)
 
@@ -112,6 +112,7 @@ const Register: React.FC = () => {
                                     <div className="mt-1">
                                         <input
                                             id="email"
+                                            data-testid="email-address"
                                             name="email"
                                             type="email"
                                             autoComplete="email"
@@ -137,6 +138,7 @@ const Register: React.FC = () => {
                                     <div className="mt-1">
                                         <input
                                             id="password"
+                                            data-testid="password"
                                             name="password"
                                             type="password"
                                             ref={register({ required: true })}
@@ -153,6 +155,7 @@ const Register: React.FC = () => {
 
                                 <div>
                                     <button
+                                        data-testid="submit"
                                         disabled={formState.isSubmitting}
                                         type="submit"
                                         className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm disabled:opacity-50 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"

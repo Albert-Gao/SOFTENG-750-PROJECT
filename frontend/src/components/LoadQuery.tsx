@@ -1,4 +1,6 @@
 import { QueryObserverResult, RefetchOptions, useQuery } from 'react-query'
+import { Link } from 'react-router-dom'
+import { PATHS } from '../routes/routes.constants'
 import { Spinner } from './Spinner'
 
 const ReloadButton: React.FC<{ onClick: () => void }> = ({ onClick }) => (
@@ -22,14 +24,38 @@ export function LoadQuery<ResponseDataType>({
     refetch,
     data,
     children,
+    error,
 }: {
+    error: any
     status: ReturnType<typeof useQuery>['status']
     refetch: (
         options?: RefetchOptions,
     ) => Promise<QueryObserverResult<ResponseDataType, any>>
     data: ResponseDataType
-    children: (data: ResponseDataType) => JSX.Element | null
+    children: (
+        data: ResponseDataType,
+    ) => JSX.Element | JSX.Element[] | null | undefined
 }): JSX.Element | null {
+    if (
+        status === 'error' &&
+        error?.response?.data?.code === 401 &&
+        error?.response?.data?.name === 'NotAuthenticated'
+    ) {
+        return (
+            <Box>
+                <span className="w-full mb-2 text-lg font-bold text-center">
+                    This page is for authenticated user only, please login first
+                </span>
+                <Link
+                    className="flex items-center justify-center w-full max-w-sm px-4 py-3 text-base font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-700 md:py-2 md:text-lg md:px-3"
+                    to={PATHS.LOGIN}
+                >
+                    Login
+                </Link>
+            </Box>
+        )
+    }
+
     if (status === 'loading') {
         return (
             <Box>
@@ -39,6 +65,7 @@ export function LoadQuery<ResponseDataType>({
     }
 
     if (status === 'error') {
+        console.log('d', data)
         return (
             <Box>
                 <span className="w-full text-sm text-center">
@@ -50,7 +77,7 @@ export function LoadQuery<ResponseDataType>({
     }
 
     if (status === 'success' && data) {
-        return children(data)
+        return <>{children(data)}</>
     }
 
     return null

@@ -9,7 +9,7 @@ export const SubmitNewsModalHeader: React.FC<{ closeModal: () => void }> = ({
                 className="text-lg font-medium text-white"
                 id="slide-over-title"
             >
-                Submit Wikipedia Link
+                Post WikipediaChat
             </h2>
             <div className="flex items-center ml-3 h-7">
                 <SubmitNewsModalCloseModalButton closeModal={closeModal} />
@@ -17,8 +17,8 @@ export const SubmitNewsModalHeader: React.FC<{ closeModal: () => void }> = ({
         </div>
         <div className="mt-1">
             <p className="text-sm text-indigo-300">
-                Share the link of your favourite Wikipedia page with your
-                opinions here with other fans!
+                Share your favourite Wikipedia page with your opinions here with
+                other fans!
             </p>
         </div>
     </div>
