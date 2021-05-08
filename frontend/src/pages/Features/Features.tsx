@@ -25,7 +25,7 @@ const Features: React.FC = () => (
 
                     <FeatureSlot
                         iconType="refresh"
-                        title="Real-time Update"
+                        title="Quick Update"
                         description="WikiChat provides users with the latest
                             and hottest news."
                     />
@@ -33,8 +33,7 @@ const Features: React.FC = () => (
                     <FeatureSlot
                         iconType="shield"
                         title="Safe browsing"
-                        description="Browsing and publishing are protected by
-                            the system security."
+                        description="You can chose not to show your favourites or liked news."
                     />
 
                     <FeatureSlot
@@ -46,9 +45,8 @@ const Features: React.FC = () => (
 
                     <FeatureSlot
                         iconType="shelf"
-                        title="Database Backups"
-                        description="We have strong database support,
-                            users can browse at ease."
+                        title="Interactive web"
+                        description="Chat with each other via likes and comments, fall in love with the online chatting again."
                     />
                 </div>
             </div>
