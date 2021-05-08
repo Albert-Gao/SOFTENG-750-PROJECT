@@ -20,7 +20,7 @@ const Profile: React.FC = () => {
             nickName,
         },
     })
-    console.log(formInfo.errors)
+
     return (
         <>
             <form
