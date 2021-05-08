@@ -11,7 +11,7 @@ export const NewsList: React.FC = () => {
     const pageQueryInfo = {
         skipped,
     }
-    const { data, refetch, status } = useQuery(
+    const { data, refetch, status, error } = useQuery(
         [getNewsAPI.queryKey, pageQueryInfo],
         () => getNewsAPI.query(pageQueryInfo),
         {
@@ -41,7 +41,7 @@ export const NewsList: React.FC = () => {
     }, [shouldRefetch, refetch, setNewsAtom])
 
     return (
-        <LoadQuery refetch={refetch} status={status} data={data}>
+        <LoadQuery refetch={refetch} status={status} data={data} error={error}>
             {(data) => (
                 <ul className="flex flex-col items-center space-y-4">
                     {data?.data.map(
