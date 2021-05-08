@@ -54,7 +54,7 @@ const Login: React.FC = () => {
                         try {
                             const response = await mutation.mutateAsync(data)
 
-                            if (response.accessToken) {
+                            if (response?.accessToken) {
                                 if (response.user) {
                                     const user = response.user
                                     Auth.saveUserInfo(user)
@@ -87,7 +87,7 @@ const Login: React.FC = () => {
                                 )
                             }
                         } catch (e) {
-                            console.table('e', e)
+                            console.log('e', e)
                             alert((e as AxiosError).response?.data?.message)
                         }
                     })}
@@ -100,6 +100,7 @@ const Login: React.FC = () => {
                             </label>
                             <input
                                 id="email-address"
+                                data-testid="email-address"
                                 name="email"
                                 type="email"
                                 autoComplete="email"
@@ -120,6 +121,7 @@ const Login: React.FC = () => {
                             </label>
                             <input
                                 id="password"
+                                data-testid="password"
                                 name="password"
                                 type="password"
                                 autoComplete="current-password"
@@ -161,6 +163,7 @@ const Login: React.FC = () => {
 
                     <div>
                         <button
+                            data-testid="submit"
                             disabled={formState.isSubmitting}
                             type="submit"
                             className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md disabled:opacity-50 group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
