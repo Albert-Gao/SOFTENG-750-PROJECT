@@ -94,7 +94,7 @@ const ProfilePrivacy: React.FC = () => {
                             register={register}
                             name="shouldShowSubmittedNews"
                             title="Display Submitted News"
-                            description="Show your submitted news on your public profile page."
+                            description="Show your favourite list on your public profile page."
                             isEnabled={shouldShowSubmittedNewsWatched}
                             onClick={() => {
                                 setValue(
