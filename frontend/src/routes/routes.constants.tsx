@@ -24,7 +24,7 @@ export const PAGE_TITLE_MAP = [
     { path: PATHS.HOME, TITLE: 'Home' },
     { path: PATHS.FEATURES, TITLE: 'Features', isBeforeAuth: true },
     { path: PATHS.ABOUT, TITLE: 'About', isBeforeAuth: true },
-    { path: PATHS.FAQ, TITLE: 'FAQ' },
+    { path: PATHS.FAQ, TITLE: 'FAQ', isBeforeAuth: true },
 
     // for profile
     { path: PATHS.PROFILE, TITLE: 'Profile', isProfileMenu: true },
