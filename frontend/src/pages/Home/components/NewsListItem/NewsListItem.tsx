@@ -43,7 +43,11 @@ export const NewsListItem: React.FC<{
     const [currentUser] = useAtom(userAtom)
 
     return (
-        <article aria-labelledby="question-title-81614" className="w-full">
+        <article
+            aria-labelledby="question-title"
+            className="w-full"
+            data-testid="wiki-news-list-item"
+        >
             <div>
                 <div className="flex space-x-3">
                     <AuthorAvatar avatarSrc={authorAvatar} userId={authorId} />
