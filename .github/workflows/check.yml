@@ -23,8 +23,11 @@ jobs:
           ${{ runner.OS }}-node-
           ${{ runner.OS }}-
     - name: Install dependencies
-      run: npm ci
+      working-directory: ./frontend
+      run: npm ci --silent
     - name: Tests
+      working-directory: ./frontend
       run: npm run test
     - name: Build
+      working-directory: ./frontend
       run: npm run build
