@@ -1,10 +1,10 @@
-import ProfileComments from './ProfileComments'
+import ProfileNewsSubmissionList from './ProfileNewsSubmissionList'
 import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { TestWrapper } from '../../utils/testUtils'
-import { getCurrentUserCommentsAPI } from '../../api/comments.api'
+import { getCurrentUserSubmittedNewsAPI } from '../../api/news.api'
 
-const MOCK_COMMENTS_RESPONSE = {
+const MOCK_SUBMISSIONS_RESPONSE = {
     total: 1,
     limit: 50,
     skip: 0,
@@ -32,63 +32,68 @@ const MOCK_COMMENTS_RESPONSE = {
                 updatedAt: '2021-04-15T03:14:00.802Z',
                 __v: 0,
             },
-            news: '6077a124c36ee06aa53db3ac',
-            text: 'I love it!',
-            createdAt: '2021-04-15T02:29:37.715Z',
-            updatedAt: '2021-04-15T02:29:37.715Z',
-            __v: 0,
+            title:"Wikipedia, l'enciclopedia libera",
+            description:" Sfoglia l'indice   Consulta il sommario    Naviga tra i portali tematici\n",
+            authorWords:"xxx",
+            votingRecords:[],
+            commentsCount:0,
+            wikipediaUrl:"https://it.wikipedia.org/wiki/Pagina_principale",
+            createdAt:"2021-05-08T08:21:22.264Z",
+            updatedAt:"2021-05-08T08:21:22.264Z",
+            __v:0
         },
     ],
 }
 
-describe('<ProfileComments />', () => {
+describe('<ProfileNewsSubmissionList />', () => {
     it('should render the loading icon', () => {
         const { getByTestId } = render(
             <TestWrapper>
-                <ProfileComments />
+                <ProfileNewsSubmissionList />
             </TestWrapper>,
         )
 
         expect(getByTestId('spinner')).toBeInTheDocument()
     })
 
-    it('should fetch the comments list', async () => {
+    it('should fetch the submission list', async () => {
         render(
             <TestWrapper>
-                <ProfileComments />
+                <ProfileNewsSubmissionList />
             </TestWrapper>,
         )
 
-        const getCurrentUserCommentsAPIMock = jest.spyOn(
-            getCurrentUserCommentsAPI,
+        const getCurrentUserSubmittedNewsAPIMock = jest.spyOn(
+            getCurrentUserSubmittedNewsAPI,
             'query',
         )
 
         await waitFor(() => {
-            expect(getCurrentUserCommentsAPIMock).toHaveBeenCalledTimes(1)
+
+            expect(getCurrentUserSubmittedNewsAPIMock).toHaveBeenCalledTimes(1)
         })
     })
 
-    it('should render the comments list from the network response', async () => {
-        const getCurrentUserCommentsAPIMock = jest.spyOn(
-            getCurrentUserCommentsAPI,
+    it('should render the submission list from the network response', async () => {
+        const getCurrentUserSubmittedNewsAPIMock = jest.spyOn(
+            getCurrentUserSubmittedNewsAPI,
             'query',
         )
-        //@ts-expect-error     
-        getCurrentUserCommentsAPIMock.mockResolvedValue(MOCK_COMMENTS_RESPONSE)
+        //@ts-expect-error 
+        getCurrentUserSubmittedNewsAPIMock.mockResolvedValue(MOCK_SUBMISSIONS_RESPONSE)
 
         const { getByText } = render(
             <TestWrapper>
-                <ProfileComments />
+                <ProfileNewsSubmissionList />
             </TestWrapper>,
         )
 
         await waitFor(() => {
             expect(
-                getByText(MOCK_COMMENTS_RESPONSE.data[0].author.nickName),
+                getByText(MOCK_SUBMISSIONS_RESPONSE.data[0].author.nickName),
             ).toBeInTheDocument()
             expect(
-                getByText(MOCK_COMMENTS_RESPONSE.data[0].text),
+                getByText(MOCK_SUBMISSIONS_RESPONSE.data[0].title),
             ).toBeInTheDocument()
         })
     })
