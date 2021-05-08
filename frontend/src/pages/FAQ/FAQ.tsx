@@ -25,7 +25,7 @@ const FAQ: React.FC = () => {
                         />
                         <Question
                             question="Can I save the topics that I am interested in?"
-                            answer="Absolutely! You can click favourite button of the topic and chick it out in &#039;Favourites&#039;."
+                            answer="Absolutely! You can click favourite button of the topic and check it out in &#039;Favourites&#039;."
                         />
                         <Question
                             question="What can I do if I want to join the discussion?"
