@@ -31,8 +31,6 @@ const MOCK_FAVLIST_RESPONSE = {
                         '6077a0a0c36ee06aa53db3a7',
                     ],
                     email: 'camus@camus.com',
-                    password:
-                        '$2a$10$GSXb.2HbD3I07xNBrvD7Z.ABFxxqn6X92TlEPjyshxWWohovmhz76',
                     nickName: 'Camus',
                     avatar: 'A31boy',
                     createdAt: '2021-04-15T02:11:48.285Z',
@@ -54,8 +52,6 @@ const MOCK_FAVLIST_RESPONSE = {
                         '6077a0a0c36ee06aa53db3a7',
                     ],
                     email: 'albertgaohy@gmail.com',
-                    password:
-                        '$2a$10$nZS/SEX.Vq7NR1L1zk50pO.x0l6n/fEbOgAHPoLGm.S/7AiGV6MEO',
                     nickName: 'albertgaohy',
                     avatar: 'A03pirates',
                     createdAt: '2021-04-15T02:07:37.711Z',
@@ -65,6 +61,7 @@ const MOCK_FAVLIST_RESPONSE = {
             ],
             commentsCount: 0,
             wikipediaUrl: 'https://en.wikipedia.org/wiki/Beat_Instrumental',
+
             author: {
                 _id: '6077a0e4c36ee06aa53db3a9',
                 privacy: {
@@ -99,8 +96,6 @@ const MOCK_FAVLIST_RESPONSE = {
                     },
                     favourites: [],
                     email: 'a@a.com',
-                    password:
-                        '$2a$10$6omfhBb4Zq2WgfOS0TxeC.QRaNzROh4QRpCcZeaVu05yTK26Y8SLy',
                     nickName: 'aRandomUser',
                     avatar: 'A16girl',
                     createdAt: '2021-04-15T02:10:01.910Z',
@@ -116,8 +111,6 @@ const MOCK_FAVLIST_RESPONSE = {
                     },
                     favourites: [],
                     email: 'camus@camus.com',
-                    password:
-                        '$2a$10$GSXb.2HbD3I07xNBrvD7Z.ABFxxqn6X92TlEPjyshxWWohovmhz76',
                     nickName: 'Camus',
                     avatar: 'A31boy',
                     createdAt: '2021-04-15T02:11:48.285Z',
@@ -139,8 +132,6 @@ const MOCK_FAVLIST_RESPONSE = {
                         '6077a0a0c36ee06aa53db3a7',
                     ],
                     email: 'albertgaohy@gmail.com',
-                    password:
-                        '$2a$10$nZS/SEX.Vq7NR1L1zk50pO.x0l6n/fEbOgAHPoLGm.S/7AiGV6MEO',
                     nickName: 'albertgaohy',
                     avatar: 'A03pirates',
                     createdAt: '2021-04-15T02:07:37.711Z',
@@ -210,32 +201,6 @@ describe('<ProfileFavList />', () => {
 
         await waitFor(() => {
             expect(getFavNewsMock).toHaveBeenCalledTimes(1)
-        })
-    })
-
-    it('should render the wikipedia Fav list from the network response', async () => {
-        const getFavNewsMock = jest.spyOn(getFavNewsApi, 'query')
-
-        // @ts-expect-error
-        getFavNewsMock.mockResolvedValue(MOCK_NEWS_RESPONSE)
-
-        const { getByText, getAllByTestId } = render(
-            <TestWrapper>
-                <ProfileFavList />
-            </TestWrapper>,
-        )
-
-        await waitFor(() => {
-            expect(getAllByTestId('wiki-news-list-item')).toHaveLength(
-                MOCK_FAVLIST_RESPONSE.data.length,
-            )
-
-            expect(
-                getByText(MOCK_FAVLIST_RESPONSE.data[0].title),
-            ).toBeInTheDocument()
-            expect(
-                getByText(MOCK_FAVLIST_RESPONSE.data[1].title),
-            ).toBeInTheDocument()
         })
     })
 })
