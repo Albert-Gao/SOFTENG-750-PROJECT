@@ -36,8 +36,9 @@ const Detail: React.FC = () => {
     const { id } = useParams<{ id: string }>()
     const [currentUser] = useAtom(userAtom)
     const history = useHistory()
-    const { data, refetch, status } = useQuery(getSingleNewsAPI.queryKey, () =>
-        getSingleNewsAPI.query({ id }),
+    const { data, refetch, status, error } = useQuery(
+        getSingleNewsAPI.queryKey,
+        () => getSingleNewsAPI.query({ id }),
     )
     const {
         toggleUpdateComments,
@@ -58,7 +59,7 @@ const Detail: React.FC = () => {
     }, [refetch, shouldUpdateCommentsList, toggleUpdateComments])
 
     return (
-        <LoadQuery status={status} refetch={refetch} data={data}>
+        <LoadQuery status={status} refetch={refetch} data={data} error={error}>
             {(data) => {
                 if (!data) return null
 
