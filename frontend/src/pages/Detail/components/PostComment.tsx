@@ -5,6 +5,7 @@ import { useToasts } from 'react-toast-notifications'
 import { createCommentAPI } from '../../../api/comments.api'
 import { userAtom } from '../../../state'
 import { commentsAtom } from '../../../state/commentsAtom'
+import { Auth } from '../../../utils/Auth'
 import { useCurrentUserAvatar } from '../../../utils/hooks/useCurrentUserAvatar'
 
 const CurrentuserAvatar: React.FC = () => {
@@ -72,12 +73,21 @@ export const PostComment: React.FC<{ newsId: string }> = ({ newsId }) => {
                     <form
                         onSubmit={async (e) => {
                             e.preventDefault()
+
+                            if (!Auth.isAuth()) {
+                                addToast('Please login first', {
+                                    appearance: 'error',
+                                })
+                                return
+                            }
+
                             if (!text) {
                                 addToast(
                                     'Please type your comment before submitting',
                                     { appearance: 'error' },
                                 )
                             }
+
                             try {
                                 await mutation.mutateAsync({
                                     authorId: user._id || '',

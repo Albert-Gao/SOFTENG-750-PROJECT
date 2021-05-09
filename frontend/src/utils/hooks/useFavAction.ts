@@ -4,6 +4,7 @@ import { useMutation } from 'react-query'
 import { useToasts } from 'react-toast-notifications'
 import { newsToFavApi } from '../../api/users.api'
 import { userAtom } from '../../state'
+import { Auth } from '../Auth'
 import { FavUtil } from '../FavUtil'
 
 export const useFavAction = (newsId: string) => {
@@ -11,11 +12,19 @@ export const useFavAction = (newsId: string) => {
     const [{ favourites = [] }, setUserAtom] = useAtom(userAtom)
     const hasAddedToFav = FavUtil.hasAddedToFav(favourites, newsId)
     const { mutateAsync, status } = useMutation(() =>
-        newsToFavApi.query({ newsId: newsId, isAdded: hasAddedToFav }),
+        newsToFavApi.query({
+            newsId: newsId,
+            isAdded: hasAddedToFav,
+        }),
     )
 
     const addOrRemoveFav = useCallback(async () => {
         try {
+            if (!Auth.isAuth()) {
+                addToast('Please login first', { appearance: 'error' })
+                return
+            }
+
             await mutateAsync()
             setUserAtom((prev) => ({
                 ...prev,
