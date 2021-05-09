@@ -1,8 +1,7 @@
 import ProfilePrivacy from './ProfilePrivacy'
-import { render, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { TestWrapper } from '../../utils/testUtils'
-import { getSingleNewsAPI } from '../../api/news.api'
 
 describe('/ProfilePrivacy', () => {
     it('should render the title', () => {
