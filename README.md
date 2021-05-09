@@ -52,13 +52,16 @@ A project that aims to add a social flavor over Wikipedia.
 All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 
 - Project deployment for `dev` update: https://wiki-chat.netlify.app/
+  - this one is also populated with data for you get a good overview of the project
+  - demo user name: goodboy@goodboy.com
+  - demo password: 123
 - Storybook deployment for `dev` update: https://wiki-chat-storybook.netlify.app/
 
 ## 3. How to run the project
 
 ### Start the backend first
 
-0. start local mangodb
+0. start local mongodb
 1. from the project root
 1. `cd backend`
 1. `npm ci`
@@ -107,16 +110,16 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
     - Layout design: Yuxin
 - #### Week 2:
   - **Meetings (2):**
-    - ##### Meeting 06:30pm - 07:30pm 14/03/2021 <br>
-      The main contents of our meeting included:<br>
-      - Discuss about our research result and collect our brainstorming ideas<br>
-      - Vote for Top 3 project topics<br>
-      - Decide to implement Wikipedia forum<br>
-      - Start working on proposal and split tasks<br>
-        - Yuxin - Introduction & related work<br>
-        - Evan - Requirements<br>
-        - Albert - Technologies<br>
-        - Henry - Project management<br>
+    - ##### Meeting 06:30pm - 07:30pm 14/03/2021
+      The main contents of our meeting included:
+      - Discuss about our research result and collect our brainstorming ideas
+      - Vote for Top 3 project topics
+      - Decide to implement Wikipedia forum
+      - Start working on proposal and split tasks
+        - Yuxin - Introduction & related work
+        - Evan - Requirements
+        - Albert - Technologies
+        - Henry - Project management
   - **Tasks breaking down:**
     - architecture design: Albert, Yuxin
     - tech stack decision: Albert, Yuxin
@@ -124,15 +127,15 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
     - topic decision: Yuxin
 - #### Week 3:
   - **Meetings (3):**
-    - ##### Meeting 07:00pm - 08:30pm 17/03/2021 <br>
-      The main contents of our meeting included:<br>
-      - Set up project, add ESLint & Prettier plugin<br>
-      - Use React for components and TailwindCSS to manage layout<br>
-      - Make standards for Github repositroy<br>
-        - Commit & pull request formats([Commit format](https://www.conventionalcommits.org/en/v1.0.0/#summary))<br>
-        - Setup Vercel to auto delpoyment<br>
-        - Pull new branches to dev branch instead of master<br>
-      - Get to know the new technologies<br>
+    - ##### Meeting 07:00pm - 08:30pm 17/03/2021
+      The main contents of our meeting included:
+      - Set up project, add ESLint & Prettier plugin
+      - Use React for components and TailwindCSS to manage layout
+      - Make standards for Github repositroy
+        - Commit & pull request formats([Commit format](https://www.conventionalcommits.org/en/v1.0.0/#summary))
+        - Setup Vercel to auto deployment
+        - Pull new branches to dev branch instead of master
+      - Get to know the new technologies
   - **Tasks breaking down:**
     - frontend app folder structure: Albert
     - react router integration: Albert
@@ -141,12 +144,12 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
     - documentation setup: Yuxin
 - #### Week 4:
   - **Meetings (4):**
-    - ##### Meeting 07:00pm - 07:30pm 27/03/2021 <br>
-      The main contents of our meeting included:<br>
-      - Organize proposal and submit<br>
-      - Update the process of project, starting the implementation<br>
-      - UI design and functionalities design<br>
-      - Work on the tasks breaking down<br>
+    - ##### Meeting 07:00pm - 07:30pm 27/03/2021
+      The main contents of our meeting included:
+      - Organize proposal and submit
+      - Update the process of project, starting the implementation
+      - UI design and functionalities design
+      - Work on the tasks breaking down
   - **Tasks breaking down:**
     - authentication api: Albert
     - user api: Albert
@@ -156,11 +159,11 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 
 - #### Week 1:
   - **Meetings (1):**
-    - ##### Meeting 07:00pm - 07:30pm 02/04/2021 <br>
-      The main contents of our meeting included:<br>
-      - Discuss about the test library([Test Library](https://testing-library.com/docs/))<br>
-      - Get to know the test library and set up for our project<br>
-      - Talk about home page between authentication / authentication<br>
+    - ##### Meeting 07:00pm - 07:30pm 02/04/2021
+      The main contents of our meeting included:
+      - Discuss about the test library([Test Library](https://testing-library.com/docs/))
+      - Get to know the test library and set up for our project
+      - Talk about home page between authentication / authentication
   - **Tasks breaking down:**
     - page rendering: Albert
     - like/unlike user: Albert
@@ -171,21 +174,21 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
     - add information: Yuxin
 - #### Week 2:
   - **Meetings (2):**
-    - ##### Meeting 07:00pm - 07:15pm 08/04/2021 <br>
-      The main contents of our meeting included:<br>
-      - Add storybook to help UI and component implementation<br>
-      - Update everyone's process<br>
-      - Talk about the features on the detail page<br>
+    - ##### Meeting 07:00pm - 07:15pm 08/04/2021
+      The main contents of our meeting included:
+      - Add storybook to help UI and component implementation
+      - Update everyone's process
+      - Talk about the features on the detail page
   - **Tasks breaking down:**
     - page rendering: Albert
     - comments: Albert
     - storybook implementation: Yuxin, Evan
 - #### Week 3:
   - **Meetings (3):**
-    - ##### Meeting 07:00pm - 08:30pm 15/04/2021 <br>
-      The main contents of our meeting included:<br>
-      - Talk about A2<br>
-      - Update everyone's process<br>
+    - ##### Meeting 07:00pm - 08:30pm 15/04/2021
+      The main contents of our meeting included:
+      - Talk about A2
+      - Update everyone's process
       - Talk about the personal portal - settings part
   - **Tasks breaking down:**
     - page rendering: Albert
@@ -195,11 +198,11 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
     - tidy up docs: Yuxin
 - #### Week 4:
   - **Meetings (4):**
-    - ##### Meeting 07:00pm - 08:00pm 25/04/2021 <br>
-      The main contents of our meeting included:<br>
-      - Finish the basic functionalities<br>
-      - Fix detail information and documentations<br>
-      - Start working on test design<br>
+    - ##### Meeting 07:00pm - 08:00pm 25/04/2021
+      The main contents of our meeting included:
+      - Finish the basic functionalities
+      - Fix detail information and documentations
+      - Start working on test design
       - Talk about the personal portal - history timeline part
   - **Tasks breaking down:**
     - favourites sections: Albert
@@ -211,9 +214,9 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 
 - #### Week 1:
   - **Meetings (1):**
-    - ##### Meeting 06:00pm - 07:00pm 02/05/2021 <br>
-      The main contents of our meeting included:<br>
-      - Update dependencies<br>
+    - ##### Meeting 06:00pm - 07:00pm 02/05/2021
+      The main contents of our meeting included:
+      - Update dependencies
       - Talk about the problems of storybook
       - Bugs fixing and testing strategy
   - **Tasks breaking down:**
@@ -225,32 +228,32 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 
   - **Meetings (2):**
 
-    - ##### Meeting 07:00pm - 07:50pm 05/05/2021 <br>
-      The main contents of our meeting included:<br>
-      - Add component tests & e2e test structure to the repository<br>
-      - Split the task of tests<br>
-      - Fix the existing Problems<br>
+    - ##### Meeting 07:00pm - 07:50pm 05/05/2021
+      The main contents of our meeting included:
+      - Add component tests & e2e test structure to the repository
+      - Split the task of tests
+      - Fix the existing Problems
     - **Tasks breaking down:**
 
       - component test: Yuxin
       - Storybook: Yuxin, Evan
 
-    - ##### Meeting 07:00pm - 09:00pm 08/05/2021 <br>
-      The main contents of our meeting included:<br>
-      - Update component tasks<br>
-      - Add component to storybook<br>
-      - Fix auto deployment tool<br>
+    - ##### Meeting 07:00pm - 09:00pm 08/05/2021
+      The main contents of our meeting included:
+      - Update component tasks
+      - Add component to storybook
+      - Fix auto deployment tool
     - **Tasks breaking down:**
 
       - fix bugs: Yuxin
       - test check: Yuxin
 
-    - ##### Meeting 11:00am - 2:00 pm 09/05/2021 <br>
-      The main contents of our meeting included:<br>
-      - Fix existing bugs<br>
-      - Finish all the issues and pr<br>
-      - Tidy up repository and documentations<br>
-      - Merge branch dev to master<br>
+    - ##### Meeting 11:00am - 2:00 pm 09/05/2021
+      The main contents of our meeting included:
+      - Fix existing bugs
+      - Finish all the issues and pr
+      - Tidy up repository and documentations
+      - Merge branch dev to master
 
 ## 6. Contributions
 
