@@ -14,24 +14,11 @@ jobs:
       - name: Set Node.js 14.x
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "14.x"
 
-      - name: Get Cache
-        uses: actions/cache@v2
-        id: yarn-build-cache
+      - uses: bahmutov/npm-install@v1
         with:
-          path: |
-            ~/.npm
-            ~/.cache/Cypress
-            build
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install dependencies
-        working-directory: ./frontend
-        run: |
-          npm ci --silent
+          working-directory: ./frontend
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
