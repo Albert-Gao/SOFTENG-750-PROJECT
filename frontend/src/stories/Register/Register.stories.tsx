@@ -1,8 +1,8 @@
-import Register from '../pages/Register/Register'
-import { getStoryTemplate, Meta } from './utils'
+import Register from '../../pages/Register/Register'
+import { getStoryTemplate, Meta } from '../utils'
 
 export default {
-    title: 'Pages/Register',
+    title: 'Pages/Register/Register',
     component: Register,
 } as Meta
 
