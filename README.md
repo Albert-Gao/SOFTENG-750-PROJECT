@@ -93,27 +93,55 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 ### March
 
 - #### Week 1:
-  - **Meetings:**
-    - [30min] about the product design
+  - **Meetings (1):**
+    - ### Meeting 07:00pm - 07:40pm 04/03/2021 <br>
+      The main contents of our meeting included:<br>
+      - Get to know each other<br>
+      - Browse the brief introduction of the project<br>
+      - Selecte the top three topics we are interested in<br>
+      - Research for inplement approaches<br>
+      - Prepare and selecte feasible solutions before the next meeting<br>
   - **Tasks breaking down:**
     - features design: Albert
 - #### Week 2:
-  - **Meetings:**
-    - [30min] about the overall architecture design
+  - **Meetings (1):**
+    - ### Meeting 06:30pm - 07:30pm 14/03/2021 <br>
+      The main contents of our meeting included:<br>
+      - Discuss about our research result and collect our bainstorming ideas<br>
+      - Vote for Top 3 project topics<br>
+      - Decide to implement Wikipedia forum<br>
+      - Start working on proposal and split tasks<br>
+        * Yuxin - Introduction & related work<br>
+        * Evan - Requirements<br>
+        * Albert - Technologies<br>
+        * Henry - Project management<br>
   - **Tasks breaking down:**
     - architecture design: Albert
     - tech stack decision: Albert
     - CI/CD setup: Albert
 - #### Week 3:
-  - **Meetings:**
-    - [30min] about the frontend app
+  - **Meetings (1):**
+    - ### Meeting 07:00pm - 08:30pm 17/03/2021 <br>
+      The main contents of our meeting included:<br>
+      - Set up project, add ESLint & Prettier plugin<br>
+      - Use React for components and TailwindCSS to manage layout<br>
+      - Make standards for Github repositroy<br>
+        * Commit & pull request formats([Commit format](https://www.conventionalcommits.org/en/v1.0.0/#summary))<br>
+        * Setup Vercel to auto delpoyment<br>
+        * Pull new branches to dev branch instead of master<br>
+      - Get to know the new technologies<br>
   - **Tasks breaking down:**
     - frontend app folder structure: Albert
     - react router integration: Albert
     - responsive App shell: Albert
 - #### Week 4:
-  - **Meetings:**
-    - [30min] about the backend app
+  - **Meetings (1):**
+    - ### Meeting 07:00pm - 07:30pm 27/03/2021 <br>
+      The main contents of our meeting included:<br>
+      - Organize proposal and submit<br>
+      - Update the process of project, starting the implementation<br>
+      - UI design and functionalities deisgn<br>
+      - Work on the tasks breaking down<br>
   - **Tasks breaking down:**
     - authentication api: Albert
     - user api: Albert
@@ -121,8 +149,12 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 ### April
 
 - #### Week 1:
-  - **Meetings:**
-    - [30min] about the home page between authentication / authentication
+  - **Meetings (1):**
+    - ### Meeting 07:00pm - 07:30pm 02/04/2021 <br>
+      The main contents of our meeting included:<br>
+      - Discuss about the test library([Test Library](https://testing-library.com/docs/))<br>
+      - Get to know the test library and set up for our project<br>
+      - Talk about home page between authentication / authentication<br>
   - **Tasks breaking down:**
     - page rendering: Albert
     - like/unlike user: Albert
@@ -130,21 +162,34 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
     - share news: Albert
     - go to wikipedia: Albert
 - #### Week 2:
-  - **Meetings:**
-    - [30min] about the features on the detail page
+  - **Meetings (1):**
+    - ### Meeting 07:00pm - 07:15pm 08/04/2021 <br>
+      The main contents of our meeting included:<br>
+      - Add storybook to help UI and component implementation<br>
+      - Update evryone's process<br>
+      - Talk about the features on the detail page<br>
   - **Tasks breaking down:**
     - page rendering: Albert
     - comments: Albert
 - #### Week 3:
-  - **Meetings:**
-    - [30min] about the personal portal - settings part
+  - **Meetings (1):**
+    - ### Meeting 07:00pm - 08:30pm 15/04/2021 <br>
+      The main contents of our meeting included:<br>
+      - Talk about A2<br>
+      - Update evryone's process<br> 
+      - Talk about the personal portal - settings part
   - **Tasks breaking down:**
     - page rendering: Albert
     - personal info section: Albert
     - privacy info section: Albert
 - #### Week 4:
-  - **Meetings:**
-    - [30min] about the personal portal - history timeline part
+  - **Meetings (1):**
+    - ### Meeting 07:00pm - 08:00pm 25/04/2021 <br>
+      The main contents of our meeting included:<br>
+      - Finish the basic functionalities<br>
+      - Fix detail information and documentations<br>
+      - Start working on test design<br>
+      - Talk about the personal portal - history timeline part
   - **Tasks breaking down:**
     - favourites sections: Albert
     - submitted news section: Albert
@@ -153,10 +198,37 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 ### May
 
 - #### Week 1:
-  - **Meetings:**
-    - [30min] bugs fixing and testing strategy
+  - **Meetings (1):**
+    - ### Meeting 06:00pm - 07:00pm 02/05/2021 <br>
+      The main contents of our meeting included:<br>
+      - Update dependencies<br>
+      - Talk about the problems of storybook
+      - Bugs fixing and testing strategy
   - **Tasks breaking down:**
     - component testing breaking down: Albert
     - e2e testing breaking down: Albert
     - storybook breaking down: Albert
     - bug fixing: Albert
+- #### Week 2:
+  - **Meetings (3):**
+    - ### Meeting 07:00pm - 07:50pm 05/05/2021 <br>
+      The main contents of our meeting included:<br>
+      - Add component tests & e2e test structure to the repository<br>
+      - Split the task of tests<br>
+      - Fix the existing Problems<br>
+    - **Tasks breaking down:**
+
+    - ### Meeting 07:00pm - 09:00pm 08/05/2021 <br>
+      The main contents of our meeting included:<br>
+      - Update component tasks<br>
+      - Add component to storybook<br>
+      - Fix auto deloyment tool<br>
+    - **Tasks breaking down:**
+
+    - ### Meeting 11:00am - 2:00 pm 09/05/2021 <br>
+      The main contents of our meeting included:<br>
+      - Fix existing bugs<br>
+      - Finish all the issues and pr<br>
+      - Tidy up repository and documentations<br>
+      - Merge branch dev to master<br>
+    - **Tasks breaking down:**
