@@ -58,6 +58,7 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 
 ### Start the backend first
 
+0. start local mangodb
 1. from the project root
 1. `cd backend`
 1. `npm ci`
