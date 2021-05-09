@@ -4,7 +4,7 @@ import { PAGE_TITLE_MAP, PATHS } from '../../../routes/routes.constants'
 import { useAtom } from 'jotai'
 import { newsAtom } from '../../../state'
 
-const SubmitButton: React.FC = () => {
+export const SubmitButton: React.FC = () => {
     const [, setNewsAtom] = useAtom(newsAtom)
 
     return (
