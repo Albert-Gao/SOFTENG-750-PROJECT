@@ -181,7 +181,8 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
       - Talk about the features on the detail page
   - **Tasks breaking down:**
     - page rendering: Albert
-    - comments: Albert
+    - news api: Albert
+    - comments api: Albert
     - storybook implementation: Yuxin, Evan
 - #### Week 3:
   - **Meetings (3):**
