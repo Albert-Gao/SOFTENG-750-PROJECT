@@ -1,6 +1,6 @@
 describe('WikiChat Home page before authentication', () => {
     before(() => {
-        cy.visit('https://softeng-750-project.vercel.app/')
+        cy.visit('/')
     })
 
     it('should render the nav bar!', () => {
