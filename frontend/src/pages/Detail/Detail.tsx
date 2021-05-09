@@ -86,6 +86,7 @@ const Detail: React.FC = () => {
                                 </div>
                             </div>
                             <InfoPanel
+                                authorId={data.author._id}
                                 refetch={refetch}
                                 isVoted={isVoted}
                                 newsId={data._id}
@@ -115,6 +116,7 @@ const Detail: React.FC = () => {
                         </div>
 
                         <InfoPanel
+                            authorId={data.author._id}
                             refetch={refetch}
                             isVoted={isVoted}
                             newsId={data._id}
