@@ -1,5 +1,5 @@
 import User from './User'
-import { render, waitFor } from '@testing-library/react'
+import { render } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { TestWrapper } from '../../utils/testUtils'
 
