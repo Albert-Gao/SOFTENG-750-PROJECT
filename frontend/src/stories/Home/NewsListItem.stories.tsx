@@ -2,7 +2,7 @@ import { getStoryTemplate, Meta } from '../utils'
 import { NewsListItem } from '../../pages/Home/components/NewsListItem/NewsListItem'
 
 export default {
-    title: 'Pages/Home',
+    title: 'Pages/Home/NewsListItem',
     component: NewsListItem,
 } as Meta<typeof NewsListItem>
 
