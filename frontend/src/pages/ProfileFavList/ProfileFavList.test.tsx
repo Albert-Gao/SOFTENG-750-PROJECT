@@ -1,10 +1,10 @@
-import Home from './Home'
+import ProfileFavList from './ProfileFavList'
 import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { TestWrapper } from '../../utils/testUtils'
-import { getNewsAPI } from '../../api/news.api'
+import { getFavNewsApi } from '../../api/news.api'
 
-const MOCK_NEWS_RESPONSE = {
+const MOCK_FAVLIST_RESPONSE = {
     total: 2,
     limit: 15,
     skip: 0,
@@ -23,7 +23,13 @@ const MOCK_NEWS_RESPONSE = {
                         shouldShowFavouritePage: true,
                         shouldShowSubmittedNews: true,
                     },
-                    favourites: [],
+                    favourites: [
+                        '6077a124c36ee06aa53db3ac',
+                        '6077a0ffc36ee06aa53db3ab',
+                        '6077a0f1c36ee06aa53db3aa',
+                        '6077a0c0c36ee06aa53db3a8',
+                        '6077a0a0c36ee06aa53db3a7',
+                    ],
                     email: 'camus@camus.com',
                     nickName: 'Camus',
                     avatar: 'A31boy',
@@ -46,8 +52,6 @@ const MOCK_NEWS_RESPONSE = {
                         '6077a0a0c36ee06aa53db3a7',
                     ],
                     email: 'albertgaohy@gmail.com',
-                    password:
-                        '$2a$10$nZS/SEX.Vq7NR1L1zk50pO.x0l6n/fEbOgAHPoLGm.S/7AiGV6MEO',
                     nickName: 'albertgaohy',
                     avatar: 'A03pirates',
                     createdAt: '2021-04-15T02:07:37.711Z',
@@ -57,6 +61,7 @@ const MOCK_NEWS_RESPONSE = {
             ],
             commentsCount: 0,
             wikipediaUrl: 'https://en.wikipedia.org/wiki/Beat_Instrumental',
+
             author: {
                 _id: '6077a0e4c36ee06aa53db3a9',
                 privacy: {
@@ -91,8 +96,6 @@ const MOCK_NEWS_RESPONSE = {
                     },
                     favourites: [],
                     email: 'a@a.com',
-                    password:
-                        '$2a$10$6omfhBb4Zq2WgfOS0TxeC.QRaNzROh4QRpCcZeaVu05yTK26Y8SLy',
                     nickName: 'aRandomUser',
                     avatar: 'A16girl',
                     createdAt: '2021-04-15T02:10:01.910Z',
@@ -108,8 +111,6 @@ const MOCK_NEWS_RESPONSE = {
                     },
                     favourites: [],
                     email: 'camus@camus.com',
-                    password:
-                        '$2a$10$GSXb.2HbD3I07xNBrvD7Z.ABFxxqn6X92TlEPjyshxWWohovmhz76',
                     nickName: 'Camus',
                     avatar: 'A31boy',
                     createdAt: '2021-04-15T02:11:48.285Z',
@@ -131,8 +132,6 @@ const MOCK_NEWS_RESPONSE = {
                         '6077a0a0c36ee06aa53db3a7',
                     ],
                     email: 'albertgaohy@gmail.com',
-                    password:
-                        '$2a$10$nZS/SEX.Vq7NR1L1zk50pO.x0l6n/fEbOgAHPoLGm.S/7AiGV6MEO',
                     nickName: 'albertgaohy',
                     avatar: 'A03pirates',
                     createdAt: '2021-04-15T02:07:37.711Z',
@@ -163,54 +162,28 @@ const MOCK_NEWS_RESPONSE = {
     ],
 }
 
-describe('<Home />', () => {
+describe('<ProfileFavList />', () => {
     it('should render the loading icon', () => {
         const { getByTestId } = render(
             <TestWrapper>
-                <Home />
+                <ProfileFavList />
             </TestWrapper>,
         )
 
         expect(getByTestId('spinner')).toBeInTheDocument()
     })
 
-    it('should fetch the news list', async () => {
+    it('should fetch the favourite list', async () => {
         render(
             <TestWrapper>
-                <Home />
+                <ProfileFavList />
             </TestWrapper>,
         )
 
-        const getNewsAPIMock = jest.spyOn(getNewsAPI, 'query')
+        const getFavNewsAPIMock = jest.spyOn(getFavNewsApi, 'query')
 
         await waitFor(() => {
-            expect(getNewsAPIMock).toHaveBeenCalledTimes(1)
-        })
-    })
-
-    it('should render the wikipedia news list from the network response', async () => {
-        const getNewsAPIMock = jest.spyOn(getNewsAPI, 'query')
-
-        // @ts-expect-error
-        getNewsAPIMock.mockResolvedValue(MOCK_NEWS_RESPONSE)
-
-        const { getByText, getAllByTestId } = render(
-            <TestWrapper>
-                <Home />
-            </TestWrapper>,
-        )
-
-        await waitFor(() => {
-            expect(getAllByTestId('wiki-news-list-item')).toHaveLength(
-                MOCK_NEWS_RESPONSE.data.length,
-            )
-            
-            expect(
-                getByText(MOCK_NEWS_RESPONSE.data[0].title),
-            ).toBeInTheDocument()
-            expect(
-                getByText(MOCK_NEWS_RESPONSE.data[1].title),
-            ).toBeInTheDocument()
+            expect(getFavNewsAPIMock).toHaveBeenCalledTimes(1)
         })
     })
 })

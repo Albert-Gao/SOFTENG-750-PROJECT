@@ -58,6 +58,7 @@ export const NewsList: React.FC = () => {
                         }) => (
                             <li
                                 key={_id}
+                                data-testid={_id}
                                 className="w-full max-w-2xl px-4 py-6 bg-white rounded-lg shadow sm:p-6"
                             >
                                 <NewsListItem
