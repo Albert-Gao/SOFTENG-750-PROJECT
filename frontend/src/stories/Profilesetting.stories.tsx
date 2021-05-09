@@ -4,7 +4,7 @@ import { SettingsPageContainer } from '../components/AppShell/components/Main'
 import { PageHeader } from '../components/AppShell/components/PageHeader'
 import { getStoryTemplate, Meta } from './utils'
 
-const trial: React.FC = ({ children }) => {
+const ProfileWidget: React.FC = ({ children }) => {
     return (
         <div>
             <PageHeader />
@@ -17,10 +17,10 @@ const trial: React.FC = ({ children }) => {
 }
 export default {
     title: 'Pages/Profile',
-    component: trial,
+    component: ProfileWidget,
 } as Meta
 
-const Template = getStoryTemplate(trial)
+const Template = getStoryTemplate(ProfileWidget)
 
 export const ProfilePage = Template.bind({})
 ProfilePage.args = {}
