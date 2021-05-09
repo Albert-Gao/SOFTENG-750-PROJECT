@@ -1,3 +1,7 @@
+import { Link, useHistory } from 'react-router-dom'
+import { useToasts } from 'react-toast-notifications'
+import { PATHS } from '../../../routes/routes.constants'
+import { Auth } from '../../../utils/Auth'
 import { DateTime } from '../../../utils/DateTime'
 import { getAvatarSVG } from '../../../utils/getAvatarSVG'
 
@@ -7,7 +11,11 @@ export const CommentItem: React.FC<{
     authorName: string
     text: string
     createdAt: string
-}> = ({ css, createdAt, avatar = '', authorName, text }) => {
+    authorId: string
+}> = ({ authorId, css, createdAt, avatar = '', authorName, text }) => {
+    const history = useHistory()
+    const { addToast } = useToasts()
+
     return (
         <div className={`flex space-x-3 ${css}`}>
             <div className="flex-shrink-0">
@@ -19,7 +27,20 @@ export const CommentItem: React.FC<{
             </div>
             <div>
                 <div className="text-sm">
-                    <a href="#" className="font-medium text-gray-900">
+                    <a
+                        onClick={(e) => {
+                            e.preventDefault()
+                            if (!Auth.isAuth()) {
+                                addToast('Please login first', {
+                                    appearance: 'error',
+                                })
+                                return
+                            }
+
+                            history.push(PATHS.USER_RAW + authorId)
+                        }}
+                        className="font-medium text-gray-900"
+                    >
                         {authorName}
                     </a>
                 </div>
