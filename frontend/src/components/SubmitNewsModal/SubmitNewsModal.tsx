@@ -1,6 +1,6 @@
 import ReactModal from 'react-modal'
 import { useAtom } from 'jotai'
-import { submitNewsAtom } from '../../state'
+import { newsAtom } from '../../state'
 import { SubmitNewsModalHeader } from './components/SubmitNewsModalHeader'
 import { SubmitNewsModalField } from './components/SubmitNewsModalField'
 import { useForm } from 'react-hook-form'
@@ -21,16 +21,16 @@ export const SubmitNewsModal: React.FC<{
     isOpen: boolean
 }> = ({ isOpen }) => {
     const { addToast } = useToasts()
-    const [, setSubmitNewsAtom] = useAtom(submitNewsAtom)
+    const [, setNewsAtom] = useAtom(newsAtom)
     const resolver = useYupValidationResolver(validationSchema)
-    const { register, handleSubmit, errors, formState } = useForm<{
+    const { register, handleSubmit, errors } = useForm<{
         wikipediaUrl: string
         authorWords: string
     }>({ resolver })
     const mutation = useMutation(createNewsAPI.query)
 
     function closeModal() {
-        setSubmitNewsAtom({ isSubmitNewsModalOpen: false })
+        setNewsAtom((v) => ({ ...v, isSubmitNewsModalOpen: false }))
     }
 
     return (
@@ -49,7 +49,10 @@ export const SubmitNewsModal: React.FC<{
                         await mutation.mutateAsync(data)
 
                         closeModal()
-
+                        setNewsAtom((v) => ({
+                            ...v,
+                            shouldRefetch: true,
+                        }))
                         addToast('Successfully submitted the news!', {
                             appearance: 'success',
                         })
@@ -78,12 +81,13 @@ export const SubmitNewsModal: React.FC<{
                                     <FormErrorText
                                         isError={!!errors.wikipediaUrl}
                                     >
-                                        Please enter valid wikipedia URL
+                                        Please enter valid wikipedia URL, eg:
+                                        https://en.wikipedia.org/wiki/Digital_distribution
                                     </FormErrorText>
                                 </SubmitNewsModalField>
 
                                 <SubmitNewsModalField
-                                    label="Why I love this wikipedia (Optional)"
+                                    label="Additional opinions about this wikipedia (Optional)"
                                     htmlFor="description"
                                 >
                                     <textarea
@@ -111,9 +115,9 @@ export const SubmitNewsModal: React.FC<{
                         Cancel
                     </button>
                     <button
-                        disabled={formState.isSubmitting}
+                        disabled={mutation.isLoading}
                         type="submit"
-                        className="inline-flex items-center justify-center px-4 py-2 ml-4 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                        className="inline-flex items-center justify-center px-4 py-2 ml-4 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm disabled:opacity-50 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                     >
                         Save
                     </button>

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, useHistory } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import { PAGE_TITLE_MAP, PATHS } from '../../../routes/routes.constants'
 import classNames from 'classnames'
 import { Auth } from '../../../utils/Auth'
@@ -9,7 +9,6 @@ export const ProfileMenu: React.FC<{
     setIsProfileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
     setIsMobileMenuOpen: React.Dispatch<React.SetStateAction<boolean>>
 }> = ({ isMobile, setIsProfileMenuOpen, setIsMobileMenuOpen }) => {
-    const history = useHistory()
     const menuItemCss = classNames('block px-3 py-2', {
         'text-base font-medium text-white rounded-md hover:bg-indigo-500 hover:bg-opacity-75': isMobile,
         'text-sm text-gray-700 hover:bg-gray-100': !isMobile,
@@ -40,19 +39,20 @@ export const ProfileMenu: React.FC<{
     )
 
     items.push(
-        // @ts-ignore
-        <a
+        <Link
+            to={PATHS.HOME}
+            replace
+            key={PATHS.HOME}
             type="button"
             onClick={() => {
                 menuItemOnClick()
                 Auth.logout()
-                history.replace(PATHS.HOME)
             }}
             className={menuItemCss}
             {...a11y}
         >
             Log out
-        </a>,
+        </Link>,
     )
 
     if (isMobile) {
@@ -61,7 +61,7 @@ export const ProfileMenu: React.FC<{
 
     return (
         <div
-            className="absolute right-0 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+            className="absolute right-0 z-50 w-48 py-1 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
             role="menu"
             aria-orientation="vertical"
             aria-labelledby="user-menu"

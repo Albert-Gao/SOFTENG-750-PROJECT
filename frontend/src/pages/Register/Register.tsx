@@ -8,6 +8,8 @@ import { FormErrorText } from '../../components/FormErrorText'
 import { registerAPI } from '../../api/auth.api'
 import { Auth } from '../../utils/Auth'
 import { emailRegEx } from '../../utils/emailRegEx'
+import { useAtom } from 'jotai'
+import { userAtom } from '../../state'
 
 const Header: React.FC = () => (
     <div>
@@ -38,8 +40,9 @@ const Register: React.FC = () => {
         email: string
         password: string
     }>()
-    const mutation = useMutation(registerAPI.query)
+    const mutation = useMutation(registerAPI?.query)
     const history = useHistory()
+    const [, setUserAtom] = useAtom(userAtom)
 
     return (
         <div className="flex min-h-screen bg-white">
@@ -57,10 +60,33 @@ const Register: React.FC = () => {
                                             data,
                                         )
 
-                                        if (response.data?.accessToken) {
-                                            Auth.saveAuth(
-                                                response.data?.accessToken,
-                                            )
+                                        if (response?.accessToken) {
+                                            if (response.user) {
+                                                const user = response.user
+                                                Auth.saveUserInfo(user)
+                                                setUserAtom({
+                                                    avatar: user.avatar,
+                                                    createdAt: user.createdAt,
+                                                    email: user.email,
+                                                    nickName: user.nickName,
+                                                    updatedAt: user.updatedAt,
+                                                    _id: user._id,
+                                                    favourites: user.favourites,
+                                                    privacy: {
+                                                        shouldShowEmail:
+                                                            user.privacy
+                                                                .shouldShowEmail,
+                                                        shouldShowFavouritePage:
+                                                            user.privacy
+                                                                .shouldShowFavouritePage,
+                                                        shouldShowSubmittedNews:
+                                                            user.privacy
+                                                                .shouldShowSubmittedNews,
+                                                    },
+                                                })
+                                            }
+
+                                            Auth.saveAuth(response?.accessToken)
                                             history.replace(PATHS.HOME)
                                         } else {
                                             alert(
@@ -86,6 +112,7 @@ const Register: React.FC = () => {
                                     <div className="mt-1">
                                         <input
                                             id="email"
+                                            data-testid="email-address"
                                             name="email"
                                             type="email"
                                             autoComplete="email"
@@ -111,6 +138,7 @@ const Register: React.FC = () => {
                                     <div className="mt-1">
                                         <input
                                             id="password"
+                                            data-testid="password"
                                             name="password"
                                             type="password"
                                             ref={register({ required: true })}
@@ -127,9 +155,10 @@ const Register: React.FC = () => {
 
                                 <div>
                                     <button
+                                        data-testid="submit"
                                         disabled={formState.isSubmitting}
                                         type="submit"
-                                        className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                                        className="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md shadow-sm disabled:opacity-50 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                                     >
                                         Join
                                     </button>

@@ -3,14 +3,15 @@
 // See http://mongoosejs.com/docs/models.html
 // for more of what you can do here.
 import { Application } from '../declarations'
-import { Model, Mongoose, Document, Types } from 'mongoose'
+import { Model, Mongoose, Document } from 'mongoose'
 
 export interface NewsDocument extends Document {
     title: string
     description: string
     wikipediaUrl: string
     author: string
-    vote: number
+    votesCount: number
+    commentsCount: number
 }
 
 export interface NewsModel extends Model<NewsDocument> {}
@@ -25,8 +26,15 @@ export default function (app: Application): Model<any> {
             description: { type: String, default: '' },
             authorWords: { type: String, default: '' },
             wikipediaUrl: { type: String, required: true, unique: true },
-            author: { type: Types.ObjectId, ref: 'users', required: true },
-            vote: { type: Number, default: 0 },
+            author: {
+                type: Schema.Types.ObjectId,
+                ref: 'users',
+                required: true,
+            },
+            votingRecords: [
+                { type: Schema.Types.ObjectId, ref: 'users', required: true },
+            ],
+            commentsCount: { type: Number, default: 0 },
         },
         {
             timestamps: true,

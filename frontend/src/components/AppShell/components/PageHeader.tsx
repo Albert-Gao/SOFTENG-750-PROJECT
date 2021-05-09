@@ -1,18 +1,21 @@
 import React from 'react'
 import { useLocation } from 'react-router'
-import { PAGE_TITLE_MAP } from '../../../routes/routes.constants'
+import { PAGE_TITLE_MAP, PATHS } from '../../../routes/routes.constants'
 import { useAtom } from 'jotai'
-import { submitNewsAtom } from '../../../state'
+import { newsAtom } from '../../../state'
 
-const SubmitButton: React.FC = () => {
-    const [, setSubmitNewsAtom] = useAtom(submitNewsAtom)
+export const SubmitButton: React.FC = () => {
+    const [, setNewsAtom] = useAtom(newsAtom)
 
     return (
         <button
             type="button"
             className="inline-flex items-center px-3 py-2 text-sm font-medium leading-4 text-indigo-700 bg-indigo-100 border border-transparent rounded-md hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
             onClick={() => {
-                setSubmitNewsAtom({ isSubmitNewsModalOpen: true })
+                setNewsAtom((v) => ({
+                    ...v,
+                    isSubmitNewsModalOpen: true,
+                }))
             }}
         >
             Submit News
@@ -22,6 +25,13 @@ const SubmitButton: React.FC = () => {
 
 export const PageHeader: React.FC = () => {
     const { pathname } = useLocation()
+
+    if (
+        [PATHS.FEATURES, PATHS.FAQ].includes(pathname as PATHS) ||
+        pathname.startsWith(PATHS.DETAIL_RAW) ||
+        pathname.startsWith(PATHS.USER_RAW)
+    )
+        return null
 
     const route = PAGE_TITLE_MAP.find((config) => config.path === pathname)
 

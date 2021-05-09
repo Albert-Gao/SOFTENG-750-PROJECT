@@ -20,20 +20,18 @@
         "config": "config/"
     },
     "engines": {
-        "node": "^14.0.0",
+        "node": ">=14.0.0",
         "npm": ">= 3.0.0"
     },
     "scripts": {
-        "test": "npm run lint && npm run compile && npm run jest",
+        "test": "npm run lint && npm run build && npm run jest",
         "lint": "eslint src/. test/. --config .eslintrc.json --ext .ts --fix",
         "dev": "ts-node-dev --no-notify src/",
         "start": "pm2-runtime start ecosystem.config.js --env production",
         "jest": "jest  --forceExit",
         "remove:build": "shx rm -rf lib/",
-        "compile": "tsc",
         "prettier": "pretty-quick",
-        "tsc": "tsc",
-        "postinstall": "npm run remove:build && npm run compile"
+        "build": "npm bin && printenv PATH && ls \"$(npm bin)\" && npm list --depth=0 && tsc"
     },
     "standard": {
         "env": [
@@ -53,16 +51,17 @@
         "@feathersjs/socketio": "^4.5.11",
         "@feathersjs/transport-commons": "^4.5.11",
         "@types/jsdom": "^16.2.10",
+        "axios": "^0.21.1",
         "compression": "^1.7.4",
         "cors": "^2.8.5",
         "feathers-mongodb": "^6.3.0",
         "feathers-mongoose": "^8.3.1",
         "helmet": "^4.4.1",
         "jsdom": "^16.5.2",
-        "mongodb": "^3.6.5",
+        "mongodb": "^3.6.6",
         "mongodb-core": "^3.2.7",
-        "mongoose": "^5.12.2",
-        "pm2": "^4.5.5",
+        "mongoose": "^5.12.3",
+        "pm2": "^4.5.6",
         "serve-favicon": "^2.5.0",
         "winston": "^3.3.3"
     },
@@ -71,11 +70,10 @@
         "@types/cors": "^2.8.10",
         "@types/jest": "^26.0.22",
         "@types/jsonwebtoken": "^8.5.1",
-        "@types/mongodb": "^3.6.10",
+        "@types/mongodb": "^3.6.12",
         "@types/serve-favicon": "^2.5.2",
-        "@typescript-eslint/eslint-plugin": "^4.20.0",
-        "@typescript-eslint/parser": "^4.20.0",
-        "axios": "^0.21.1",
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
         "eslint": "^7.23.0",
         "eslint-config-prettier": "^8.1.0",
         "eslint-plugin-prettier": "^3.3.1",

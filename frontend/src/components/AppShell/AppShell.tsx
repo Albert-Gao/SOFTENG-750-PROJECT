@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useHistory, useLocation } from 'react-router-dom'
 import { PATHS } from '../../routes/routes.constants'
 import { Auth } from '../../utils/Auth'
+import { Footer } from './components/Footer'
 import { HeroSection } from './components/HeroSection/HeroSection'
 import { Main } from './components/Main'
 import { MobileNavBarToggleButton } from './components/MobileNavButtonToggleButton'
@@ -12,21 +13,24 @@ import { ProfileMenu } from './components/ProfileMenu'
 import { ProfileMenuToggleButton } from './components/ProfileMenuToggleButton'
 import { SearchBar } from './components/SearchBar'
 
-const shouldAddAppShell = (path: string) =>
-    ![PATHS.LOGIN].includes((path as unknown) as PATHS)
-
 export const AppShell: React.FC = ({ children }) => {
     const isAuth = Auth.isAuth()
+    const history = useHistory()
     const { pathname } = useLocation()
     const [isProfileMenuOpen, setIsProfileMenuOpen] = useState(false)
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
-    if (!shouldAddAppShell(pathname)) return <>{children}</>
-
     return (
         <div className="min-h-screen bg-gray-100">
             {isAuth ? (
-                <div className="pb-32 bg-indigo-600">
+                <div
+                    className={`${
+                        pathname.startsWith(PATHS.DETAIL_RAW) ||
+                        pathname.startsWith(PATHS.USER_RAW)
+                            ? ''
+                            : 'pb-32'
+                    } bg-indigo-600`}
+                >
                     <nav className="bg-indigo-600 border-b border-indigo-300 border-opacity-25 lg:border-none">
                         <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
                             <div className="relative flex items-center justify-between h-16 lg:border-b lg:border-indigo-400 lg:border-opacity-25">
@@ -34,8 +38,13 @@ export const AppShell: React.FC = ({ children }) => {
                                     <div className="flex-shrink-0">
                                         <img
                                             className="block w-8 h-8"
+                                            style={{ cursor: 'pointer' }}
                                             src="https://tailwindui.com/img/logos/workflow-mark-indigo-300.svg"
-                                            alt="Workflow"
+                                            alt="LOGO"
+                                            title="go to home page"
+                                            onClick={() => {
+                                                history.push(PATHS.HOME)
+                                            }}
                                         />
                                     </div>
                                     <NavBar
@@ -119,6 +128,8 @@ export const AppShell: React.FC = ({ children }) => {
             )}
 
             <Main isAuth={isAuth}>{children}</Main>
+
+            <Footer />
         </div>
     )
 }

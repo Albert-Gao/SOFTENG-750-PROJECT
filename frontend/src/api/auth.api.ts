@@ -1,6 +1,7 @@
 import { QueryFunction } from './types'
 import axios from 'axios'
 import { getHeaders, getUrl } from './api.utils'
+import { User } from '../utils/types'
 
 interface Params {
     email: string
@@ -10,12 +11,9 @@ interface Params {
 interface Response {
     accessToken: string
     authentication: {
-        strategy: 'local'
+        strategy: string
     }
-    user: {
-        _id: string
-        email: string
-    }
+    user: User
 }
 
 export const loginAPI: QueryFunction<Params, Response> = {
@@ -32,7 +30,7 @@ export const loginAPI: QueryFunction<Params, Response> = {
             },
         )
 
-        return getJwtResponse
+        return getJwtResponse.data
     },
     queryKey: 'loginAPI',
 }

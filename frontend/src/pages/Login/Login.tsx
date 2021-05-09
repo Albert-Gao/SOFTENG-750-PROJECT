@@ -8,6 +8,8 @@ import { FormErrorText } from '../../components/FormErrorText'
 import { emailRegEx } from '../../utils/emailRegEx'
 import { loginAPI } from '../../api/auth.api'
 import { Auth } from '../../utils/Auth'
+import { userAtom } from '../../state'
+import { useAtom } from 'jotai'
 
 const LoginHeader: React.FC = () => (
     <div>
@@ -38,7 +40,8 @@ const Login: React.FC = () => {
         email: string
         password: string
     }>()
-    const mutation = useMutation(loginAPI.query)
+    const mutation = useMutation(loginAPI?.query)
+    const [, setUserAtom] = useAtom(userAtom)
     const history = useHistory()
 
     return (
@@ -51,8 +54,32 @@ const Login: React.FC = () => {
                         try {
                             const response = await mutation.mutateAsync(data)
 
-                            if (response.data?.accessToken) {
-                                Auth.saveAuth(response.data?.accessToken)
+                            if (response?.accessToken) {
+                                if (response.user) {
+                                    const user = response.user
+                                    Auth.saveUserInfo(user)
+                                    setUserAtom({
+                                        avatar: user.avatar,
+                                        createdAt: user.createdAt,
+                                        email: user.email,
+                                        nickName: user.nickName,
+                                        updatedAt: user.updatedAt,
+                                        _id: user._id,
+                                        favourites: user.favourites,
+                                        privacy: {
+                                            shouldShowEmail:
+                                                user.privacy.shouldShowEmail,
+                                            shouldShowFavouritePage:
+                                                user.privacy
+                                                    .shouldShowFavouritePage,
+                                            shouldShowSubmittedNews:
+                                                user.privacy
+                                                    .shouldShowSubmittedNews,
+                                        },
+                                    })
+                                }
+
+                                Auth.saveAuth(response?.accessToken)
                                 history.replace(PATHS.HOME)
                             } else {
                                 alert(
@@ -60,7 +87,7 @@ const Login: React.FC = () => {
                                 )
                             }
                         } catch (e) {
-                            console.table('e', e)
+                            console.log('e', e)
                             alert((e as AxiosError).response?.data?.message)
                         }
                     })}
@@ -73,6 +100,7 @@ const Login: React.FC = () => {
                             </label>
                             <input
                                 id="email-address"
+                                data-testid="email-address"
                                 name="email"
                                 type="email"
                                 autoComplete="email"
@@ -93,6 +121,7 @@ const Login: React.FC = () => {
                             </label>
                             <input
                                 id="password"
+                                data-testid="password"
                                 name="password"
                                 type="password"
                                 autoComplete="current-password"
@@ -134,9 +163,10 @@ const Login: React.FC = () => {
 
                     <div>
                         <button
+                            data-testid="submit"
                             disabled={formState.isSubmitting}
                             type="submit"
-                            className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                            className="relative flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md disabled:opacity-50 group hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                         >
                             <span className="absolute inset-y-0 left-0 flex items-center pl-3">
                                 {/* <!-- Heroicon name: solid/lock-closed --> */}
@@ -148,9 +178,9 @@ const Login: React.FC = () => {
                                     aria-hidden="true"
                                 >
                                     <path
-                                        fill-rule="evenodd"
+                                        fillRule="evenodd"
                                         d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z"
-                                        clip-rule="evenodd"
+                                        clipRule="evenodd"
                                     />
                                 </svg>
                             </span>

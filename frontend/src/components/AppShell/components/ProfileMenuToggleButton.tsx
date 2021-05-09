@@ -1,8 +1,11 @@
 import React from 'react'
+import { useCurrentUserAvatar } from '../../../utils/hooks/useCurrentUserAvatar'
 
 export const ProfileMenuToggleButton: React.FC<{
     onClick: React.EventHandler<React.SyntheticEvent>
 }> = ({ onClick }) => {
+    const { currentUserAvatar } = useCurrentUserAvatar()
+
     return (
         <div>
             <button
@@ -15,9 +18,9 @@ export const ProfileMenuToggleButton: React.FC<{
             >
                 <span className="sr-only">Open user menu</span>
                 <img
-                    className="w-8 h-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixqx=2p7Lkbbzs4&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
+                    className="w-8 h-8 bg-gray-300 rounded-full"
+                    src={currentUserAvatar}
+                    alt="avatar"
                 />
             </button>
         </div>
