@@ -9,6 +9,7 @@
         "eject": "react-scripts eject",
         "prettier": "pretty-quick",
         "cypress:open": "cypress open",
+        "cypress:run": "cypress run --key ca7831d4-9124-49fb-9899-4807e569e4ae --record",
         "storybook": "start-storybook -p 6006 -s public",
         "build-storybook": "npm run build-tailwind && build-storybook --quiet -s ./src/stories/assets",
         "build-tailwind": "npx tailwindcss build src/index.css -o src/stories/assets/app.css"
