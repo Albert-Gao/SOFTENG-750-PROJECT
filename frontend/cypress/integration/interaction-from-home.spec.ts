@@ -25,6 +25,7 @@ describe('interactions from the home page', () => {
     beforeEach(() => {
         // @ts-ignore
         cy.login()
+        cy.wait(2000)
     })
 
     it("should like the user's news", () => {
