@@ -5,6 +5,7 @@ import { useMutation } from 'react-query'
 import { useToasts } from 'react-toast-notifications'
 import { voteNewsApi } from '../../api/news.api'
 import { userAtom } from '../../state'
+import { Auth } from '../Auth'
 
 export const useLikeNewsAPI = ({
     refetch,
@@ -18,7 +19,19 @@ export const useLikeNewsAPI = ({
     const [currentUser] = useAtom(userAtom)
     const { addToast } = useToasts()
     const mutation = useMutation(
-        () => voteNewsApi.query({ newsId, userId: currentUser._id, isVoted }),
+        // @ts-expect-error
+        () => {
+            if (!Auth.isAuth()) {
+                addToast('Please login first', { appearance: 'error' })
+                return
+            }
+
+            return voteNewsApi.query({
+                newsId,
+                userId: currentUser._id,
+                isVoted,
+            })
+        },
         {
             onSuccess: refetch,
         },
@@ -31,7 +44,7 @@ export const useLikeNewsAPI = ({
                 { appearance: 'error' },
             )
         }
-    }, [mutation.status, addToast])
+    }, [mutation.status, mutation.error, addToast])
 
     const LikeNewsAPILoadingSpinner: React.FC<{
         children: (mutateAsync: () => void) => JSX.Element
