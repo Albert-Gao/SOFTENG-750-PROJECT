@@ -10,6 +10,6 @@ const Template = getStoryTemplate(Question)
 
 export const Standard = Template.bind({})
 Standard.args = {
-    question: 'Sample',
-    answer: 'Sample',
+    question: 'Sample question',
+    answer: 'Sample answer',
 }
