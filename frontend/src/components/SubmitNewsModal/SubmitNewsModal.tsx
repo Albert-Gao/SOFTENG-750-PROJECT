@@ -81,7 +81,8 @@ export const SubmitNewsModal: React.FC<{
                                     <FormErrorText
                                         isError={!!errors.wikipediaUrl}
                                     >
-                                        Please enter valid wikipedia URL
+                                        Please enter valid wikipedia URL, eg:
+                                        https://en.wikipedia.org/wiki/Digital_distribution
                                     </FormErrorText>
                                 </SubmitNewsModalField>
 
