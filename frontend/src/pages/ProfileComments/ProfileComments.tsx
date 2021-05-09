@@ -25,6 +25,7 @@ const ProfileComments: React.FC = () => {
                 {(data) =>
                     data?.data.map((commentInfo) => (
                         <CommentItem
+                            authorId={commentInfo.author._id}
                             key={commentInfo._id}
                             css="my-12"
                             text={commentInfo.text}

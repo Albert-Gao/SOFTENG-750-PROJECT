@@ -99,6 +99,7 @@ export const Comments: React.FC<{ newsId: string }> = ({ newsId }) => {
                             {response.map((commentInfo) => (
                                 <li key={commentInfo._id}>
                                     <CommentItem
+                                        authorId={commentInfo.author._id}
                                         text={commentInfo.text}
                                         authorName={commentInfo.author.nickName}
                                         avatar={commentInfo.author.avatar}

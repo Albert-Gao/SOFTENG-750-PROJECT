@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+import { PATHS } from '../../../routes/routes.constants'
 import { DateTime } from '../../../utils/DateTime'
 import { getAvatarSVG } from '../../../utils/getAvatarSVG'
 import { InfoPanelLikeActionButton } from './InfoPanelLikeActionButton'
@@ -36,6 +38,7 @@ const DateTimeIcon = () => (
 )
 
 export const InfoPanel: React.FC<{
+    authorId: string
     isMobile: boolean
     createdAt: string
     authorNickName: string
@@ -46,6 +49,7 @@ export const InfoPanel: React.FC<{
     isVoted: boolean
     refetch: () => void
 }> = ({
+    authorId,
     commentsCount = 0,
     votesCount = 0,
     isMobile,
@@ -92,7 +96,10 @@ export const InfoPanel: React.FC<{
                     <SectionTitle>Creator</SectionTitle>
                     <ul className="mt-3 space-y-3">
                         <li className="flex justify-start">
-                            <a href="#" className="flex items-center space-x-3">
+                            <Link
+                                to={PATHS.USER_RAW + authorId}
+                                className="flex items-center space-x-3"
+                            >
                                 <div className="flex-shrink-0">
                                     <img
                                         className="w-5 h-5 rounded-full"
@@ -103,7 +110,7 @@ export const InfoPanel: React.FC<{
                                 <div className="text-sm font-medium text-gray-900">
                                     {authorNickName}
                                 </div>
-                            </a>
+                            </Link>
                         </li>
                     </ul>
                 </div>
