@@ -1,4 +1,4 @@
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { useToasts } from 'react-toast-notifications'
 import { PATHS } from '../../../routes/routes.constants'
 import { Auth } from '../../../utils/Auth'
