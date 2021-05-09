@@ -13,7 +13,7 @@ export const FavTab: React.FC<{
     if (favNews.length === 0 || typeof favNews[0] === 'string') {
         return <TabBox>This user has not added any favourites news yet.</TabBox>
     }
-    console.log('favNews', JSON.stringify(favNews))
+
     return (
         <TabBox>
             <ul className="flex flex-col items-center divide-y divide-gray-200 pt-14 lg:col-span-9">
