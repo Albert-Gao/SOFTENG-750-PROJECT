@@ -90,7 +90,9 @@ All updates to the `dev` branch will be auto deployed via the CI/CD pipeline
 1. from the project root
 1. `cd frontend`
 1. `npm ci` (if not installed already)
-1. `npm run cypress:open`
+1. `npm run cypress:open`: for running tests manually with a nice UI
+1. `npm run cypress:run`: for running tests automatically in console
+1. Screenshots and video will be saved, check the console for more detail
 
 ## 5. Weekly meeting
 
