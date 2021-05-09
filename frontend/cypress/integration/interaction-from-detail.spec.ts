@@ -9,6 +9,7 @@ describe('interactions from the detail page', () => {
         // @ts-ignore
         cy.login()
         cy.get(getDateLinkFromId(postId)).click()
+        cy.wait(6000)
     })
 
     it('should render the correct news', () => {
