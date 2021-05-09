@@ -3,6 +3,7 @@ import { render, waitFor } from '@testing-library/react'
 import '@testing-library/jest-dom/extend-expect'
 import { TestWrapper } from '../../utils/testUtils'
 import { getOtherUserInfoApi } from '../../api/users.api'
+import { Auth } from '../../utils/Auth'
 
 const MOCK_USER_INFO_RESPONSE = {
     avatar: 'A49bellboy',
@@ -23,6 +24,10 @@ const MOCK_USER_INFO_RESPONSE = {
 }
 
 describe('/User', () => {
+    beforeEach(() => {
+        jest.spyOn(Auth, 'isAuth').mockReturnValue(true)
+    })
+
     it('should fetch the user data', async () => {
         render(
             <TestWrapper>
